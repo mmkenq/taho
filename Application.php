@@ -1,18 +1,18 @@
 <?php
-//require_once("./DB.php");
+require_once("./DB.php");
 
 class Application {
-	function __construct(){
-	//	$config = json_decode(file_get_contents('config.json'), true);
-	//	$db = new DB($config['DataBase']);
-
-	//	$this->db = $db;
+	function __construct($config){
+		$db = new DB($config['DB']);
+		$this->db = $db;
 	}
 
-	private function signin(){
+	private function taho(){
 	}
 
-	public function taho(){
+	public function getCatalog($params){
+		if($params['name']) return $this->db->getCatalog($params['name']);
+		else return 'ERR: NO NAME';
 	}
 }
 ?>

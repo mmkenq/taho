@@ -10,7 +10,7 @@ export default function AppComponent(props){
 
 	const itself = document.createElement('div');
 	
-	server.sendReq('check', 
+	server.sendReq('getCatalog&name=taho_catalog', 
 		'json',
 		function(res){ console.log('check resp:', res); }
 	);

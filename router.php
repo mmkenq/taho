@@ -7,10 +7,11 @@ require_once("./Application.php");
 function router($params){
 	$method = $params['method'];
     if ($method) {
-        $app = new Application();
+		$config = json_decode(file_get_contents('./config.json'), true);
+        $app = new Application($config);
         switch ($method) {
             case 'check' : return true;
-			//case 'getUser': return $app->getUser($params);
+			case 'getCatalog': return $app->getCatalog($params);
         }
     }
     return false;
