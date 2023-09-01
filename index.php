@@ -53,7 +53,7 @@ else {
 		echo(json_encode(answer(router($_GET))));
 	} 
 	else{
-		include_once './public_html/index.html';
+		include_once './frontend/index.html';
 	}
     //return FALSE;
 }
