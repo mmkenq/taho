@@ -34,10 +34,10 @@ if ($path["extension"] == "js") {
     header("Content-Type: text/javascript");
     readfile($_SERVER["SCRIPT_FILENAME"]);
 }
-else if ($path["extension"] == "html") {
-    header("Content-Type: text/html");
-    readfile($_SERVER["SCRIPT_FILENAME"]);
-}
+//else if ($path["extension"] == "html") {
+//    header("Content-Type: text/html");
+//    readfile($_SERVER["SCRIPT_FILENAME"]);
+//}
 else if ($path["extension"] == "css") {
     header("Content-Type: text/css");
     readfile($_SERVER["SCRIPT_FILENAME"]);
