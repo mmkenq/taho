@@ -17,7 +17,10 @@ document.addEventListener("DOMContentLoaded", function(ev){
 	const app = new AppComponent({
 		id: "app-0",
 		config: config,
-		parent: document.getElementsByTagName('body')[0]
+		domParent: document.getElementsByTagName('body')[0]
 	});
+	// console.log('loaded app', app);
+	//app.hide();
+	//app.show();
 
 });

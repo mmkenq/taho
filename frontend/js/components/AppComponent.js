@@ -1,18 +1,43 @@
 import Component from './Component.js';
 import HeaderComponent from './HeaderComponent/HeaderComponent.js';
 
+(function initAppComponent(){
+	// ...
+	console.log('init app component: DONE');
+})();
+
 export default function AppComponent(props){
-	/* props: {id, config, parent} */
+	/* props: {id, config, domParent} */
 	const server = props.config.server;
 	// TODO:
 	//this.RENDER = props.config.RENDER;
 	//this.DARK_THEME = props.config.DARK_THEME;
 
-	const itself = document.createElement('div');
+	const domSelf = document.createElement('div');
+	const header = new HeaderComponent(
+		{
+			id: 'header-0',
+			domParent: domSelf
+		},
+		{
+			buts: [
+				{id: '', title: 'Главная', anchor: '',  },
+				{id: '', title: 'Каталог', anchor: 'catalog' },
+				{id: '', title: 'Услуги', anchor: 'services' },
+				{id: '', title: 'О нас', anchor: 'about' },
+				{id: '', title: 'Контакты', anchor: 'contacts' },
+			],
+			pic: null,
+			buttonTitle: '',
+		}
+	);
+	// console.log('loaded header', header);
+	//header.hide();
+	//header.show();
 	
 	server.sendReq('getCatalog&name=taho_catalog', 
 		'json',
-		function(res){ console.log('check resp:', res); }
+		function(res){ /*console.log('check resp:', res);*/ }
 	);
 
 
@@ -28,7 +53,7 @@ export default function AppComponent(props){
 
 	return new Component({
 		id: props.id,
-		parent: props.parent,
-		itself: itself
+		domParent: props.domParent,
+		domSelf: domSelf
 	});
 }

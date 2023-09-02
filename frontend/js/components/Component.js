@@ -1,20 +1,20 @@
 export default function Component(props){
-	/* props: {id, parent, itself} */
+	/* props: {id, domParent, domSelf} */
 
-	function hide(){
-		document.getElementById(props.id).classList.add('hide');
+	this.hide = function(){
+		props.domSelf.classList.add('hide');
 	}
-	function show(){
-		document.getElementById(props.id).classList.remove('hide');
+	this.show = function(){
+		props.domSelf.classList.remove('hide');
 	}
 
-	props.itself.id = props.id;
-	props.parent.appendChild(props.itself);
-	return {
-		id: props.id,
-		parent: props.parent,
-		itself: props.itself,
-		hide: hide,
-		show: show,
-	}
+	props.domSelf.id = props.id;
+	props.domParent.appendChild(props.domSelf);
+
+	return Object.create(this,
+	{
+		id: {value:props.id, writable: true, enumerable: true, configurable: true },
+		domParent: {value: props.domParent, writable: true, enumerable: true, configurable: true },
+		domSelf: {value: props.domSelf, writable: true, enumerable: true, configurable: true },
+	});
 }
