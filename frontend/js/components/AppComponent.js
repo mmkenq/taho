@@ -1,5 +1,6 @@
 import Component from './Component.js';
 import HeaderComponent from './HeaderComponent/HeaderComponent.js';
+import BannerComponent from './BannerComponent/BannerComponent.js';
 
 (function initAppComponent(){
 	// ...
@@ -34,6 +35,21 @@ export default function AppComponent(props){
 	// console.log('loaded header', header);
 	//header.hide();
 	//header.show();
+	
+	const banner = new BannerComponent(
+		{
+			id: 'banner-0',
+			domParent: domSelf
+		},
+		{
+			h1Title: "Глонасс/Видеонаблюдение на все виды транспортных средств",
+			h2Title: "Профессиональное обслуживание и установка глонасс / видео",
+			buts: [
+				{id: '', title: 'Каталог камер', anchor: 'vidCatalog' },
+				{id: '', title: 'Каталог устройств глонасс', anchor: 'glonassCatalog' },
+			],
+		}
+	);
 	
 	server.sendReq('getCatalog&name=taho_catalog', 
 		'json',

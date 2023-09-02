@@ -9,7 +9,7 @@ export default function HeaderComponent(props, data){
 	/* props: {id, domParent} */
 	/* data: {elements} */
 	const domSelf = document.createElement('div');
-	domSelf.setAttribute('class', 'mainHeader');
+	domSelf.setAttribute('class', 'appHeader');
 
 	data.buts.forEach(function(el, i){
 		const domSelfBut = document.createElement('button');
