@@ -1,6 +1,7 @@
 import Component from './Component.js';
 import HeaderComponent from './HeaderComponent/HeaderComponent.js';
 import BannerComponent from './BannerComponent/BannerComponent.js';
+import MainComponent from './MainComponent/MainComponent.js';
 
 (function initAppComponent(){
 	// ...
@@ -27,6 +28,7 @@ export default function AppComponent(props){
 				{id: '', title: 'Услуги', anchor: 'services' },
 				{id: '', title: 'О нас', anchor: 'about' },
 				{id: '', title: 'Контакты', anchor: 'contacts' },
+				{id: '', title: 'theme', anchor: 'TODOtheme' },
 			],
 			pic: null,
 			buttonTitle: '',
@@ -48,6 +50,51 @@ export default function AppComponent(props){
 				{id: '', title: 'Каталог камер', anchor: 'vidCatalog' },
 				{id: '', title: 'Каталог устройств глонасс', anchor: 'glonassCatalog' },
 			],
+
+			// 1920x1080
+			pic: '/assets/truck-pic.jpg',
+		}
+	);
+
+	const main = new MainComponent(
+		{
+			id: 'main-0',
+			domParent: domSelf
+		},
+		{
+			elementsData: [
+				{
+					// TODO: subElements
+					titles: [
+						{type:'h2', text:'Услуги'},
+/*						{type:'h3', text:'Глонасс'},
+						{type:'h4', text:'Внедрение системы мониторинга'},
+						{type:'h3', text:'Видеонаблюдение'},
+						*/
+					],
+					// TODO: ListItemsComponent
+					texts: [{id:'', data:'<h4>Основные функции</h4>-Автоматический учёт загруженности автопарка<br>-Повышение качества использования автопарка<br>'},],
+					classes: [],
+				},
+				{
+					titles:[
+						{type:'h2', text:'О нас'},
+					],
+					texts: [{id:'', data:'Мы являемся официальным представителем компании FTNet. Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г. Нажмите на кнопку, чтобы выполнить проверку на сайте Минтранса РФ'}],
+					classes: [],
+				},
+				{
+					titles:[
+						{type:'h2', text:'Контакты'},
+					],
+					texts: [
+						{id: 'contacts1Element', data:'Россия, Удмуртская республика, г. Ижевск, ул. Ленина, д. 146, офис 104'},
+						{id: 'contacts2Element', data:'Россия, Респ. Татарстан, Набережные Челны, Мензелинский тракт, 38/1'},
+						{id: 'contacts3Element', data:'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6'},
+					],
+					classes: ['contactsElement'],
+				},
+			]
 		}
 	);
 	

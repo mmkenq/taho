@@ -40,6 +40,13 @@ export default function BannerComponent(props, data){
 		});
 	});
 
+	let bg = new Image();
+	bg.src = 'assets/truck-pic.jpg';
+	bg.onload = function(){
+		domSelf.style.backgroundImage = 'url(' + data.pic + ')';
+	}
+
+
 	return new Component({
 		id: props.id,
 		domParent: props.domParent,

@@ -1,0 +1,27 @@
+.appHeader {
+	display: flex;
+}
+
+.appBanner {
+	display: grid;
+}
+
+.contactsElement {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+}
+
+#contacts1Element {
+	grid-area: 2/1/3/2;
+}
+#contacts2Element {
+	grid-area: 2/2/3/3;
+}
+#contacts3Element {
+	grid-area: 2/3/3/4; 
+}
+
+.hide {
+	display: none;
+}
