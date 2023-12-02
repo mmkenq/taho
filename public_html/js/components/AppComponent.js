@@ -2,6 +2,8 @@ import Component from './Component.js';
 import HeaderComponent from './HeaderComponent/HeaderComponent.js';
 import BannerComponent from './BannerComponent/BannerComponent.js';
 import MainComponent from './MainComponent/MainComponent.js';
+import CardComponent from './CardComponent/CardComponent.js';
+import ElementsComponent from './ElementsComponent/ElementsComponent.js'
 
 (function initAppComponent(){
 	// ...
@@ -64,17 +66,60 @@ export default function AppComponent(props){
 		{
 			elementsData: [
 				{
-					// TODO: subElements
 					titles: [
 						{type:'h2', text:'Услуги'},
-/*						{type:'h3', text:'Глонасс'},
-						{type:'h4', text:'Внедрение системы мониторинга'},
-						{type:'h3', text:'Видеонаблюдение'},
-						*/
 					],
 					// TODO: ListItemsComponent
-					texts: [{id:'', data:'<h4>Основные функции</h4>-Автоматический учёт загруженности автопарка<br>-Повышение качества использования автопарка<br>'},],
+					texts: [],
 					classes: [],
+					components:[
+						{id:'',
+						 data: new ElementsComponent(
+							 {id: 'glonassElement',
+							  domParent: domSelf,
+							  domSelf: document.createElement('div')},
+							 {titles:[
+								{type:'h3', text:'Глонасс'},
+								{type:'h4', text:'Внедрение системы мониторинга'},
+							 ],
+							 titlesGroupId: 'glonassElementTitles',
+							 texts:[
+								{id:'glonassElementText', data:'<h4>Основные функции</h4>-Автоматический учёт загруженности автопарка<br>-Повышение качества использования автопарка<br>'},
+							 ],
+							 classes:[],
+							 components:[
+								 {id:'',
+								 data: new CardComponent(
+									 {id:'glonassElementCard',
+									 domParent:domSelf,
+									 },
+									 {imgId: 'glonassElementCardImg',
+									  imgSrc: 'assets/glonass.png',
+									  titleId: 'glonassElementCardTitle',
+									  title: 'Система мониторинга СКАУТ',
+ 									  priceId: 'glonassElementCardPrice',
+									  price: 'Цена по запросу',
+									  butId: 'glonassElementCardBut',
+									 }
+								 )
+								 }
+							 ]}
+						 )
+						},
+						{id:'',
+						 data: new ElementsComponent(
+							 {id: 'videoElement',
+							  domParent: domSelf,
+							  domSelf: document.createElement('div')},
+							 {titles:[
+								{type:'h3', text:'Видеонаблюдение'},
+							 ],
+							 texts:[],
+							 classes:[],
+							 components:[]}
+						 )
+						},
+					],
 				},
 				{
 					titles:[
@@ -82,6 +127,7 @@ export default function AppComponent(props){
 					],
 					texts: [{id:'', data:'Мы являемся официальным представителем компании FTNet. Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г. Нажмите на кнопку, чтобы выполнить проверку на сайте Минтранса РФ'}],
 					classes: [],
+					components: [],
 				},
 				{
 					titles:[
@@ -93,6 +139,7 @@ export default function AppComponent(props){
 						{id: 'contacts3Element', data:'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6'},
 					],
 					classes: ['contactsElement'],
+					components: [],
 				},
 			]
 		}

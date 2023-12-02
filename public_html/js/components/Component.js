@@ -7,6 +7,10 @@ export default function Component(props){
 	this.show = function(){
 		props.domSelf.classList.remove('hide');
 	}
+	this.updateDOM = function(){
+//		this.domSelf.remove();
+		this.domParent.appendChild(this.domSelf);
+	}
 
 	props.domSelf.id = props.id;
 	props.domParent.appendChild(props.domSelf);

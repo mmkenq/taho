@@ -11,8 +11,9 @@ export default function ElementComponent(props, data){
 
 	const domElementTitles = document.createElement('div');
 	domElementTitles.setAttribute('class', 'elementTitles');
+
 	const titlesGroup  = new Component({
-		id: '',
+		id: data.titlesGroupId || '',
 		domParent: domSelf,
 		domSelf: domElementTitles
 	});
@@ -36,6 +37,11 @@ export default function ElementComponent(props, data){
 
 	data.classes.forEach(function(cl,i){
 		domSelf.classList.add(cl);
+	});
+
+	data.components.forEach(function(c,i){
+		c.data.domParent = domSelf;
+		c.data.updateDOM();
 	});
 
 	return new Component({
