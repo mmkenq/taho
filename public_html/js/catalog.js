@@ -3,7 +3,6 @@ import ServerHandler from './handlers/Server/ServerHandler.js';
 import AppComponent from './components/AppComponent.js';
 
 document.addEventListener("DOMContentLoaded", function(ev){
-
 	const config = new Config({
 		server: new ServerHandler({
 			serverURL: "http://localhost:3000",
@@ -21,11 +20,10 @@ document.addEventListener("DOMContentLoaded", function(ev){
 		components: {
 			header: true,
 			banner: true,
-			main: true,
+			main: false,
 		},
 	});
 	// console.log('loaded app', app);
-	//app.hide();
+	//	app.hide();
 	//app.show();
-
 });

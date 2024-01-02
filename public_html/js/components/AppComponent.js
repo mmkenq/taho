@@ -10,18 +10,11 @@ import ElementsComponent from './ElementsComponent/ElementsComponent.js'
 	console.log('init app component: DONE');
 })();
 
-export default function AppComponent(props){
-	/* props: {id, config, domParent} */
-	const server = props.config.server;
-	// TODO:
-	//this.RENDER = props.config.RENDER;
-	//this.DARK_THEME = props.config.DARK_THEME;
-
-	const domSelf = document.createElement('div');
+function createHeaderComponent(domParent){
 	const header = new HeaderComponent(
 		{
 			id: 'header-0',
-			domParent: domSelf
+			domParent: domParent,
 		},
 		{
 			buts: [
@@ -36,32 +29,49 @@ export default function AppComponent(props){
 			buttonTitle: '',
 		}
 	);
-	// console.log('loaded header', header);
+	//console.log('loaded header', header);
 	//header.hide();
 	//header.show();
-	
+	return header;
+}
+
+function createBannerComponent(domParent){
 	const banner = new BannerComponent(
 		{
 			id: 'banner-0',
-			domParent: domSelf
+			domParent: domParent,
 		},
 		{
 			h1Title: "Глонасс/Видеонаблюдение на все виды транспортных средств",
 			h2Title: "Профессиональное обслуживание и установка глонасс / видео",
 			buts: [
-				{id: '', title: 'Каталог камер', anchor: 'vidCatalog' },
-				{id: '', title: 'Каталог устройств глонасс', anchor: 'glonassCatalog' },
+				{
+					id: '', 
+					title: 'Каталог камер', 
+					url: '/catalog_cameras',
+				},
+				{
+					id: '',
+					title: 'Каталог устройств глонасс',
+					url: '/catalog_glonass', 
+				},
 			],
 
 			// 1920x1080
 			pic: '/assets/truck-pic.jpg',
 		}
 	);
+	//console.log('loaded banner', banner);
+	//banner.hide();
+	//banner.show();
+	return banner;
+}
 
+function createMainComponent(domParent){
 	const main = new MainComponent(
 		{
 			id: 'main-0',
-			domParent: domSelf
+			domParent: domParent,
 		},
 		{
 			elementsData: [
@@ -76,7 +86,7 @@ export default function AppComponent(props){
 						{id:'',
 						 data: new ElementsComponent(
 							 {id: 'glonassElement',
-							  domParent: domSelf,
+							  domParent: domParent,
 							  domSelf: document.createElement('div')},
 							 {titles:[
 								{type:'h3', text:'Глонасс'},
@@ -84,14 +94,16 @@ export default function AppComponent(props){
 							 ],
 							 titlesGroupId: 'glonassElementTitles',
 							 texts:[
-								{id:'glonassElementText', data:'<h4>Основные функции</h4>-Автоматический учёт загруженности автопарка<br>-Повышение качества использования автопарка<br>'},
+								{id:'glonassElementText',
+								data:'<h4>Основные функции</h4>-Автоматический учёт загруженности автопарка<br>-Повышение качества использования автопарка<br>'
+								},
 							 ],
 							 classes:[],
 							 components:[
 								 {id:'',
 								 data: new CardComponent(
 									 {id:'glonassElementCard',
-									 domParent:domSelf,
+									 domParent: domParent,
 									 },
 									 {imgId: 'glonassElementCardImg',
 									  imgSrc: 'assets/glonass.png',
@@ -109,7 +121,7 @@ export default function AppComponent(props){
 						{id:'',
 						 data: new ElementsComponent(
 							 {id: 'videoElement',
-							  domParent: domSelf,
+							  domParent: domParent,
 							  domSelf: document.createElement('div')},
 							 {titles:[
 								{type:'h3', text:'Видеонаблюдение'},
@@ -144,6 +156,32 @@ export default function AppComponent(props){
 			]
 		}
 	);
+}
+
+
+export default function AppComponent(props){
+	/* props: {id, config, domParent} */
+	const server = props.config.server;
+	// TODO:
+	//this.RENDER = props.config.RENDER;
+	//this.DARK_THEME = props.config.DARK_THEME;
+
+	const domSelf = document.createElement('div');
+	
+	Object.keys(props.components).forEach(function(key, i){
+		if(props.components[key]){
+			switch(key){
+				case 'header': createHeaderComponent(domSelf);
+				break;
+				case 'banner': createBannerComponent(domSelf);
+				break;
+				case 'main': createMainComponent(domSelf);
+				break;
+			}
+		}
+		else console.log(key, 'component NOT IN USE');
+	});
+
 	
 	server.sendReq('getCatalog&name=taho_catalog', 
 		'json',

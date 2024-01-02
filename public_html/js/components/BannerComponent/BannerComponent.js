@@ -33,6 +33,10 @@ export default function BannerComponent(props, data){
 		domSelfBut.id = el.id;
 		domSelfBut.innerHTML = el.title;
 
+		domSelfBut.addEventListener('click', function(ev){
+			location.href = location.origin + el.url;
+		});
+
 		const but = new Component({
 			id: el.id,
 			domParent: domSelf,
