@@ -15,7 +15,7 @@ export default function MainComponent(props, data){
 	domElementsGroup.setAttribute('class', 'elementsGroup');
 	data.elementsData.forEach(function(el, i){
 		const element = new ElementsComponent({
-			id: 'el-'+i,
+			id: 'el-'+el.id,
 			domParent: domSelf,
 			domSelf: domElementsGroup
 		},el);

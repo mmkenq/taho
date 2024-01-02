@@ -19,10 +19,10 @@ function createHeaderComponent(domParent){
 		{
 			buts: [
 				{id: '', title: 'Главная', anchor: '',  },
-				{id: '', title: 'Каталог', anchor: 'catalog' },
-				{id: '', title: 'Услуги', anchor: 'services' },
-				{id: '', title: 'О нас', anchor: 'about' },
-				{id: '', title: 'Контакты', anchor: 'contacts' },
+				{id: '', title: 'Каталог', anchor: 'el-catalog' },
+				{id: '', title: 'Услуги', anchor: 'el-services' },
+				{id: '', title: 'О нас', anchor: 'el-about' },
+				{id: '', title: 'Контакты', anchor: 'el-contacts' },
 				{id: '', title: 'theme', anchor: 'TODOtheme' },
 			],
 			pic: null,
@@ -76,6 +76,7 @@ function createMainComponent(domParent){
 		{
 			elementsData: [
 				{
+					id: 'services',
 					titles: [
 						{type:'h2', text:'Услуги'},
 					],
@@ -134,6 +135,7 @@ function createMainComponent(domParent){
 					],
 				},
 				{
+					id: 'about',
 					titles:[
 						{type:'h2', text:'О нас'},
 					],
@@ -142,6 +144,7 @@ function createMainComponent(domParent){
 					components: [],
 				},
 				{
+					id: 'contacts',
 					titles:[
 						{type:'h2', text:'Контакты'},
 					],
