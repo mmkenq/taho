@@ -101,7 +101,7 @@ function createMainComponent(domParent){
 							 ],
 							 classes:[],
 							 components:[
-								 {id:'',
+									 {id:'TODO',
 								 data: new CardComponent(
 									 {id:'glonassElementCard',
 									 domParent: domParent,

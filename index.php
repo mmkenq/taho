@@ -64,6 +64,17 @@ else {
 		include_once './public_html/catalog.html';
 		echo "<script>console.log('TODO: call some showCAMERASfunction()');</script>";
 	}
+	else if (preg_match('/admin/', $page)){
+		include_once './public_html/admin.html';
+		echo "<script>console.log('server TODO: ADMINTOOLS');</script>";
+	}
+	else if (preg_match('/uploadCatalog/', $page)){
+		include_once './public_html/admin.html';
+		print_r($_FILES['catalogFileName']);
+		$name = $_FILES['catalogFileName']['name'];
+		$tmp_name = $_FILES['catalogFileName']['tmp_name'];
+		move_uploaded_file($tmp_name, "tmp/uploads/$name");
+	}
 	else {
 		include_once './public_html/index.html';
 	}

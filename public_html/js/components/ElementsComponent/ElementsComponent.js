@@ -5,7 +5,18 @@ import Component from '../Component.js';
 	console.log('init Element component: DONE');
 })();
 
-export default function ElementComponent(props, data){
+export default function ElementsComponent(props, data){
+	/* props: {
+		* {id,domParent,domSelf},
+		* {
+			* [titles],
+			* titlesGroupId,
+			* [{id,data}],
+			* [classes],
+			* [{id,data}]
+		* }
+	* } 
+	/* data: {} */
 	const domSelf = document.createElement('div');
 	domSelf.setAttribute('class', 'appElement');
 

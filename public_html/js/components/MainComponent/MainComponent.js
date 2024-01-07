@@ -7,6 +7,9 @@ import ElementsComponent from '../ElementsComponent/ElementsComponent.js'
 })();
 
 export default function MainComponent(props, data){
+	/* props: {id, domParent}
+		data: {[elementsData]} 
+	*/
 	const domSelf = document.createElement('div');
 	domSelf.setAttribute('class', 'appMain');
 

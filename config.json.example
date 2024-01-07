@@ -1,0 +1,10 @@
+
+{
+	"DB": {
+		"host": "YOUR_DATABASE_HOST.IP.ADDRESS.HERE",
+		"port": "DB_PORT_HERE",
+		"name": "DB_NAME_HERE",
+		"user": "DB_USER_HERE",
+		"password": "DB_PASSWORD_HERE"
+	}
+}

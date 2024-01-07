@@ -6,8 +6,14 @@ import Component from '../Component.js';
 })();
 
 export default function CardComponent(props, data){
-	/* props: {} */
-	/* data: {} */
+	/* props: {id, domParent} 
+		data: {  imgId, imgSrc, 
+				 titleId, title,
+				 priceId, price,
+				 butId
+			  } 
+	*/
+
 	const domSelf = document.createElement('div');
 	domSelf.setAttribute('class', 'appCard');
 
