@@ -1,4 +1,5 @@
 <?php
+require_once("lib/simplexlsx-1.0.19/src/SimpleXLSX.php");
 //header("Access-Control-Allow-Origin: *");
 //header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
 require_once("./Application.php");
@@ -69,11 +70,23 @@ else {
 		echo "<script>console.log('server TODO: ADMINTOOLS');</script>";
 	}
 	else if (preg_match('/uploadCatalog/', $page)){
+
+
 		include_once './public_html/admin.html';
 		print_r($_FILES['catalogFileName']);
 		$name = $_FILES['catalogFileName']['name'];
 		$tmp_name = $_FILES['catalogFileName']['tmp_name'];
 		move_uploaded_file($tmp_name, "tmp/uploads/$name");
+
+		$xlsx = new SimpleXLSX('tmp/glonass.xlsx');
+		if ( $xlsx->success() ) {
+		  print_r( $xlsx->rows() );
+		} else {
+		  echo 'xlsx error: '.$xlsx->error();
+		}
+ 
+
+		echo "DONE";
 	}
 	else {
 		include_once './public_html/index.html';
