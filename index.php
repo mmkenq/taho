@@ -61,7 +61,11 @@ else {
 	} 
 	else if (preg_match('/catalog_glonass/', $page)){
 		include_once './public_html/catalog.html';
-		echo "<script>console.log('TODO: call some showGLONASSfunction()');</script>";
+/*		echo(json_encode(answer(router(array(
+			'method'=>'getCatalog',
+			'name'=>'taho_catalog_glonass'
+		)))));
+ */
 	}
 	else if (preg_match('/catalog_cameras/', $page)){
 		include_once './public_html/catalog.html';

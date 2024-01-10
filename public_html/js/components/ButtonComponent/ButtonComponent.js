@@ -28,6 +28,15 @@ export default function ButtonComponent(props, data){
 			domSelf.appendChild(pick);
 			domSelf.appendChild(submit);
 		break;
+		case 'nav':
+			domSelf = document.createElement('button');
+			domSelf.setAttribute('class', 'appButton');
+			domSelf.innerHTML = data.text || 'TODO_BUT_TEXT';
+			domSelf.addEventListener('click', function(){
+				location.href = location.origin + data.url;
+//				console.log(server);
+			});
+		break;
 		default: 
 			domSelf = document.createElement('button');
 			domSelf.setAttribute('class', 'appButton');

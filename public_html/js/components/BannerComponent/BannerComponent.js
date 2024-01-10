@@ -1,4 +1,5 @@
 import Component from '../Component.js';
+import ButtonComponent from '../ButtonComponent/ButtonComponent.js';
 
 (function initBannerComponent(){
 	// ...
@@ -28,20 +29,19 @@ export default function BannerComponent(props, data){
 	domH2Title.innerHTML =  data.h2Title;
 	domTitlesGroup.appendChild(domH2Title);
 
+
 	data.buts.forEach(function(el,i){
-		const domSelfBut = document.createElement('button');
-		domSelfBut.id = el.id;
-		domSelfBut.innerHTML = el.title;
-
-		domSelfBut.addEventListener('click', function(ev){
-			location.href = location.origin + el.url;
-		});
-
-		const but = new Component({
-			id: el.id,
-			domParent: domSelf,
-			domSelf: domSelfBut
-		});
+		const but = new ButtonComponent(
+			{
+				id: el.id,
+				domParent: domSelf
+			},
+			{
+				type: 'nav',
+				text: el.title,
+				url: el.url
+			}
+		);
 	});
 
 	let bg = new Image();

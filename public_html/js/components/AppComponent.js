@@ -5,6 +5,7 @@ import MainComponent from './MainComponent/MainComponent.js';
 import CardComponent from './CardComponent/CardComponent.js';
 import ElementsComponent from './ElementsComponent/ElementsComponent.js'
 
+
 (function initAppComponent(){
 	// ...
 	console.log('init app component: DONE');
@@ -44,14 +45,15 @@ function createBannerComponent(domParent){
 		{
 			h1Title: "Глонасс/Видеонаблюдение на все виды транспортных средств",
 			h2Title: "Профессиональное обслуживание и установка глонасс / видео",
-			buts: [
+			buts:
+			[
 				{
-					id: '', 
+					id: 'TODO_but_catalog_cam_id', 
 					title: 'Каталог камер', 
 					url: '/catalog_cameras',
 				},
 				{
-					id: '',
+					id: 'TODO_but_catalog_glonass_id',
 					title: 'Каталог устройств глонасс',
 					url: '/catalog_glonass', 
 				},
@@ -164,8 +166,7 @@ function createMainComponent(domParent){
 
 export default function AppComponent(props){
 	/* props: {id, config, domParent} */
-	const server = props.config.server;
-	// TODO:
+	this.server = props.config.server;
 	//this.RENDER = props.config.RENDER;
 	//this.DARK_THEME = props.config.DARK_THEME;
 
@@ -185,26 +186,10 @@ export default function AppComponent(props){
 		else console.log(key, 'component NOT IN USE');
 	});
 
-	
-	server.sendReq('getCatalog&name=taho_catalog_glonass', 
-		'json',
-		function(res){ /*console.log('check resp:', res);*/ }
-	);
-
-
-	const interval = setInterval(function(){
-		//if(!canvasData.isReady) return;
-		try{
-			//const canvasComponent = new CanvasComponent(canvasData);
-			console.log("created components");
-		}
-		catch (e){ console.log(e) }
-		finally { clearInterval(interval) }
-	}, 1000);
-
 	return new Component({
 		id: props.id,
 		domParent: props.domParent,
-		domSelf: domSelf
+		domSelf: domSelf,
 	});
+
 }

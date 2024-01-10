@@ -17,7 +17,6 @@ export default function AdminComponent(props){
 	//this.DARK_THEME = props.config.DARK_THEME;
 
 	let req	= 'getCatalog';
-	/*
 	server.sendReq(
 		req + '&name=taho_catalog_glonass', 
 		'json',
@@ -26,7 +25,6 @@ export default function AdminComponent(props){
 			document.getElementById(req).innerHTML += ': ' + info;
 		}
 	);
-	*/
 
 	const domSelf = document.createElement('div');
 	const main = new MainComponent(

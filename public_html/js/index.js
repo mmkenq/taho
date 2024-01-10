@@ -24,8 +24,10 @@ document.addEventListener("DOMContentLoaded", function(ev){
 			main: true,
 		},
 	});
-	// console.log('loaded app', app);
+
+	console.log('loaded app component', app);
 	//app.hide();
 	//app.show();
 
 });
+
