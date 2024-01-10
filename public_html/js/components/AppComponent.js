@@ -186,7 +186,7 @@ export default function AppComponent(props){
 	});
 
 	
-	server.sendReq('getCatalog&name=taho_catalog', 
+	server.sendReq('getCatalog&name=taho_catalog_glonass', 
 		'json',
 		function(res){ /*console.log('check resp:', res);*/ }
 	);

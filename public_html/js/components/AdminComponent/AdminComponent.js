@@ -17,14 +17,16 @@ export default function AdminComponent(props){
 	//this.DARK_THEME = props.config.DARK_THEME;
 
 	let req	= 'getCatalog';
+	/*
 	server.sendReq(
-		req + '&name=taho_catalog', 
+		req + '&name=taho_catalog_glonass', 
 		'json',
 		function(res){ 
 			let info = JSON.stringify(res.data);
 			document.getElementById(req).innerHTML += ': ' + info;
 		}
 	);
+	*/
 
 	const domSelf = document.createElement('div');
 	const main = new MainComponent(

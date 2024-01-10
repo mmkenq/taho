@@ -24,7 +24,6 @@ class DB {
 
     function __destruct() {
         $this->db = null;
-
     }
 
     private function getArray($query) {
@@ -41,6 +40,29 @@ class DB {
 	public function getCatalog($name){
 		$query = 'SELECT * FROM ' . $name;
 		return $this->getArray($query);
+	}
+
+	public function uploadCatalog($rows){
+		$query = 'TRUNCATE TABLE taho_catalog_glonass';
+		$this->db->query($query);
+
+		$query = 'INSERT INTO taho_catalog_glonass 
+		   ('.$rows[0][0].
+			','.$rows[0][1].
+			','.$rows[0][2].
+			','.$rows[0][3].')'.
+		   ' VALUES';
+
+		$len = count($rows);
+		for($i = 1; $i<$len; $i++){
+			$value = ' ('.$rows[$i][0].
+			',"'.$rows[$i][1].'"'.
+			','.$rows[$i][2].
+			','.$rows[$i][3].'),';
+			$query .= $value;
+		}
+		$query = substr_replace($query, ";", -1);
+		return $this->db->query($query);
 	}
 }
 ?>

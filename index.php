@@ -13,6 +13,8 @@ function router($params){
         switch ($method) {
             case 'check' : return true;
 			case 'getCatalog': return $app->getCatalog($params);
+
+			case 'uploadCatalog': return $app->uploadCatalog();
         }
     }
     return false;
@@ -70,23 +72,11 @@ else {
 		echo "<script>console.log('server TODO: ADMINTOOLS');</script>";
 	}
 	else if (preg_match('/uploadCatalog/', $page)){
-
-
 		include_once './public_html/admin.html';
-		print_r($_FILES['catalogFileName']);
-		$name = $_FILES['catalogFileName']['name'];
-		$tmp_name = $_FILES['catalogFileName']['tmp_name'];
-		move_uploaded_file($tmp_name, "tmp/uploads/$name");
+		echo(json_encode(answer(router(array(
+			'method'=>'uploadCatalog'
+		)))));
 
-		$xlsx = new SimpleXLSX('tmp/glonass.xlsx');
-		if ( $xlsx->success() ) {
-		  print_r( $xlsx->rows() );
-		} else {
-		  echo 'xlsx error: '.$xlsx->error();
-		}
- 
-
-		echo "DONE";
 	}
 	else {
 		include_once './public_html/index.html';
