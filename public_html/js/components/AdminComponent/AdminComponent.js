@@ -112,18 +112,6 @@ export default function AdminComponent(props){
 		}
 	);
 
-
-
-	const interval = setInterval(function(){
-		//if(!canvasData.isReady) return;
-		try{
-			//const canvasComponent = new CanvasComponent(canvasData);
-			console.log("created components");
-		}
-		catch (e){ console.log(e) }
-		finally { clearInterval(interval) }
-	}, 1000);
-
 	return new Component({
 		id: props.id,
 		domParent: props.domParent,

@@ -4,15 +4,7 @@ import AdminComponent from './components/AdminComponent/AdminComponent.js';
 
 document.addEventListener("DOMContentLoaded", function(ev){
 
-	const config = new Config({
-		server: new ServerHandler({
-			serverURL: "http://localhost:3000",
-		}),	
-
-		// NOT implemented (TODO)
-		RENDER: true,
-		DARK_THEME: true,
-	});
+	const config = new Config();
 
 	const admin = new AdminComponent({
 		id: "admin-app-0",

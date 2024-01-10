@@ -6,10 +6,12 @@ import Component from '../Component.js';
 })();
 
 export default function ButtonComponent(props, data){
-	/* props: {id, domParent} */
+	/* props: {id, domParent, server} */
 	/* data: {TODO} */
 
 	let domSelf;
+	let serverRes = null;
+
 	switch(data.type){
 		case 'upload':
 			domSelf = document.createElement('form');
@@ -33,8 +35,16 @@ export default function ButtonComponent(props, data){
 			domSelf.setAttribute('class', 'appButton');
 			domSelf.innerHTML = data.text || 'TODO_BUT_TEXT';
 			domSelf.addEventListener('click', function(){
-				location.href = location.origin + data.url;
-//				console.log(server);
+				props.server.sendReq(
+					data.req,
+					'json',
+					function(res){
+						if(location.pathname != '/catalog'){
+							location.href = location.origin + '/catalog';
+						}
+						console.log(res);
+					}
+				);
 			});
 		break;
 		default: 
@@ -43,6 +53,20 @@ export default function ButtonComponent(props, data){
 			domSelf.innerHTML = data.text || 'TODO_BUT_TEXT';
 		break;
 	}
+
+	/*
+	const interval = setInterval(function(){
+		//if(!canvasData.isReady) return;
+		try{
+			//const canvasComponent = new CanvasComponent(canvasData);
+			console.log("created components");
+		}
+		catch (e){ console.log(e) }
+		finally { clearInterval(interval) }
+
+	}, 1000);
+	*/
+
 
 	return new Component({
 		id: props.id,

@@ -59,30 +59,31 @@ else {
 		header("Content-Type: application/json");
 		echo(json_encode(answer(router($_GET))));
 	} 
-	else if (preg_match('/catalog_glonass/', $page)){
-		include_once './public_html/catalog.html';
-/*		echo(json_encode(answer(router(array(
-			'method'=>'getCatalog',
-			'name'=>'taho_catalog_glonass'
-		)))));
- */
-	}
-	else if (preg_match('/catalog_cameras/', $page)){
-		include_once './public_html/catalog.html';
-		echo "<script>console.log('TODO: call some showCAMERASfunction()');</script>";
+	else if (preg_match('/catalog/', $page)){
+		echo '<!DOCTYPE html>';
+		echo '<script>
+			headerEnabled=true;
+			bannerEnabled=true;
+			mainEnabled=false;
+		</script>';
+		include_once './public_html/index.html';
 	}
 	else if (preg_match('/admin/', $page)){
 		include_once './public_html/admin.html';
-		echo "<script>console.log('server TODO: ADMINTOOLS');</script>";
 	}
 	else if (preg_match('/uploadCatalog/', $page)){
 		include_once './public_html/admin.html';
 		echo(json_encode(answer(router(array(
 			'method'=>'uploadCatalog'
 		)))));
-
 	}
 	else {
+		echo '<!DOCTYPE html>';
+		echo '<script>
+			headerEnabled=true;
+			bannerEnabled=true;
+			mainEnabled=true;
+		</script>';
 		include_once './public_html/index.html';
 	}
     //return FALSE;

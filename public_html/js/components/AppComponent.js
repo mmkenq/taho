@@ -36,31 +36,18 @@ function createHeaderComponent(domParent){
 	return header;
 }
 
-function createBannerComponent(domParent){
+function createBannerComponent(domParent, config, server){
 	const banner = new BannerComponent(
 		{
 			id: 'banner-0',
 			domParent: domParent,
+			server: server,
 		},
 		{
-			h1Title: "Глонасс/Видеонаблюдение на все виды транспортных средств",
-			h2Title: "Профессиональное обслуживание и установка глонасс / видео",
-			buts:
-			[
-				{
-					id: 'TODO_but_catalog_cam_id', 
-					title: 'Каталог камер', 
-					url: '/catalog_cameras',
-				},
-				{
-					id: 'TODO_but_catalog_glonass_id',
-					title: 'Каталог устройств глонасс',
-					url: '/catalog_glonass', 
-				},
-			],
-
-			// 1920x1080
-			pic: '/assets/truck-pic.jpg',
+			h1Title: config.h1Title,
+			h2Title: config.h2Title, 
+			buts: config.buts,
+			pic: config.pic, 
 		}
 	);
 	//console.log('loaded banner', banner);
@@ -165,21 +152,30 @@ function createMainComponent(domParent){
 
 
 export default function AppComponent(props){
-	/* props: {id, config, domParent} */
-	this.server = props.config.server;
-	//this.RENDER = props.config.RENDER;
-	//this.DARK_THEME = props.config.DARK_THEME;
+	/* props: {id, config, domParent, {components}} */
 
 	const domSelf = document.createElement('div');
 	
 	Object.keys(props.components).forEach(function(key, i){
 		if(props.components[key]){
 			switch(key){
-				case 'header': createHeaderComponent(domSelf);
+				case 'header': createHeaderComponent(
+					domSelf,
+					props.config.components.header,
+					props.config.server
+				);
 				break;
-				case 'banner': createBannerComponent(domSelf);
+				case 'banner': createBannerComponent(
+					domSelf,
+					props.config.components.banner,
+					props.config.server
+				);
 				break;
-				case 'main': createMainComponent(domSelf);
+				case 'main': createMainComponent(
+					domSelf,
+					props.config.components.main,
+					props.config.server
+				);
 				break;
 			}
 		}

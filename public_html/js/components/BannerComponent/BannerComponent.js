@@ -7,8 +7,8 @@ import ButtonComponent from '../ButtonComponent/ButtonComponent.js';
 })();
 
 export default function BannerComponent(props, data){
-	/* props: {id, domParent} */
-	/* data: {} */
+	/* props: {id, domParent, server} */
+	/* data: {TODO} */
 	const domSelf = document.createElement('div');
 	domSelf.setAttribute('class', 'appBanner');
 		
@@ -29,17 +29,17 @@ export default function BannerComponent(props, data){
 	domH2Title.innerHTML =  data.h2Title;
 	domTitlesGroup.appendChild(domH2Title);
 
-
 	data.buts.forEach(function(el,i){
 		const but = new ButtonComponent(
 			{
 				id: el.id,
-				domParent: domSelf
+				domParent: domSelf,
+				server: props.server,
 			},
 			{
 				type: 'nav',
 				text: el.title,
-				url: el.url
+				req: el.req
 			}
 		);
 	});
