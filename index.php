@@ -60,24 +60,34 @@ else {
 		header("Content-Type: application/json");
 		echo(json_encode(answer(router($_GET))));
 	} 
-	else if (preg_match('/catalog/', $page)){
-		echo '<!DOCTYPE html>';
-		echo '<script>
-			headerEnabled=true;
-			bannerEnabled=true;
-			mainEnabled=false;
-		</script>';
-		include_once './public_html/index.html';
-	}
-	else if (preg_match('/admin/', $page)){
-		include_once './public_html/admin.html';
-	}
-	else {
+	else if (strlen($page) == 1){
 		echo '<!DOCTYPE html>';
 		echo '<script>
 			headerEnabled=true;
 			bannerEnabled=true;
 			mainEnabled=true;
+			adminEnabled=false;
+		</script>';
+		include_once './public_html/index.html';
+	}
+	else if (preg_match('/catalog/', $page)){
+		echo '<!DOCTYPE html>';
+		// TODO: call getCatalog()
+		echo '<script>
+			headerEnabled=true;
+			bannerEnabled=true;
+			mainEnabled=false;
+			adminEnabled=false;
+		</script>';
+		include_once './public_html/index.html';
+	}
+	else if (preg_match('/admin/', $page)){
+		echo '<!DOCTYPE html>';
+		echo '<script>
+			headerEnabled=false;
+			bannerEnabled=false;
+			mainEnabled=false;
+			adminEnabled=true;
 		</script>';
 		include_once './public_html/index.html';
 	}
