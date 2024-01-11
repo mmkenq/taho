@@ -99,6 +99,52 @@ function createAdminComponent(domParent, config, server){
 	// adminMain.show();
 }
 
+function createCatalogComponent(domParent, config, server){
+	const req = 'getCatalog&name=taho_catalog_glonass';
+
+	const elementsData = [];
+
+	server.send(
+		{
+			url: req,
+			data: null,
+			method: 'GET',
+
+			resType: 'json',
+			resHandler: function(res){ 
+				res.data.forEach(function(resEl,i){
+					const el = {
+						id: i,
+						titles: [],
+						titlesGroupId: 'catalogElementTitles',
+						texts: [
+							{ id: 'cat'+i, data: resEl.name }
+						],
+						classes: [],
+						components: [],
+					} 
+					elementsData.push(el);
+				});
+				config.elementsData = elementsData;
+				createMain();
+			}
+		}
+	);
+
+	function createMain(){
+		const catalogMain = new MainComponent(
+			{
+				id: 'catalog-0',
+				domParent: domParent,
+			},
+			{
+				elementsData: config.elementsData,
+			}
+		);
+	}
+
+}
+
 
 export default function AppComponent(props){
 	/* props: {id, config, domParent, {components}} */
@@ -121,6 +167,11 @@ export default function AppComponent(props){
 	createAdminComponent(
 		props.config.domApp,
 		props.config.components.admin,
+		props.config.server
+	);
+	createCatalogComponent(
+		props.config.domApp,
+		props.config.components.catalog,
 		props.config.server
 	);
 

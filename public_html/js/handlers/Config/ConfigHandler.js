@@ -5,7 +5,6 @@ import ButtonComponent from '../../components/ButtonComponent/ButtonComponent.js
 
 export default function ConfigHandler(props){
 	/* props: {server:{serverURL}, RENDER, DARK_THEME} */
-
 	this.domApp = document.createElement('div');
 
 	this.server = new ServerHandler({
@@ -232,7 +231,11 @@ export default function ConfigHandler(props){
 		}: { elementsData: [] },
 
 		// TODO:
-		catalog: {}
+		catalog: props.catalogEnabled ? 
+		{
+			/* filled with getCatalog() reqs */
+			elementsData: [],
+		}: { elementsData: [] },
 	};
 
 	// TODO:

@@ -66,6 +66,7 @@ else {
 			headerEnabled=true;
 			bannerEnabled=true;
 			mainEnabled=true;
+			catalogEnabled=false;
 			adminEnabled=false;
 		</script>';
 		include_once './public_html/index.html';
@@ -77,6 +78,7 @@ else {
 			headerEnabled=true;
 			bannerEnabled=true;
 			mainEnabled=false;
+			catalogEnabled=true;
 			adminEnabled=false;
 		</script>';
 		include_once './public_html/index.html';
@@ -87,6 +89,7 @@ else {
 			headerEnabled=false;
 			bannerEnabled=false;
 			mainEnabled=false;
+			catalogEnabled=false;
 			adminEnabled=true;
 		</script>';
 		include_once './public_html/index.html';

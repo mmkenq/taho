@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(ev){
 			headerEnabled: headerEnabled,
 			bannerEnabled: bannerEnabled,
 			mainEnabled: mainEnabled,
+			catalogEnabled: catalogEnabled,
 			adminEnabled: adminEnabled,
 		// TODO: Path to the config file
 		// TODO: ability changing config on the fly
