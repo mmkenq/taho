@@ -13,36 +13,65 @@ export default function ButtonComponent(props, data){
 	let serverRes = null;
 
 	switch(data.type){
-		case 'upload':
-			domSelf = document.createElement('form');
-			domSelf.setAttribute('action', '/uploadCatalog');
-			domSelf.setAttribute('method', 'POST');
-			domSelf.setAttribute('enctype', 'multipart/form-data');
+		case 'uploadFile':
+			domSelf = document.createElement('div');
 
 			const pick = document.createElement('input');
 			pick.setAttribute('id', 'catalogFile');
 			pick.setAttribute('type', 'file');
 			pick.setAttribute('name', 'catalogFileName');
 
-			const submit = document.createElement('input');
-			submit.setAttribute('type', 'submit');
+			const send = document.createElement('button');
+			send.innerHTML = 'sendFile';
+			send.addEventListener('click', function(){
+				const formData = new FormData();
+				formData.append('fileNo0', pick.files[0]);
+				props.server.send(
+					{
+						url: 'uploadFile',
+						data: formData,
+						method: 'POST',
+
+						resType:  'json',
+						resHandler: function(resUpload){
+							// console.log(resUpload);
+							props.server.send({
+								url: 'updateCatalog',
+								data: null,
+								method: 'GET',
+
+								resType: 'json',
+								resHandler: function(resUpdate){ 
+									alert(JSON.stringify(resUpdate));
+									// console.log(resUpdate);
+								},
+							});
+						}, 
+					}
+				);
+			});
 
 			domSelf.appendChild(pick);
-			domSelf.appendChild(submit);
+			domSelf.appendChild(send);
 		break;
 		case 'nav':
 			domSelf = document.createElement('button');
 			domSelf.setAttribute('class', 'appButton');
 			domSelf.innerHTML = data.text || 'TODO_BUT_TEXT';
 			domSelf.addEventListener('click', function(){
-				props.server.sendReq(
-					data.req,
-					'json',
-					function(res){
-						if(location.pathname != '/catalog'){
-							location.href = location.origin + '/catalog';
+				props.server.send(
+					{
+						url: data.req,
+						data: null,
+						method: 'GET',
+
+						resType: 'json',
+						resHandler: function(res){
+							if(location.pathname != '/catalog'){
+								location.href = location.origin + '/catalog';
+							}
+							console.log(res);
 						}
-						console.log(res);
 					}
 				);
 			});

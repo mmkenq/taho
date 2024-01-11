@@ -42,7 +42,7 @@ class DB {
 		return $this->getArray($query);
 	}
 
-	public function uploadCatalog($rows){
+	public function updateCatalog($rows){
 		$query = 'TRUNCATE TABLE taho_catalog_glonass';
 		$this->db->query($query);
 

@@ -16,13 +16,18 @@ export default function AdminComponent(props){
 	//this.RENDER = props.config.RENDER;
 	//this.DARK_THEME = props.config.DARK_THEME;
 
-	let req	= 'getCatalog';
-	server.sendReq(
-		req + '&name=taho_catalog_glonass', 
-		'json',
-		function(res){ 
-			let info = JSON.stringify(res.data);
-			document.getElementById(req).innerHTML += ': ' + info;
+	const req = 'getCatalog';
+	server.send(
+		{
+			url: req + '&name=taho_catalog_glonass',
+			data: null,
+			method: 'GET',
+
+			resType: 'json',
+			resHandler: function(res){ 
+				let info = JSON.stringify(res.data);
+				document.getElementById(req).innerHTML += ': ' + info;
+			}
 		}
 	);
 
@@ -60,9 +65,13 @@ export default function AdminComponent(props){
 										{
 											id: 'TODO',
 											data: new ButtonComponent(
-												{id: '', domParent: domSelf},
 												{
-													type: 'upload',
+													id: '',
+													domParent: domSelf,
+													server: props.config.server,
+												},
+												{
+													type: 'uploadFile',
 													text: 'Выбрать файл'
 												}
 											),

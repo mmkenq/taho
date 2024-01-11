@@ -14,7 +14,8 @@ function router($params){
             case 'check' : return true;
 			case 'getCatalog': return $app->getCatalog($params);
 
-			case 'uploadCatalog': return $app->uploadCatalog();
+			case 'uploadFile': return $app->uploadFile();
+			case 'updateCatalog': return $app->updateCatalog();
         }
     }
     return false;
@@ -70,12 +71,6 @@ else {
 	}
 	else if (preg_match('/admin/', $page)){
 		include_once './public_html/admin.html';
-	}
-	else if (preg_match('/uploadCatalog/', $page)){
-		include_once './public_html/admin.html';
-		echo(json_encode(answer(router(array(
-			'method'=>'uploadCatalog'
-		)))));
 	}
 	else {
 		echo '<!DOCTYPE html>';

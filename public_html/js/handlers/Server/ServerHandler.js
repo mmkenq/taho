@@ -10,17 +10,16 @@ export default function ServerHandler(props){
 
 	// Send AJAX Request to server
 	// API: userHandler(response)
-	this.sendReq = function(method, resType, userHandler){
+	// req: {url, data, method, resType, resHandler}
+	this.send = function(req){
 		return new Promise((resolve, reject) => {
-			const url = serverURL + '/api/?method=' + method;
-			let req = new XMLHttpRequest();
-			req.responseType = resType;
-			req.addEventListener('load', resHandler.bind(null, req, resolve, reject, userHandler));
-			req.open('GET', url, true);
-//			req.setRequestHeader('Content-type', 'text/plain; charset=UTF-8');
-			req.send();
+			const url = serverURL + '/api/?method=' + req.url;
+			let xhr = new XMLHttpRequest();
+			xhr.responseType = req.resType;
+			xhr.addEventListener('load', resHandler.bind(null, xhr, resolve, reject, req.resHandler));
+			xhr.open(req.method, url, true);
+			xhr.send(req.data);
 		});
-	};
-
+	}
 	
 }
