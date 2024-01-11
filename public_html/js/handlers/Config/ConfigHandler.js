@@ -5,7 +5,6 @@ import ButtonComponent from '../../components/ButtonComponent/ButtonComponent.js
 
 export default function ConfigHandler(props){
 	/* props: {server:{serverURL}, RENDER, DARK_THEME} */
-	console.log(props);
 
 	this.domApp = document.createElement('div');
 
