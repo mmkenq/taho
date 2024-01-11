@@ -218,12 +218,12 @@ export default function ConfigHandler(props){
 				],
 				texts: [
 					{
-						id:'getCatalog',
-						data: 'req getCatalog()',
+						id:'getCatalog&name=taho_catalog_glonass',
+						data: 'req getCatalogGlonass()',
 					},
 					{
-						id:'TODO',
-						data: 'req getTODO()',
+						id:'getCatalog&name=taho_catalog_cameras',
+						data: 'req getCatalogCameras()',
 					},
 				],
 				classes: [],

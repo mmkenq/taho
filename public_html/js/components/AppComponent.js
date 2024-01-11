@@ -63,22 +63,38 @@ function createMainComponent(domParent, config, server){
 }
 
 function createAdminComponent(domParent, config, server){
-	const domSelf = document.createElement('div');
-	const main = new MainComponent(
+
+	// TODO: rewrite req sending: 
+	// instead of using texts separate reqs object in config
+	config.elementsData[1].texts.forEach(function(el,i){
+		const req = el.id;
+		server.send(
+			{
+				url: req,
+				data: null,
+				method: 'GET',
+
+				resType: 'json',
+				resHandler: function(res){ 
+					let info = JSON.stringify(res.data);
+					document.getElementById(req).innerHTML += ': ' + info;
+				}
+			}
+		);
+	});
+
+
+	const adminMain = new MainComponent(
 		{
-			id: 'admin-main-TODO',
-			domParent: domSelf,
+			id: 'admin-0',
+			domParent: domParent,
 		},
 		{
 			elementsData: config.elementsData,
 		}
 	);
-
-	return new Component({
-		id: 'admin-0',
-		domParent: domParent,
-		domSelf: domSelf
-	});
+	// adminMain.hide();
+	// adminMain.show();
 }
 
 
