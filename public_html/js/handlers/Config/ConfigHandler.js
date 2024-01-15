@@ -12,7 +12,7 @@ export default function ConfigHandler(props){
 	});
 
 	this.components =  {
-		header: props.headerEnabled ? 
+		header: props.componentsEnabled.headerEnabled ? 
 		{
 			buts: [
 				{id: '', title: 'Главная', anchor: '',  },
@@ -30,7 +30,7 @@ export default function ConfigHandler(props){
 			darkTheme: true,
 		} : {buts:[], pic: null, buttonTitle: ''},
 
-		banner: props.bannerEnabled ?
+		banner: props.componentsEnabled.bannerEnabled ?
 		{
 			h1Title: "Глонасс/Видеонаблюдение на все виды транспортных средств",
 			h2Title: "Профессиональное обслуживание и установка глонасс / видео",
@@ -51,7 +51,7 @@ export default function ConfigHandler(props){
 			pic: '/assets/truck-pic.jpg',
 		} : {h1Title:'', h2Title:'', buts: [], pic: ''},
 
-		main: props.mainEnabled ? 
+		main: props.componentsEnabled.mainEnabled ? 
 		{
 			elementsData: [
 				{
@@ -124,21 +124,43 @@ export default function ConfigHandler(props){
 				{
 					id: 'about',
 					titles:[
-						{type:'h2', text:'О нас'},
+						{
+							type:'h2',
+							text:'О нас'
+						},
 					],
-					texts: [{id:'', data:'Мы являемся официальным представителем компании FTNet. Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г. Нажмите на кнопку, чтобы выполнить проверку на сайте Минтранса РФ'}],
+					texts: [
+						{
+							id: '',
+							data: 'Мы являемся официальным представителем компании FTNet.\
+									Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г.\
+									Нажмите на кнопку, чтобы выполнить проверку на сайте Минтранса РФ',
+						}
+					],
 					classes: [],
 					components: [],
 				},
 				{
 					id: 'contacts',
 					titles:[
-						{type:'h2', text:'Контакты'},
+						{
+							type:'h2',
+							text:'Контакты'
+						},
 					],
 					texts: [
-						{id: 'contacts1Element', data:'Россия, Удмуртская республика, г. Ижевск, ул. Ленина, д. 146, офис 104'},
-						{id: 'contacts2Element', data:'Россия, Респ. Татарстан, Набережные Челны, Мензелинский тракт, 38/1'},
-						{id: 'contacts3Element', data:'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6'},
+						{
+							id: 'contacts1Element',
+							data:'Россия, Удмуртская республика, г. Ижевск, ул. Ленина, д. 146, офис 104'
+						},
+						{
+							id: 'contacts2Element',
+							data:'Россия, Респ. Татарстан, Набережные Челны, Мензелинский тракт, 38/1'
+						},
+						{
+							id: 'contacts3Element',
+							data:'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6'
+						},
 					],
 					classes: ['contactsElement'],
 					components: [],
@@ -146,7 +168,7 @@ export default function ConfigHandler(props){
 			] // elementsData
 		}: { elementsData: [] }, // main (enabled/disabled) 
 
-		admin: props.adminEnabled ? 
+		admin: props.componentsEnabled.adminEnabled ? 
 		{
 			elementsData: [
 				{
@@ -231,14 +253,22 @@ export default function ConfigHandler(props){
 		}: { elementsData: [] },
 
 		// TODO:
-		catalog: props.catalogEnabled ? 
+		catalog: props.componentsEnabled.catalogEnabled ? 
 		{
 			/* filled with getCatalog() reqs */
 			elementsData: [],
 		}: { elementsData: [] },
 	};
 
+	this.components.header.enabled = props.componentsEnabled.headerEnabled;
+	this.components.main.enabled = props.componentsEnabled.mainEnabled;
+	this.components.banner.enabled = props.componentsEnabled.bannerEnabled;
+	this.components.admin.enabled = props.componentsEnabled.adminEnabled;
+	this.components.catalog.enabled = props.componentsEnabled.catalogEnabled;
+
 	// TODO:
 	this.RENDER = true;
 	this.DARK_THEME = true;
+
+	console.log(this);
 }

@@ -63,11 +63,15 @@ else {
 	else if (strlen($page) == 1){
 		echo '<!DOCTYPE html>';
 		echo '<script>
-			headerEnabled=true;
-			bannerEnabled=true;
-			mainEnabled=true;
-			catalogEnabled=false;
-			adminEnabled=false;
+			const config = {
+				componentsEnabled: {
+					headerEnabled: true,
+					bannerEnabled: true,
+					mainEnabled: true,
+					catalogEnabled: false,
+					adminEnabled: false,
+				}
+			}
 		</script>';
 		include_once './public_html/index.html';
 	}
@@ -75,22 +79,30 @@ else {
 		echo '<!DOCTYPE html>';
 		// TODO: call getCatalog()
 		echo '<script>
-			headerEnabled=true;
-			bannerEnabled=true;
-			mainEnabled=false;
-			catalogEnabled=true;
-			adminEnabled=false;
+			const config = {
+				componentsEnabled: {
+					headerEnabled: true,
+					bannerEnabled: true,
+					mainEnabled: false,
+					catalogEnabled: true,
+					adminEnabled: false,
+				}
+			}
 		</script>';
 		include_once './public_html/index.html';
 	}
 	else if (preg_match('/admin/', $page)){
 		echo '<!DOCTYPE html>';
 		echo '<script>
-			headerEnabled=false;
-			bannerEnabled=false;
-			mainEnabled=false;
-			catalogEnabled=false;
-			adminEnabled=true;
+			const config = {
+				componentsEnabled: {
+					headerEnabled: false,
+					bannerEnabled: false,
+					mainEnabled: false,
+					catalogEnabled: false,
+					adminEnabled: true,
+				}
+			}
 		</script>';
 		include_once './public_html/index.html';
 	}

@@ -13,6 +13,8 @@ import ButtonComponent from './ButtonComponent/ButtonComponent.js'
 })();
 
 function createHeaderComponent(domParent, config, server){
+	if(!config.enabled) return true;
+
 	const header = new HeaderComponent(
 		{
 			id: 'header-0',
@@ -31,6 +33,8 @@ function createHeaderComponent(domParent, config, server){
 }
 
 function createBannerComponent(domParent, config, server){
+	if(!config.enabled) return true;
+
 	const banner = new BannerComponent(
 		{
 			id: 'banner-0',
@@ -51,6 +55,8 @@ function createBannerComponent(domParent, config, server){
 }
 
 function createMainComponent(domParent, config, server){
+	if(!config.enabled) return true;
+
 	const main = new MainComponent(
 		{
 			id: 'main-0',
@@ -63,28 +69,26 @@ function createMainComponent(domParent, config, server){
 }
 
 function createAdminComponent(domParent, config, server){
+	if(!config.enabled) return true;
 
 	// TODO: rewrite req sending: 
 	// instead of using texts separate reqs object in config
-	if(adminEnabled){
-		config.elementsData[1].texts.forEach(function(el,i){
-			const req = el.id;
-			server.send(
-				{
-					url: req,
-					data: null,
-					method: 'GET',
+	config.elementsData[1].texts.forEach(function(el,i){
+		const req = el.id;
+		server.send(
+			{
+				url: req,
+				data: null,
+				method: 'GET',
 
-					resType: 'json',
-					resHandler: function(res){ 
-						let info = JSON.stringify(res.data);
-						document.getElementById(req).innerHTML += ': ' + info;
-					}
+				resType: 'json',
+				resHandler: function(res){ 
+					let info = JSON.stringify(res.data);
+					document.getElementById(req).innerHTML += ': ' + info;
 				}
-			);
-		});
-	}
-
+			}
+		);
+	});
 
 	const adminMain = new MainComponent(
 		{
@@ -100,8 +104,9 @@ function createAdminComponent(domParent, config, server){
 }
 
 function createCatalogComponent(domParent, config, server){
-	const req = 'getCatalog&name=taho_catalog_glonass';
+	if(!config.enabled) return true;
 
+	const req = 'getCatalog&name=taho_catalog_glonass';
 	const elementsData = [];
 
 	server.send(

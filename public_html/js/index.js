@@ -3,21 +3,15 @@ import AppComponent from './components/AppComponent.js';
 
 document.addEventListener("DOMContentLoaded", function(ev){
 
-	const config = new Config(
-		{
-			headerEnabled: headerEnabled,
-			bannerEnabled: bannerEnabled,
-			mainEnabled: mainEnabled,
-			catalogEnabled: catalogEnabled,
-			adminEnabled: adminEnabled,
+	const appConfig = new Config(
+			config
 		// TODO: Path to the config file
 		// TODO: ability changing config on the fly
-		},
 	);
 
 	const app = new AppComponent({
 		id: "app-0",
-		config: config,
+		config: appConfig,
 		domParent: document.getElementsByTagName('body')[0],
 	});
 
