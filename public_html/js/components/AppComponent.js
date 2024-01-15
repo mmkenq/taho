@@ -118,20 +118,23 @@ function createCatalogComponent(domParent, config, server){
 			resType: 'json',
 			resHandler: function(res){ 
 				res.data.forEach(function(resEl,i){
+					console.log(resEl);
 					const el = {
 						id: i,
 						titles: [],
 						titlesGroupId: 'catalogElementTitles',
 						texts: [
-							{ id: 'cat'+i, data: resEl.name }
+							{ id: 'el-name-'+i, data: resEl.name },
+							{ id: 'el-price-'+i, data: resEl.price },
 						],
-						classes: [],
+						classes: ['catalogElement'],
 						components: [],
 					} 
 					elementsData.push(el);
 				});
 				config.elementsData = elementsData;
 				createMain();
+				console.log(config);
 			}
 		}
 	);

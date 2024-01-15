@@ -57,7 +57,10 @@ export default function ConfigHandler(props){
 				{
 					id: 'services',
 					titles: [
-						{type:'h2', text:'Услуги'},
+						{
+							// type:'h2',
+							text:'Услуги'
+						},
 					],
 					// TODO: ListItemsComponent
 					texts: [],
@@ -72,8 +75,14 @@ export default function ConfigHandler(props){
 							 },
 							 {
 								titles:[
-								{type:'h3', text:'Глонасс'},
-								{type:'h4', text:'Внедрение системы мониторинга'},
+									{
+										//type:'h3',
+										text:'Глонасс'
+									},
+									{
+										//type:'h4',
+										text:'Внедрение системы мониторинга'
+									},
 							 	],
 								 titlesGroupId: 'glonassElementTitles',
 								 texts:[
@@ -108,11 +117,17 @@ export default function ConfigHandler(props){
 						},
 						{id:'',
 						 data: new ElementsComponent(
-							 {id: 'videoElement',
-							  domParent: this.domApp,
-							  domSelf: document.createElement('div')},
-							 {titles:[
-								{type:'h3', text:'Видеонаблюдение'},
+							 {
+								 id: 'videoElement',
+								 domParent: this.domApp,
+								 domSelf: document.createElement('div')
+							 },
+							 {
+								 titles:[
+									{
+										// type:'h3',
+										text:'Видеонаблюдение'
+									},
 							 ],
 							 texts:[],
 							 classes:[],
@@ -125,7 +140,7 @@ export default function ConfigHandler(props){
 					id: 'about',
 					titles:[
 						{
-							type:'h2',
+							//type:'h2',
 							text:'О нас'
 						},
 					],
@@ -144,7 +159,7 @@ export default function ConfigHandler(props){
 					id: 'contacts',
 					titles:[
 						{
-							type:'h2',
+							//type:'h2',
 							text:'Контакты'
 						},
 					],
@@ -174,7 +189,10 @@ export default function ConfigHandler(props){
 				{
 					id: 'adminTools',
 					titles:[
-						{type:'h2', text:'Admin Tools'},
+						{
+							//type:'h2',
+							text:'Admin Tools'
+						},
 					],
 					texts: [],
 					classes: [],
@@ -189,7 +207,10 @@ export default function ConfigHandler(props){
 								},
 								{
 									titles:[
-										{type:'h3', text:'Загрузка нового каталога'},
+										{
+											//type:'h3',
+											text:'Загрузка нового каталога'
+										},
 									],
 									texts:[],
 									classes:[],
@@ -221,7 +242,10 @@ export default function ConfigHandler(props){
 								domSelf: document.createElement('div')},
 							 {
 								titles:[
-								   {type:'h3', text:'Обновление почты'},
+								   {
+									   // type:'h3',
+									   text:'Обновление почты'
+								   },
 								],
 								texts:[],
 								classes:[],
@@ -234,7 +258,10 @@ export default function ConfigHandler(props){
 			{
 				id: 'info',
 				titles:[
-					{type:'h2', text:'Info'},
+					{
+						//type:'h2',
+						text:'Info'
+					},
 				],
 				texts: [
 					{
@@ -270,5 +297,4 @@ export default function ConfigHandler(props){
 	this.RENDER = true;
 	this.DARK_THEME = true;
 
-	console.log(this);
 }

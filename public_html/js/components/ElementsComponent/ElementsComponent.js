@@ -20,19 +20,16 @@ export default function ElementsComponent(props, data){
 	const domSelf = document.createElement('div');
 	domSelf.setAttribute('class', 'appElement');
 
-	const domElementTitles = document.createElement('div');
-	domElementTitles.setAttribute('class', 'elementTitles');
-
-	const titlesGroup  = new Component({
-		id: data.titlesGroupId || '',
-		domParent: domSelf,
-		domSelf: domElementTitles
-	});
-
-	data.titles.forEach(function(title,i){
-		const h = document.createElement(title.type);
-		h.innerHTML = title.text;
-		domElementTitles.appendChild(h);
+	data.titles.forEach(function(title, i){
+		const t = document.createElement('div');
+		t.innerHTML = title.text;
+		t.setAttribute('class', 'elTitle');
+		return new Component({
+			id: '',
+			domParent: domSelf,
+			domSelf: t
+		});
+		
 	});
 
 	data.texts.forEach(function(text,i){

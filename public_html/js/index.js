@@ -3,11 +3,12 @@ import AppComponent from './components/AppComponent.js';
 
 document.addEventListener("DOMContentLoaded", function(ev){
 
-	const appConfig = new Config(
-			config
-		// TODO: Path to the config file
-		// TODO: ability changing config on the fly
-	);
+	// NOTE: the 'config' parameter
+	// recieved by the server
+	//
+	// TODO: Path to the config file
+	// TODO: ability changing config on the fly
+	const appConfig = new Config(config);
 
 	const app = new AppComponent({
 		id: "app-0",
