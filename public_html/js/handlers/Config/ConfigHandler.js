@@ -282,6 +282,15 @@ export default function ConfigHandler(props){
 		// TODO:
 		catalog: props.componentsEnabled.catalogEnabled ? 
 		{
+			navList: [
+				{
+					title: 'Камеры',
+				},
+				{
+					title: 'Глонасс',
+				}
+			],
+			
 			/* filled with getCatalog() reqs */
 			elementsData: [],
 		}: { elementsData: [] },

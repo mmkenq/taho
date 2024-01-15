@@ -118,7 +118,6 @@ function createCatalogComponent(domParent, config, server){
 			resType: 'json',
 			resHandler: function(res){ 
 				res.data.forEach(function(resEl,i){
-					console.log(resEl);
 					const el = {
 						id: i,
 						titles: [],

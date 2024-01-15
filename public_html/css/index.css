@@ -12,6 +12,11 @@
 	margin-right: auto;
 }
 
+.appCatalog {
+	display: flex;
+/* TODO */	
+}
+
 #glonassElement {
 	display: grid;
 	grid-template-rows: 0.1fr 1fr;
