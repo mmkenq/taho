@@ -3,8 +3,9 @@ import HeaderComponent from './HeaderComponent/HeaderComponent.js';
 import BannerComponent from './BannerComponent/BannerComponent.js';
 import MainComponent from './MainComponent/MainComponent.js';
 import CardComponent from './CardComponent/CardComponent.js';
-import ElementsComponent from './ElementsComponent/ElementsComponent.js'
-import ButtonComponent from './ButtonComponent/ButtonComponent.js'
+import ElementsComponent from './ElementsComponent/ElementsComponent.js';
+import ButtonComponent from './ButtonComponent/ButtonComponent.js';
+import CatalogComponent from './CatalogComponent/CatalogComponent.js';
 
 
 (function initAppComponent(){
@@ -109,8 +110,7 @@ function createCatalogComponent(domParent, config, server){
 	const req = 'getCatalog&name=taho_catalog_glonass';
 	const elementsData = [];
 
-	server.send(
-		{
+	server.send({
 			url: req,
 			data: null,
 			method: 'GET',
@@ -133,24 +133,17 @@ function createCatalogComponent(domParent, config, server){
 					elementsData.push(el);
 				});
 				config.elementsData = elementsData;
-				createMain();
-				console.log(config);
+				new CatalogComponent(
+					{
+						id: 'catalog-0',
+						domParent: domParent,
+					},
+					{
+						config: config
+					}
+				);
 			}
-		}
-	);
-
-	function createMain(){
-		const catalogMain = new MainComponent(
-			{
-				id: 'catalog-0',
-				domParent: domParent,
-			},
-			{
-				elementsData: config.elementsData,
-			}
-		);
-	}
-
+	}); // server.send({})
 }
 
 
