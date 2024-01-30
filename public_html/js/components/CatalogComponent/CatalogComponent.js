@@ -30,6 +30,7 @@ export default function CatalogComponent(props, data){
 		domSelf: domNav,
 		domParent: domSelf
 	});
+	nav.domSelf.classList.add('appCatalogNav');
 
 	const catalogMain = new MainComponent(
 		{
@@ -40,6 +41,11 @@ export default function CatalogComponent(props, data){
 			elementsData: data.config.elementsData,
 		}
 	);
+
+	// TODO: other workaround
+	catalogMain.domSelf.classList.remove('appMain');
+	catalogMain.domSelf.classList.add('appCatalogMain');
+
 
 	return new Component({
 		id: props.id,

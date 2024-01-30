@@ -13,7 +13,7 @@ export default function Component(props){
 	}
 
 	props.domSelf.id = props.id;
-	props.domParent.appendChild(props.domSelf);
+	if(props.domParent) props.domParent.appendChild(props.domSelf);
 
 	return Object.create(this,
 	{

@@ -105,10 +105,12 @@ function createAdminComponent(domParent, config, server){
 }
 
 function createCatalogComponent(domParent, config, server){
-	if(!config.enabled) return true;
+	if(!config.enabled) return false;
 
 	const req = 'getCatalog&name=taho_catalog_glonass';
 	const elementsData = [];
+
+	// TODO: loader info: "Загрузка каталога..."
 
 	server.send({
 			url: req,
@@ -122,12 +124,28 @@ function createCatalogComponent(domParent, config, server){
 						id: i,
 						titles: [],
 						titlesGroupId: 'catalogElementTitles',
-						texts: [
-							{ id: 'el-name-'+i, data: resEl.name },
-							{ id: 'el-price-'+i, data: resEl.price },
-						],
+						texts: [],
 						classes: ['catalogElement'],
-						components: [],
+						components: [
+							{
+							 id: 'TODO',
+							 data: new CardComponent(
+								 {
+									id: 'el-card-'+i,
+									domParent: null,
+								 },
+								 {
+									imgId: null,
+									imgSrc: resEl.src_preview,
+									titleId: null,
+									title: resEl.name,
+									priceId: null,
+									price: resEl.price,
+									butId: null,
+								 }
+							 )
+							},
+						],
 					} 
 					elementsData.push(el);
 				});

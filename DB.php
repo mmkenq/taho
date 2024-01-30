@@ -50,7 +50,8 @@ class DB {
 		   ('.$rows[0][0].
 			','.$rows[0][1].
 			','.$rows[0][2].
-			','.$rows[0][3].')'.
+			','.$rows[0][3].
+			','.$rows[0][4].')'.
 		   ' VALUES';
 
 		$len = count($rows);
@@ -58,7 +59,8 @@ class DB {
 			$value = ' ('.$rows[$i][0].
 			',"'.$rows[$i][1].'"'.
 			','.$rows[$i][2].
-			','.$rows[$i][3].'),';
+			','.$rows[$i][3].
+			',"'.$rows[$i][4].'"),';
 			$query .= $value;
 		}
 		$query = substr_replace($query, ";", -1);

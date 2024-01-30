@@ -21,19 +21,21 @@ export default function CardComponent(props, data){
 	domWrapper.setAttribute('class', 'appCardWrapper');
 	
 	const domImg = document.createElement('img');
-	domImg.id = data.imgId;
+	if(data.imgId) domImg.id = data.imgId;
 	domImg.src = data.imgSrc;
+	domImg.setAttribute('class', 'appCardPreview');
 
 	const domTitle = document.createElement('div');
-	domTitle.id = data.titleId;
+	if(data.titleId) domTitle.id = data.titleId;
 	domTitle.innerHTML = data.title;
 
 	const domPrice = document.createElement('div');
-	domPrice.id = data.priceId;
+	if(data.priceId) domPrice.id = data.priceId;
 	domPrice.innerHTML = data.price;
+	domPrice.innerHTML += ' р.';
 
 	const domBut = document.createElement('button');
-	domBut.id = data.butId;
+	if(data.butId) domBut.id = data.butId;
 	domBut.innerHTML = 'ORDER';
 
 	domWrapper.appendChild(domImg);
