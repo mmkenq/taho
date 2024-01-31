@@ -3,12 +3,57 @@
 		src: url('/assets/bowler.ttf') format('truetype');
 }
 
+body {
+	margin: 0;
+}
+
 .appHeader {
 	display: flex;
+	align-items: center;
+	min-height: 80px;
+}
+
+#headerLogo {
+	margin-left: 5%;
+	margin-right: auto;
+}
+
+#headerButsWrapper {
+	display: none;
+}
+
+@media only screen and (min-width: 981px) {
+	#headerButsWrapper {
+		display: block;	
+		margin-left: auto;
+		margin-right: 5%;
+		align-self: stretch;
+	}
+
+	.headerBut {
+		border: none;
+		background: none;
+		font-size: large;
+		height: 80px;
+		padding-left: 20px;
+		padding-right: 20px;
+		transition: 0.1s;
+	}
+
+	.headerBut:hover {
+		background: #6a6a6a;
+	}
+	.headerBut:active {
+		background: #7a7a7a;
+	}
+
+	.headerBut:not(:last-child){
+	}
 }
 
 .appBanner {
 	display: grid;
+	width: 100%;
 }
 
 .appMain {

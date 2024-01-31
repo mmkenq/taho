@@ -23,7 +23,7 @@ function createHeaderComponent(domParent, config, server){
 		},
 		{
 			buts: config.buts, 
-			pic: config.pic,
+			logoSrc: config.logoSrc,
 			buttonTitle: config.buttonTitle,
 		}
 	);

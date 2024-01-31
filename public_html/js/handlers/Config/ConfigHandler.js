@@ -15,20 +15,18 @@ export default function ConfigHandler(props){
 		header: props.componentsEnabled.headerEnabled ? 
 		{
 			buts: [
-				{id: '', title: 'Главная', anchor: '',  },
-				{id: '', title: 'Каталог', anchor: 'el-catalog' },
-				{id: '', title: 'Услуги', anchor: 'el-services' },
-				{id: '', title: 'О нас', anchor: 'el-about' },
-				{id: '', title: 'Контакты', anchor: 'el-contacts' },
-				{id: '', title: 'theme', anchor: 'TODOtheme' },
+				{id: null, title: 'Главная', anchor: '',  },
+				{id: null, title: 'Каталог', anchor: 'el-catalog' },
+				{id: null, title: 'Услуги', anchor: 'el-services' },
+				{id: null, title: 'О нас', anchor: 'el-about' },
+				{id: null, title: 'Контакты', anchor: 'el-contacts' },
+				{id: null, title: 'theme', anchor: 'TODOtheme' },
 			],
-			pic: null,
-			buttonTitle: '',
+			logoSrc: '/assets/logo.png',
 
 			// TODO
-			check: 11,
 			darkTheme: true,
-		} : {buts:[], pic: null, buttonTitle: ''},
+		} : {buts:[], logoSrc: null, buttonTitle: ''},
 
 		banner: props.componentsEnabled.bannerEnabled ?
 		{
@@ -195,7 +193,7 @@ export default function ConfigHandler(props){
 					titles:[
 						{
 							text:'Admin Tools',
-							classes: [],
+							classes: ['elTitle'],
 						},
 					],
 					texts: [],
@@ -213,7 +211,7 @@ export default function ConfigHandler(props){
 									titles:[
 										{
 											text:'Загрузка нового каталога',
-											classes: [],
+											classes: ['elTitle', 'elSubTitle1'],
 										},
 									],
 									texts:[],
@@ -248,7 +246,7 @@ export default function ConfigHandler(props){
 								titles:[
 								   {
 									   text:'Обновление почты',
-									   classes: [],
+									   classes: ['elTitle', 'elSubTitle1'],
 								   },
 								],
 								texts:[],
@@ -264,7 +262,7 @@ export default function ConfigHandler(props){
 				titles:[
 					{
 						text:'Info',
-						classes: [],
+						classes: ['elTitle'],
 					},
 				],
 				texts: [
