@@ -58,8 +58,8 @@ export default function ConfigHandler(props){
 					id: 'services',
 					titles: [
 						{
-							// type:'h2',
-							text:'Услуги'
+							text:'Услуги',
+							classes: ['elTitle'],
 						},
 					],
 					// TODO: ListItemsComponent
@@ -76,12 +76,8 @@ export default function ConfigHandler(props){
 							 {
 								titles:[
 									{
-										//type:'h3',
-										text:'Глонасс'
-									},
-									{
-										//type:'h4',
-										text:'Внедрение системы мониторинга'
+										text:'Глонасс',
+										classes: ['elTitle', 'elSubTitle1'],
 									},
 							 	],
 								 titlesGroupId: 'glonassElementTitles',
@@ -126,8 +122,8 @@ export default function ConfigHandler(props){
 							 {
 								 titles:[
 									{
-										// type:'h3',
-										text:'Видеонаблюдение'
+										text:'Видеонаблюдение',
+										classes: ['elTitle', 'elSubTitle1'],
 									},
 							 ],
 							 texts:[],
@@ -141,8 +137,8 @@ export default function ConfigHandler(props){
 					id: 'about',
 					titles:[
 						{
-							//type:'h2',
-							text:'О нас'
+							text: 'О нас',
+							classes: ['elTitle'],
 						},
 					],
 					texts: [
@@ -161,8 +157,8 @@ export default function ConfigHandler(props){
 					id: 'contacts',
 					titles:[
 						{
-							//type:'h2',
-							text:'Контакты'
+							text: 'Контакты',
+							classes: ['elTitle'],
 						},
 					],
 					texts: [
@@ -198,8 +194,8 @@ export default function ConfigHandler(props){
 					id: 'adminTools',
 					titles:[
 						{
-							//type:'h2',
-							text:'Admin Tools'
+							text:'Admin Tools',
+							classes: [],
 						},
 					],
 					texts: [],
@@ -216,8 +212,8 @@ export default function ConfigHandler(props){
 								{
 									titles:[
 										{
-											//type:'h3',
-											text:'Загрузка нового каталога'
+											text:'Загрузка нового каталога',
+											classes: [],
 										},
 									],
 									texts:[],
@@ -251,8 +247,8 @@ export default function ConfigHandler(props){
 							 {
 								titles:[
 								   {
-									   // type:'h3',
-									   text:'Обновление почты'
+									   text:'Обновление почты',
+									   classes: [],
 								   },
 								],
 								texts:[],
@@ -267,8 +263,8 @@ export default function ConfigHandler(props){
 				id: 'info',
 				titles:[
 					{
-						//type:'h2',
-						text:'Info'
+						text:'Info',
+						classes: [],
 					},
 				],
 				texts: [

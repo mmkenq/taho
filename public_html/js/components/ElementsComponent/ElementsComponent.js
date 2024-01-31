@@ -23,13 +23,15 @@ export default function ElementsComponent(props, data){
 	data.titles.forEach(function(title, i){
 		const t = document.createElement('div');
 		t.innerHTML = title.text;
-		t.setAttribute('class', 'elTitle');
+		title.classes.forEach(function(c){
+			t.classList.add(c);
+		});
+
 		return new Component({
 			id: '',
 			domParent: domSelf,
 			domSelf: t
 		});
-		
 	});
 
 	data.texts.forEach(function(text,i){

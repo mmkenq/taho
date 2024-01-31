@@ -1,3 +1,8 @@
+@font-face { 
+	font-family: 'megabold';
+		src: url('/assets/bowler.ttf') format('truetype');
+}
+
 .appHeader {
 	display: flex;
 }
@@ -149,6 +154,21 @@
 	}
 
 
+}
+
+.appElement:not(:last-child){
+	margin-bottom: 30px;
+}
+
+.elTitle {
+	font-family: 'megabold';
+	font-size: 30px;
+	color: #151515;
+}
+
+.elSubTitle1 {
+	font-size: 20px;	
+	color: #404040;
 }
 
 

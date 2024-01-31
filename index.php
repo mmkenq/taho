@@ -50,6 +50,10 @@ else if ($path["extension"] == "gif" ||
     header("Content-Type: image/gif");
     readfile($_SERVER["SCRIPT_FILENAME"]);
 }
+else if ($path["extension"] == "ttf") {
+    header("Content-Type: font/ttf");
+    readfile($_SERVER["SCRIPT_FILENAME"]);
+}
 else {
 	$page = $_SERVER["REQUEST_URI"];
 	if (preg_match('/api/', $page)){
