@@ -88,7 +88,8 @@ export default function ConfigHandler(props){
 								 texts:[
 									{
 										id:'glonassElementText',
-										data:'<h4>Основные функции</h4>-Автоматический учёт загруженности автопарка<br>-Повышение качества использования автопарка<br>'
+										class: null,
+										data:'<h4>Основные функции</h4>-Автоматический учёт загруженности автопарка<br>-Повышение качества использования автопарка<br>',
 									},
 								],
 								classes:[],
@@ -147,6 +148,7 @@ export default function ConfigHandler(props){
 					texts: [
 						{
 							id: '',
+							class: null,
 							data: 'Мы являемся официальным представителем компании FTNet.\
 									Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г.\
 									Нажмите на кнопку, чтобы выполнить проверку на сайте Минтранса РФ',
@@ -166,15 +168,21 @@ export default function ConfigHandler(props){
 					texts: [
 						{
 							id: 'contacts1Element',
-							data:'Россия, Удмуртская республика, г. Ижевск, ул. Ленина, д. 146, офис 104'
+							class: 'contactElementText',
+							data:'Россия, Удмуртская республика, г. Ижевск, ул. Ленина, д. 146, офис 104\
+							<div style="position:relative;overflow:hidden;"><a href="https://yandex.com/maps/org/takhograf_ekspert/218381161146/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Тахограф Эксперт</a><a href="https://yandex.com/maps/44/izhevsk/category/auto_accessories/184105286/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Auto accessories in Izhevsk</a><iframe src="https://yandex.com/map-widget/v1/?ll=53.323761%2C56.813366&mode=search&oid=218381161146&ol=biz&utm_source=share&z=11.47" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>'
 						},
 						{
 							id: 'contacts2Element',
-							data:'Россия, Респ. Татарстан, Набережные Челны, Мензелинский тракт, 38/1'
+							class: 'contactElementText',
+							data:'Россия, Респ. Татарстан, Набережные Челны, Мензелинский тракт, 38/1\
+							<div style="position:relative;overflow:hidden;"><a href="https://yandex.com/maps?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Yandex Maps</a><a href="https://yandex.com/maps/236/naberezhnie-chelny/house/menzelinskiy_trakt_38_1/YUsYcgdnTEQBQFtvfXtxcXpkbQ==/?ll=52.611688%2C55.686617&utm_medium=mapframe&utm_source=maps&z=10.57" style="color:#eee;font-size:12px;position:absolute;top:14px;">Yandex Maps</a><iframe src="https://yandex.com/map-widget/v1/?ll=52.611688%2C55.686617&mode=whatshere&whatshere%5Bpoint%5D=52.407516%2C55.700679&whatshere%5Bzoom%5D=17&z=10.57" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>'
 						},
 						{
 							id: 'contacts3Element',
-							data:'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6'
+							class: 'contactElementText',
+							data:'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6\
+							<div style="position:relative;overflow:hidden;"><a href="https://yandex.com/maps/20243/chaikovsky/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Chaikovsky</a><a href="https://yandex.com/maps/20243/chaikovsky/house/sovetskaya_ulitsa_1_12/YU0YdwVjSUQGQFtsfXt2d3phZQ==/?ll=54.150532%2C56.770842&utm_medium=mapframe&utm_source=maps&z=13.73" style="color:#eee;font-size:12px;position:absolute;top:14px;">Yandex Maps</a><iframe src="https://yandex.com/map-widget/v1/?ll=54.150532%2C56.770842&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0MTM5NzM5Mzg2EmLQoNC-0YHRgdC40Y8sINCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksINCn0LDQudC60L7QstGB0LrQuNC5LCDQodC-0LLQtdGC0YHQutCw0Y8g0YPQu9C40YbQsCwgMS8xMiIKDfd9WEIVQxtjQg%2C%2C&z=13.73" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>'
 						},
 					],
 					classes: ['contactsElement'],
@@ -266,10 +274,12 @@ export default function ConfigHandler(props){
 				texts: [
 					{
 						id:'getCatalog&name=taho_catalog_glonass',
+						class: null,
 						data: 'req getCatalogGlonass()',
 					},
 					{
 						id:'getCatalog&name=taho_catalog_cameras',
+						class: null,
 						data: 'req getCatalogCameras()',
 					},
 				],

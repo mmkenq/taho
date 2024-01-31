@@ -35,7 +35,7 @@ export default function ElementsComponent(props, data){
 	data.texts.forEach(function(text,i){
 		const domT = document.createElement('div');
 		domT.innerHTML = text.data;
-		domT.setAttribute('class','elementText');
+		if(text.class) domT.setAttribute('class', text.class);
 		const t = new Component({
 			id: text.id,
 			domParent: domSelf,
