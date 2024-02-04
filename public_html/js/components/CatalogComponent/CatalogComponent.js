@@ -1,7 +1,7 @@
 import Component from '../Component.js';
 import MainComponent from '../MainComponent/MainComponent.js';
 
-(function initCardComponent(){
+(function initCatalogComponent(){
 	// ...
 	console.log('init catalog component: DONE');
 })();

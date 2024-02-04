@@ -70,6 +70,7 @@ else {
 					mainEnabled: true,
 					catalogEnabled: false,
 					adminEnabled: false,
+					contactEnabled: true,
 				}
 			}
 		</script>';
@@ -86,6 +87,7 @@ else {
 					mainEnabled: false,
 					catalogEnabled: true,
 					adminEnabled: false,
+					contactEnabled: true,
 				}
 			}
 		</script>';
@@ -101,6 +103,7 @@ else {
 					mainEnabled: false,
 					catalogEnabled: false,
 					adminEnabled: true,
+					contactEnabled: false,
 				}
 			}
 		</script>';

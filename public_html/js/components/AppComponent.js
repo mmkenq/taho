@@ -6,6 +6,7 @@ import CardComponent from './CardComponent/CardComponent.js';
 import ElementsComponent from './ElementsComponent/ElementsComponent.js';
 import ButtonComponent from './ButtonComponent/ButtonComponent.js';
 import CatalogComponent from './CatalogComponent/CatalogComponent.js';
+import ContactComponent from './ContactComponent/ContactComponent.js';
 
 
 (function initAppComponent(){
@@ -14,7 +15,7 @@ import CatalogComponent from './CatalogComponent/CatalogComponent.js';
 })();
 
 function createHeaderComponent(domParent, config, server){
-	if(!config.enabled) return true;
+	if(!config.enabled) return false;
 
 	const header = new HeaderComponent(
 		{
@@ -34,7 +35,7 @@ function createHeaderComponent(domParent, config, server){
 }
 
 function createBannerComponent(domParent, config, server){
-	if(!config.enabled) return true;
+	if(!config.enabled) return false;
 
 	const banner = new BannerComponent(
 		{
@@ -56,7 +57,7 @@ function createBannerComponent(domParent, config, server){
 }
 
 function createMainComponent(domParent, config, server){
-	if(!config.enabled) return true;
+	if(!config.enabled) return false;
 
 	const main = new MainComponent(
 		{
@@ -70,7 +71,7 @@ function createMainComponent(domParent, config, server){
 }
 
 function createAdminComponent(domParent, config, server){
-	if(!config.enabled) return true;
+	if(!config.enabled) return false;
 
 	// TODO: rewrite req sending: 
 	// instead of using texts separate reqs object in config
@@ -142,6 +143,10 @@ function createCatalogComponent(domParent, config, server){
 									priceId: null,
 									price: resEl.price,
 									butId: null,
+									callbacks: {
+										hideContact: config.callbacks.hideContact,
+										showContact: config.callbacks.showContact,
+									},
 								 }
 							 )
 							},
@@ -161,6 +166,22 @@ function createCatalogComponent(domParent, config, server){
 				);
 			}
 	}); // server.send({})
+}
+
+function createContactComponent(domParent, config, server){
+	if(!config.enabled) return false;
+
+	const contact = new ContactComponent(
+		{
+			id: config.id,
+			domParent: domParent,
+		},
+		{
+		}
+	);
+	contact.hide();
+	delete config.id;
+	config.data = contact;
 }
 
 
@@ -190,6 +211,11 @@ export default function AppComponent(props){
 	createCatalogComponent(
 		props.config.domApp,
 		props.config.components.catalog,
+		props.config.server
+	);
+	createContactComponent(
+		props.config.domApp,
+		props.config.components.contact,
 		props.config.server
 	);
 

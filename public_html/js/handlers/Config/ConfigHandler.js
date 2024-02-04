@@ -103,6 +103,10 @@ export default function ConfigHandler(props){
 												priceId: 'glonassElementCardPrice',
 												price: 'Цена по запросу',
 												butId: 'glonassElementCardBut',
+												callbacks: {
+													hideContact: ()=>this.components.contact.data.hide(),
+													showContact: ()=>this.components.contact.data.show(),
+												},
 											}
 										)
 									}
@@ -294,10 +298,20 @@ export default function ConfigHandler(props){
 					title: 'Глонасс',
 				}
 			],
+			callbacks: {
+				hideContact: ()=>this.components.contact.data.hide(),
+				showContact: ()=>this.components.contact.data.show(),
+			},
 			
 			/* filled with getCatalog() reqs */
 			elementsData: [],
 		}: { elementsData: [] },
+
+		contact: props.componentsEnabled.contactEnabled ?
+		{
+			id: 'contact-0',
+			data: null, /* filled within AppComponent.js */
+		}: {},
 	};
 
 	this.components.header.enabled = props.componentsEnabled.headerEnabled;
@@ -305,6 +319,7 @@ export default function ConfigHandler(props){
 	this.components.banner.enabled = props.componentsEnabled.bannerEnabled;
 	this.components.admin.enabled = props.componentsEnabled.adminEnabled;
 	this.components.catalog.enabled = props.componentsEnabled.catalogEnabled;
+	this.components.contact.enabled = props.componentsEnabled.contactEnabled;
 
 	// TODO:
 	this.RENDER = true;

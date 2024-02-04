@@ -36,7 +36,10 @@ export default function CardComponent(props, data){
 
 	const domBut = document.createElement('button');
 	if(data.butId) domBut.id = data.butId;
-	domBut.innerHTML = 'ORDER';
+	domBut.innerHTML = 'Оставить заявку';
+	domBut.addEventListener('click', function(){
+		data.callbacks.showContact();
+	});
 
 	domWrapper.appendChild(domImg);
 	domWrapper.appendChild(domTitle);
