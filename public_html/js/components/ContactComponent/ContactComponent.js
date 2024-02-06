@@ -48,6 +48,10 @@ export default function ContactComponent(props, data){
 
 	const domPhoneIn = document.createElement('input');
 	domPhoneIn.setAttribute('placeholder', 'Телефон');
+	domPhoneIn.setAttribute('type', 'tel');
+	domPhoneIn.addEventListener('invalid', function(){
+		console.log(domPhoneIn, 'INVALID');
+	})
 	const phone = new Component({
 		id: null,
 		domParent: domSelfWrapper,
@@ -72,7 +76,8 @@ export default function ContactComponent(props, data){
 
 	const domPolicyCheckIn = document.createElement('input');
 	domPolicyCheckIn.setAttribute('type', 'checkbox');
-
+	domPolicyCheckIn.setAttribute('required', '');
+	domPolicyCheckIn.setAttribute('checked', '');
 	const policyCheck = new Component({
 		id: 'policyCheck',
 		domParent: domSelfWrapper,
@@ -91,7 +96,20 @@ export default function ContactComponent(props, data){
 	const domSendBut = document.createElement('button');
 	domSendBut.innerHTML = 'Отправить';
 	domSendBut.addEventListener('click', function(){
-		console.log('send...');
+		props.server.send({
+			url: 'sendEmail&name=' + (domNameIn.value || 'Не указан') +
+				'&phone=' + (domPhoneIn.value || 'Не указан') +
+				'&email=' + (domEmailIn.value || 'Не указан') +
+				'&text=' + (domTextIn.value || 'Не указан') + 
+				'&policy=' + domPolicyCheckIn.checked,
+			data: null,
+			method: 'GET',
+
+			resType: 'json',
+			resHandler: function(res){ 
+				console.log(res);
+			}
+		});
 	});
 	const sendBut = new Component({
 		id: null,

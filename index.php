@@ -13,6 +13,7 @@ function router($params){
         switch ($method) {
             case 'check' : return true;
 			case 'getCatalog': return $app->getCatalog($params);
+			case 'sendEmail': return $app->sendEmail($params);
 
 			case 'uploadFile': return $app->uploadFile();
 			case 'updateCatalog': return $app->updateCatalog();

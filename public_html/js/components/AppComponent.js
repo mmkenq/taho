@@ -77,19 +77,17 @@ function createAdminComponent(domParent, config, server){
 	// instead of using texts separate reqs object in config
 	config.elementsData[1].texts.forEach(function(el,i){
 		const req = el.id;
-		server.send(
-			{
-				url: req,
-				data: null,
-				method: 'GET',
+		server.send({
+			url: req,
+			data: null,
+			method: 'GET',
 
-				resType: 'json',
-				resHandler: function(res){ 
-					let info = JSON.stringify(res.data);
-					document.getElementById(req).innerHTML += ': ' + info;
-				}
+			resType: 'json',
+			resHandler: function(res){ 
+				let info = JSON.stringify(res.data);
+				document.getElementById(req).innerHTML += ': ' + info;
 			}
-		);
+		});
 	});
 
 	const adminMain = new MainComponent(
@@ -175,6 +173,7 @@ function createContactComponent(domParent, config, server){
 		{
 			id: config.id,
 			domParent: domParent,
+			server: server,
 		},
 		{
 		}

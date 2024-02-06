@@ -10,6 +10,27 @@ class Application {
 		$this->db = $db;
 	}
 
+	public function getCatalog($params){
+		if(!$params['name']) return 'ERR: NO NAME';
+		return $this->db->getCatalog($params['name']);
+	}
+
+	public static function sendEmail($params){
+		$to = 'roma174254@gmail.com'; 
+		$sbj = 'TAHOGRAF ЗАЯВКА';
+		$msg = 'Имя: ' . $params['name'] . '\n' . 
+			'Телефон: ' . $params['phone'] . '\n' . 
+			'Email: ' . $params['email'] . '\n' . 
+			'Сообщение: ' . $params['text'] . 
+			'Согласен с политикой конфиденциальности: ' . $params['policy'];
+
+		// use wordwrap() if lines are longer than 70 characters
+		$msg = wordwrap($msg,70);
+
+		if(!mail($to, $sbj, $msg)) return 'ERR: EMAIL WASN\'T SENT';
+		return true;
+	}
+
 	public function uploadFile(){
 		$name = $_FILES['fileNo0']['name'];
 		$tmp_name = $_FILES['fileNo0']['tmp_name'];
@@ -27,9 +48,5 @@ class Application {
 		else { return 'xlsx error: '.$xlsx->error(); }
 	}
 
-	public function getCatalog($params){
-		if($params['name']) return $this->db->getCatalog($params['name']);
-		else return 'ERR: NO NAME';
-	}
 }
 ?>
