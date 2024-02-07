@@ -93,9 +93,21 @@ export default function ContactComponent(props, data){
 		domSelf: domPolicyLabel,
 	});
 
+	const domLoadStatus = document.createElement('div');
+	domLoadStatus.innerHTML = 'ОТПРАВКА...';
+	const loadStatus = new Component({
+		id: null,
+		domParent: domSelfWrapper,
+		domSelf: domLoadStatus,
+	});
+	loadStatus.hide();
+
 	const domSendBut = document.createElement('button');
 	domSendBut.innerHTML = 'Отправить';
 	domSendBut.addEventListener('click', function(){
+		sendBut.hide();
+		loadStatus.show();
+
 		props.server.send({
 			url: 'sendEmail&name=' + (domNameIn.value || 'Не указан') +
 				'&phone=' + (domPhoneIn.value || 'Не указан') +
@@ -107,7 +119,13 @@ export default function ContactComponent(props, data){
 
 			resType: 'json',
 			resHandler: function(res){ 
+				// TODO: CHECK FOR RESPONSE
 				console.log(res);
+
+				loadStatus.hide();
+				sendBut.show();
+				alert('Спасибо за заявку! Наши специалисты свяжутся с вами.');
+				contact.hide();
 			}
 		});
 	});

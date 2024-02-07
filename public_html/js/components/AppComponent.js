@@ -106,21 +106,44 @@ function createAdminComponent(domParent, config, server){
 function createCatalogComponent(domParent, config, server){
 	if(!config.enabled) return false;
 
-	const req = 'getCatalog&name=taho_catalog_glonass';
-	const elementsData = [];
+	const reqs = [
+		{
+			title: 'ГЛОНАСС',
+			url: 'getCatalog&name=taho_catalog_glonass',
+			active: true,
+		},
+		{
+			title: 'КАМЕРЫ',
+			url: 'getCatalog&name=taho_catalog_cameras',
+			active: false,
+		}
+	];
 
 	// TODO: loader info: "Загрузка каталога..."
+	let readyNum = 0;
+	let readyFlag = false;
 
-	server.send({
-			url: req,
+	reqs.forEach(function(req,i){
+		server.send({
+			url: req.url,
 			data: null,
 			method: 'GET',
-
 			resType: 'json',
-			resHandler: function(res){ 
-				res.data.forEach(function(resEl,i){
-					const el = {
-						id: i,
+
+			resHandler: function(res){
+				if(!res.data) {
+					config.catalogsData.push({
+						title: req.title,
+						active: req.active,
+						elementsData:[],
+					});
+					readyNum++;
+					return;
+				};
+				const elementsData = [];
+				res.data.forEach(function(resEl,j){
+					elementsData.push({
+						id: j,
 						titles: [],
 						titlesGroupId: 'catalogElementTitles',
 						texts: [],
@@ -130,7 +153,7 @@ function createCatalogComponent(domParent, config, server){
 							 id: 'TODO',
 							 data: new CardComponent(
 								 {
-									id: 'el-card-'+i,
+									id: 'el-card-'+j,
 									domParent: null,
 								 },
 								 {
@@ -149,21 +172,39 @@ function createCatalogComponent(domParent, config, server){
 							 )
 							},
 						],
-					} 
-					elementsData.push(el);
+					}); 
+
 				});
-				config.elementsData = elementsData;
-				new CatalogComponent(
-					{
-						id: 'catalog-0',
-						domParent: domParent,
-					},
-					{
-						config: config
-					}
-				);
+				config.catalogsData.push({
+					title: req.title,
+					active: req.active,
+					elementsData: elementsData,
+				});
+				readyNum++;
 			}
-	}); // server.send({})
+		});
+	});
+	
+	// TODO: LoaderComponent???
+	const domLoader = document.createElement('div')
+	domLoader.innerHTML = '<b>Идет загрузка каталога. Пожалуйста подождите...</b>';
+	domParent.appendChild(domLoader);
+
+	const checker = setInterval(function(){
+		if(readyNum == reqs.length){
+			clearInterval(checker);
+			new CatalogComponent(
+				{
+					id: 'catalog-0',
+					domParent: domParent,
+				},
+				{
+					config: config
+				}
+			);
+			domLoader.remove();
+		};
+	}, 300);
 }
 
 function createContactComponent(domParent, config, server){

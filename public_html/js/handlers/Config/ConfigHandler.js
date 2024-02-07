@@ -20,7 +20,8 @@ export default function ConfigHandler(props){
 				{id: null, title: 'Услуги', anchor: 'el-services' },
 				{id: null, title: 'О нас', anchor: 'el-about' },
 				{id: null, title: 'Контакты', anchor: 'el-contacts' },
-				{id: null, title: 'theme', anchor: 'TODOtheme' },
+				//TODO:
+				//{id: null, title: 'theme', anchor: 'TODOtheme' },
 			],
 			logoSrc: '/assets/logo.png',
 
@@ -83,7 +84,7 @@ export default function ConfigHandler(props){
 									{
 										id:'glonassElementText',
 										class: null,
-										data:'<h4>Основные функции</h4>-Автоматический учёт загруженности автопарка<br>-Повышение качества использования автопарка<br>',
+										data:'<div><b>Основные функции</b></div>- Автоматический учёт загруженности автопарка<br>- Повышение качества использования автопарка<br>- Контроль пробега<br>- Контроль расхода топлива<br>- Контроль качества вождения<br>- Контроль соблюдения ПДД<br>- Контроль и защита грузов<br>- Автоматизация бизнес-процессов транспортных компаний<br>- Тепловые карты событий<br>- Удаленное управление транспортом<br>- Противоугонная система<br>- Фото и видео наблюдение в режиме реального времени<br>- Модульная аналитика<br>- Автоматизация планирования доставки<br>- План-фактный анализ<br>',
 									},
 								],
 								classes:[],
@@ -148,8 +149,8 @@ export default function ConfigHandler(props){
 							id: '',
 							class: null,
 							data: 'Мы являемся официальным представителем компании FTNet.\
-									Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г.\
-									Нажмите на кнопку, чтобы выполнить проверку на сайте Минтранса РФ',
+									Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г.'
+									//Нажмите на кнопку, чтобы выполнить проверку на сайте Минтранса РФ',
 						}
 					],
 					classes: [],
@@ -290,22 +291,27 @@ export default function ConfigHandler(props){
 		// TODO:
 		catalog: props.componentsEnabled.catalogEnabled ? 
 		{
-			navList: [
-				{
-					title: 'Камеры',
-				},
-				{
-					title: 'Глонасс',
-				}
-			],
 			callbacks: {
 				hideContact: ()=>this.components.contact.data.hide(),
 				showContact: ()=>this.components.contact.data.show(),
 			},
 			
+			/* data for Creating CatalogComponent */
 			/* filled with getCatalog() reqs */
-			elementsData: [],
-		}: { elementsData: [] },
+			// TODO
+			catalogsData: [
+			/*
+				title: ...,
+				active: ...,
+				elementsData: ...,
+			*/
+			],
+
+			/* Component */
+			/* filled while creating CatalogComponent() */
+			/* At the same time catalogsData deleted */
+			catalogs: [],
+		}: { catalogsData: [] },
 
 		contact: props.componentsEnabled.contactEnabled ?
 		{

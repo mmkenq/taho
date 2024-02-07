@@ -28,6 +28,10 @@ class Application {
 		$msg = wordwrap($msg,70);
 
 		if(!mail($to, $sbj, $msg)) return 'ERR: EMAIL WASN\'T SENT';
+		else {
+			/* TODO: Set up SMTP with PHPMailer lib */
+			/* https://github.com/PHPMailer/PHPMailer */
+		}
 		return true;
 	}
 
