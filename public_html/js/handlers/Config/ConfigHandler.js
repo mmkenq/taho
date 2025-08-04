@@ -35,14 +35,14 @@ export default function ConfigHandler(props){
 			h2Title: "Профессиональное обслуживание и установка глонасс / видео",
 			buts:
 			[
-				{
-					id: 'TODO_but_catalog_cam_id', 
-					title: 'Каталог камер', 
-					req: 'getCatalog&name=taho_catalog_cameras',
-				},
+				//{
+				//	id: 'TODO_but_catalog_cam_id', 
+				//	title: 'Каталог камер', 
+				//	req: 'getCatalog&name=taho_catalog_cameras',
+				//},
 				{
 					id: 'TODO_but_catalog_glonass_id',
-					title: 'Каталог устройств глонасс',
+					title: 'Каталог приборов',
 					req: 'getCatalog&name=taho_catalog_glonass', 
 				},
 			],
@@ -128,10 +128,52 @@ export default function ConfigHandler(props){
 										text:'Видеонаблюдение',
 										classes: ['elTitle', 'elSubTitle1'],
 									},
+								 ],
+							 texts:[
+									{
+										id:'videoElementText',
+										class: null,
+										data:'<div><b>Основные функции</b></div>\
+    -Контроль действий водителя в кабине (нарушения ПДД, режим работы, безопасность)<br>\
+    -Мониторинг состояния грузового отсека и целостности груза<br>\
+    -Видеофиксация дорожной обстановки, включая слепые зоны и маневрирование<br>\
+    -Помощь водителю при парковке и движении за счет камер заднего вида и кругового обзора<br>\
+    -Контроль погрузочно-разгрузочных операций для предотвращения повреждений и недостачи груза<br>\
+    -Оповещение о подозрительных событиях и вторжениях<br>\
+    -Регистрация событий при ДТП или чрезвычайных ситуациях для анализа и доказательств<br>\
+    -Удалённый онлайн-доступ к видеопотоку и архивам<br>\
+    -Интеграция с GPS/ГЛОНАСС-мониторингом для синхронизации данных о движении и видео<br>\
+    -Противоугонная система с возможностью удалённого управления и блокировки<br>\
+    -Автоматизация процессов охраны и повышения безопасности автопарка<br>\
+												',
+									},
 							 ],
-							 texts:[],
 							 classes:[],
-							 components:[]}
+							 components:[
+							 	{
+										id:'TODO',
+										data: new CardComponent(
+											{
+												id:'videoElementCard',
+												domParent: this.domApp,
+											},
+											{
+												imgId: 'videoElementCardImg',
+												imgSrc: 'assets/glonass.png',
+												titleId: 'videoElementCardTitle',
+												title: 'Система видеонаблюдения',
+												priceId: 'videoElementCardPrice',
+												price: 'Цена по запросу',
+												butId: 'videoElementCardBut',
+												callbacks: {
+													hideContact: ()=>this.components.contact.data.hide(),
+													showContact: ()=>this.components.contact.data.show(),
+												},
+											}
+										)
+									}
+							  ]
+							 }
 						 )
 						},
 					],
@@ -171,14 +213,14 @@ export default function ConfigHandler(props){
 							data:'Россия, Удмуртская республика, г. Ижевск, ул. Ленина, д. 146, офис 104\
 							<div style="position:relative;overflow:hidden;"><a href="https://yandex.com/maps/org/takhograf_ekspert/218381161146/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Тахограф Эксперт</a><a href="https://yandex.com/maps/44/izhevsk/category/auto_accessories/184105286/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Auto accessories in Izhevsk</a><iframe src="https://yandex.com/map-widget/v1/?ll=53.323761%2C56.813366&mode=search&oid=218381161146&ol=biz&utm_source=share&z=11.47" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>'
 						},
-						{
+						/*{
 							id: 'contacts2Element',
 							class: 'contactElementText',
 							data:'Россия, Респ. Татарстан, Набережные Челны, Мензелинский тракт, 38/1\
 							<div style="position:relative;overflow:hidden;"><a href="https://yandex.com/maps?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Yandex Maps</a><a href="https://yandex.com/maps/236/naberezhnie-chelny/house/menzelinskiy_trakt_38_1/YUsYcgdnTEQBQFtvfXtxcXpkbQ==/?ll=52.611688%2C55.686617&utm_medium=mapframe&utm_source=maps&z=10.57" style="color:#eee;font-size:12px;position:absolute;top:14px;">Yandex Maps</a><iframe src="https://yandex.com/map-widget/v1/?ll=52.611688%2C55.686617&mode=whatshere&whatshere%5Bpoint%5D=52.407516%2C55.700679&whatshere%5Bzoom%5D=17&z=10.57" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>'
-						},
+						},*/
 						{
-							id: 'contacts3Element',
+							id: 'contacts2Element',
 							class: 'contactElementText',
 							data:'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6\
 							<div style="position:relative;overflow:hidden;"><a href="https://yandex.com/maps/20243/chaikovsky/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Chaikovsky</a><a href="https://yandex.com/maps/20243/chaikovsky/house/sovetskaya_ulitsa_1_12/YU0YdwVjSUQGQFtsfXt2d3phZQ==/?ll=54.150532%2C56.770842&utm_medium=mapframe&utm_source=maps&z=13.73" style="color:#eee;font-size:12px;position:absolute;top:14px;">Yandex Maps</a><iframe src="https://yandex.com/map-widget/v1/?ll=54.150532%2C56.770842&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0MTM5NzM5Mzg2EmLQoNC-0YHRgdC40Y8sINCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksINCn0LDQudC60L7QstGB0LrQuNC5LCDQodC-0LLQtdGC0YHQutCw0Y8g0YPQu9C40YbQsCwgMS8xMiIKDfd9WEIVQxtjQg%2C%2C&z=13.73" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>'
