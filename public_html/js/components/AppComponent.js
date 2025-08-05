@@ -36,7 +36,6 @@ function createHeaderComponent(domParent, config, server){
 
 function createBannerComponent(domParent, config, server){
 	if(!config.enabled) return false;
-
 	const banner = new BannerComponent(
 		{
 			id: 'banner-0',

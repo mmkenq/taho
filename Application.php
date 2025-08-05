@@ -16,7 +16,7 @@ class Application {
 	}
 
 	public static function sendEmail($params){
-		$to = 'roma174254@gmail.com'; 
+		$to = 'mikemike4254@gmail.com'; 
 		$sbj = 'TAHOGRAF ЗАЯВКА';
 		$msg = 'Имя: ' . $params['name'] . '\n' . 
 			'Телефон: ' . $params['phone'] . '\n' . 

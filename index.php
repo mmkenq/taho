@@ -110,6 +110,22 @@ else {
 		</script>';
 		include_once './public_html/index.html';
 	}
+	else if (preg_match('/glonass/', $page)){
+		echo '<!DOCTYPE html>';
+		echo '<script>
+			const config = {
+				componentsEnabled: {
+					headerEnabled: true,
+					bannerEnabled: true,
+					mainEnabled: false,
+					catalogEnabled: false,
+					adminEnabled: false,
+					contactEnabled: false,
+				}
+			}
+		</script>';
+		include_once './public_html/index.html';
+	}
     //return FALSE;
 }
 

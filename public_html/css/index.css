@@ -178,8 +178,8 @@ body {
 
 .contactsElement {
 	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 0.1fr 1fr 1fr 1fr;
+	/*grid-template-columns: 1fr;
+	grid-template-rows: 0.1fr 1fr 1fr 1fr;*/
 }
 
 .contactElementText {
@@ -190,12 +190,12 @@ body {
 
 @media only screen and (min-width: 640px) {
 	.contactsElement {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 		grid-template-rows: 0.1fr 1fr 1fr;
 	}
-	#contacts1Element { grid-area: 3/1/4/3; }
-	#contacts2Element { grid-area: 2/1; }
-	#contacts3Element { grid-area: 2/2; }
+	/*#contacts1Element { grid-area: 3/1/4/3; }
+	#contacts2Element { grid-area: 2/1; }*/
+	/*#contacts3Element { grid-area: 2/2; }*/
 	.contactElementText {
 		width: 90%;
 	}
@@ -203,7 +203,7 @@ body {
 
 @media only screen and (min-width: 981px) {
 	.contactsElement {
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 0.1fr 1fr;
 	}
 	#contacts1Element {

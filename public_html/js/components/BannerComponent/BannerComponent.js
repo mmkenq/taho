@@ -37,9 +37,10 @@ export default function BannerComponent(props, data){
 				server: props.server,
 			},
 			{
-				type: 'nav',
+				type: el.type || 'UNTYPED',
 				text: el.title,
-				req: el.req
+				req: el.req,
+				ajax: el.ajax || null
 			}
 		);
 	});

@@ -54,26 +54,30 @@ export default function ButtonComponent(props, data){
 			domSelf.appendChild(pick);
 			domSelf.appendChild(send);
 		break;
-		case 'nav':
+		case 'getPage':
 			domSelf = document.createElement('button');
 			domSelf.setAttribute('class', 'appButton');
 			domSelf.innerHTML = data.text || 'TODO_BUT_TEXT';
 			domSelf.addEventListener('click', function(){
-				props.server.send(
-					{
-						url: data.req,
-						data: null,
-						method: 'GET',
+				if(data.ajax)(
+					props.server.send(
+						{
+							url: data.req,
+							data: null,
+							method: 'GET',
 
-						resType: 'json',
-						resHandler: function(res){
-							if(location.pathname != '/catalog'){
-								location.href = location.origin + '/catalog';
+							resType: 'json',
+							resHandler: function(res){
+								//if(location.pathname != '/catalog'){
+								//	location.href = location.origin + '/catalog';
+								//}
 							}
-							console.log(res);
 						}
-					}
-				);
+					)
+				 )
+				if(location.pathname != '/' + data.req){
+					location.href = location.origin + '/' + data.req;
+				}
 			});
 		break;
 		default: 
