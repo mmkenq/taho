@@ -27,6 +27,14 @@ export default function ContactComponent(props, data){
 		domSelf: domSelfWrapper,
 	});
 
+	const domIntro = document.createElement('div');
+	domIntro.innerHTML = 'Оставьте заявку, чтобы мы с вами связались :D';
+	const intro = new Component({
+		id: null,
+		domParent: domSelfWrapper,
+		domSelf: domIntro,
+	});
+
 	const domCloseBut = document.createElement('button');
 	domCloseBut.innerHTML = 'Закрыть';
 	domCloseBut.addEventListener('click', function(){

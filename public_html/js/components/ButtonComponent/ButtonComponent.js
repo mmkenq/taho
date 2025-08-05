@@ -80,6 +80,26 @@ export default function ButtonComponent(props, data){
 				}
 			});
 		break;
+		case 'callback':
+			domSelf = document.createElement('button');
+			domSelf.setAttribute('class', 'appButton');
+			domSelf.innerHTML = data.text || 'TODO_BUT_TEXT';
+			domSelf.addEventListener('click', function(){
+				if(data.ajax)(
+					props.server.send(
+						{
+							url: data.req,
+							data: null,
+							method: 'GET',
+
+							resType: 'json',
+							resHandler: function(res){}
+						}
+					)
+				 )
+				data.callbacks.showContact();
+			});
+		break;
 		default: 
 			domSelf = document.createElement('button');
 			domSelf.setAttribute('class', 'appButton');

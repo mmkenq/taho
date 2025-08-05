@@ -120,7 +120,8 @@ else {
 					mainEnabled: false,
 					catalogEnabled: false,
 					adminEnabled: false,
-					contactEnabled: false,
+					contactEnabled: true,
+					glonassEnabled: true,
 				}
 			}
 		</script>';

@@ -206,6 +206,21 @@ function createCatalogComponent(domParent, config, server){
 	}, 300);
 }
 
+function createGlonassComponent(domParent, config, server){
+	if(!config.enabled) return false;
+
+	const glonassMain = new MainComponent(
+		{
+			id: 'glonass-0',
+			domParent: domParent,
+		},
+		{
+			elementsData: config.elementsData,
+		}
+	);
+	//config.data = glonassMain;
+}
+
 function createContactComponent(domParent, config, server){
 	if(!config.enabled) return false;
 
@@ -255,6 +270,11 @@ export default function AppComponent(props){
 	createContactComponent(
 		props.config.domApp,
 		props.config.components.contact,
+		props.config.server
+	);
+	createGlonassComponent(
+		props.config.domApp,
+		props.config.components.glonass,
 		props.config.server
 	);
 

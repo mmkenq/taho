@@ -369,6 +369,119 @@ export default function ConfigHandler(props){
 			id: 'contact-0',
 			data: null, /* filled within AppComponent.js */
 		}: {},
+
+		glonass: props.componentsEnabled.glonassEnabled ? 
+		{
+			elementsData: [
+				{
+					id: 'activation',
+					titles:[
+						{
+							text:'Заявка на активацию',
+							classes: ['elTitle'],
+						},
+					],
+					texts: [],
+					classes: [],
+					components:[
+						{
+							id: 'TODO_sendGNSSActivationReqComponent',
+							data: new ElementsComponent(
+								{
+									id: 'sendGNSSActivationReqElement',
+									domParent: this.domApp,
+									domSelf: document.createElement('div')
+								},
+								{
+									titles:[
+										{
+											text:'Оставить заявку на активацию ГЛОНАСС',
+											classes: ['elTitle', 'elSubTitle1'],
+										},
+									],
+									texts:[],
+									classes:[],
+									components:[
+										{
+											id: 'TODO',
+											data: new ButtonComponent(
+												{
+													id: '',
+													domParent: this.domApp,
+													server: this.server,
+												},
+												{
+													id: 'TODO_but_sendGNSSActivationReq',
+													text: 'Оставить',
+													type: 'callback',
+													ajax: false,
+													req: 'glonass', 
+													callbacks: {
+														hideContact: ()=>this.components.contact.data.hide(),
+														showContact: ()=>this.components.contact.data.show(),
+													},
+												},
+											),
+										}
+									]
+								}
+							) // new ElementsComponent
+						},
+						{
+							id: 'TODO_whatForComponent',
+							data: new ElementsComponent(
+							 {
+								id: 'whatForElement',
+								domParent: this.domApp,
+								domSelf: document.createElement('div')},
+							 {
+								titles:[
+								   {
+									   text:'Для чего это надо?',
+									   classes: ['elTitle', 'elSubTitle1'],
+								   },
+								],
+								texts:[
+									{
+										id:'whatForText',
+										class: null,
+										data:'<div></div>\
+Подача заявки на активацию — это шаг, который переводит установленное оборудование в рабочее состояние, обеспечивая его реальные функции по безопасности и контролю. Оставить заявку на активацию ГЛОНАСС нужно для того, чтобы система экстренного оповещения ЭРА-ГЛОНАСС начала полноценно работать на вашем транспортном средстве. Активация — это обязательный этап после установки оборудования, при котором проверяется корректность монтажа, в систему вносятся данные автомобиля (VIN, модель и др.), и устройство регистрируется в базе. После активации терминал может автоматически или вручную отправлять сигналы тревоги и координаты экстренным службам при авариях, что значительно ускоряет реагирование и повышает безопасность на дороге. Также активация необходима для легализации машины и соблюдения законодательных требований в России.\
+',
+									},
+								],
+								classes:[],
+								components:[]
+							 }
+							) // new ElementsComponent
+						},
+					],
+				}, // ElementsData 1
+				{
+					id: 'payment',
+					titles:[
+						{
+							text:'Оплата абонентской платы',
+							classes: ['elTitle'],
+						},
+					],
+					texts: [
+						{
+							id:'getCatalog&name=taho_catalog_glonass',
+							class: null,
+							data: 'req getCatalogGlonass()',
+						},
+						{
+							id:'getCatalog&name=taho_catalog_cameras',
+							class: null,
+							data: 'req getCatalogCameras()',
+						},
+					],
+					classes: [],
+					components:[],
+				}, // ElementsData 2
+			],
+		}: { elementsData: [] },
 	};
 
 	this.components.header.enabled = props.componentsEnabled.headerEnabled;
@@ -377,6 +490,7 @@ export default function ConfigHandler(props){
 	this.components.admin.enabled = props.componentsEnabled.adminEnabled;
 	this.components.catalog.enabled = props.componentsEnabled.catalogEnabled;
 	this.components.contact.enabled = props.componentsEnabled.contactEnabled;
+	this.components.glonass.enabled = props.componentsEnabled.glonassEnabled;
 
 	// TODO:
 	this.RENDER = true;
