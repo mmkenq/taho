@@ -1,5 +1,6 @@
 <?php
 require_once("./DB.php");
+require_once("./TGsender.php");
 
 class Application {
 
@@ -7,7 +8,9 @@ class Application {
 		$this->CATALOG_GLONASS_NAME = 'catalog_glonass.xlsx';
 
 		$db = new DB($config['DB']);
+		$tg = new TGsender($config['TG']);
 		$this->db = $db;
+		$this->tg = $tg;
 	}
 
 	public function getCatalog($params){
@@ -15,8 +18,14 @@ class Application {
 		return $this->db->getCatalog($params['name']);
 	}
 
-    public static function sendInfo($params){
-        return [$params, $_POST];
+    public function sendNotifGNSSAct($params){
+        return $this->tg->sendNotifGNSSAct($params);
+	}
+    public function sendNotifDmUs($params){
+        return $this->tg->sendNotifDmUs($params);
+	}
+    public function sendNotifPayment($params){
+        return $this->tg->sendNotifPayment($params);
 	}
 
 	public static function sendEmail($params){

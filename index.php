@@ -14,7 +14,9 @@ function router($params){
             case 'check' : return true;
 			case 'getCatalog': return $app->getCatalog($params);
 			case 'sendEmail': return $app->sendEmail($params);
-			case 'sendInfo': return $app->sendInfo($params);
+			case 'sendNotifGNSSAct': return $app->sendNotifGNSSAct($params);
+			case 'sendNotifDmUs': return $app->sendNotifDmUs($params);
+			case 'sendNotifPayment': return $app->sendNotifPayment($params);
 
 			case 'uploadFile': return $app->uploadFile();
 			case 'updateCatalog': return $app->updateCatalog();

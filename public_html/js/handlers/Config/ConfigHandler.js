@@ -653,20 +653,128 @@ export default function ConfigHandler(props) {
                                   classes: ['elTitle'],
                               },
                           ],
-                          texts: [
+                          texts: [],
+                          classes: [],
+                          components: [
                               {
-                                  id: 'getCatalog&name=taho_catalog_glonass',
-                                  class: null,
-                                  data: 'req getCatalogGlonass()',
+                                  id: 'TODO_sendGNSSActivationReqComponent',
+                                  data: new ElementsComponent(
+                                      {
+                                          id: 'sendGNSSActivationReqElement',
+                                          domParent: this.domApp,
+                                          domSelf:
+                                              document.createElement('div'),
+                                      },
+                                      {
+                                          titles: [
+                                              {
+                                                  text: 'Оплата',
+                                                  classes: [
+                                                      'elTitle',
+                                                      'elSubTitle1',
+                                                  ],
+                                              },
+                                          ],
+                                          texts: [],
+                                          classes: [],
+                                          components: [
+                                              {
+                                                  id: 'TODO',
+                                                  data: new ButtonComponent(
+                                                      {
+                                                          id: '',
+                                                          domParent:
+                                                              this.domApp,
+                                                          server: this.server,
+                                                      },
+                                                      {
+                                                          id: 'TODO_but_payGNSSActivation',
+                                                          text: 'Оплатить',
+                                                          type: 'callback',
+                                                          ajax: false,
+                                                          req: 'glonass',
+                                                          callbacks: {
+                                                              hideContact:
+                                                                  () => {
+                                                                      this.components.contact.tabs[2].hide();
+                                                                      this.components.contact.data.hide();
+                                                                  },
+                                                              showContact:
+                                                                  () => {
+                                                                      this.components.contact.data.show();
+                                                                      this.components.contact.tabs[2].show();
+                                                                  },
+                                                          },
+                                                      },
+                                                  ),
+                                              },
+                                          ],
+                                      },
+                                  ), // new ElementsComponent
                               },
                               {
-                                  id: 'getCatalog&name=taho_catalog_cameras',
-                                  class: null,
-                                  data: 'req getCatalogCameras()',
+                                  id: 'TODO_publicOfferContractComponent',
+                                  data: new ElementsComponent(
+                                      {
+                                          id: 'publicOfferContract',
+                                          domParent: this.domApp,
+                                          domSelf:
+                                              document.createElement('div'),
+                                      },
+                                      {
+                                          titles: [
+                                              {
+                                                  text: 'Публичный догофор оферта',
+                                                  classes: [
+                                                      'elTitle',
+                                                      'elSubTitle1',
+                                                  ],
+                                              },
+                                          ],
+                                          texts: [
+                                              {
+                                                  id: 'publicOfferContractText',
+                                                  class: null,
+                                                  data: 'на предоставление услуг абонентского обслуживания навигационного оборудования ГЛОНАСС<br>TODO: СКАЧАТЬ button',
+                                              },
+                                          ],
+                                          classes: [],
+                                          components: [],
+                                      },
+                                  ), // new ElementsComponent
+                              },
+                              {
+                                  id: 'TODO_organizaionInfoComponent',
+                                  data: new ElementsComponent(
+                                      {
+                                          id: 'organizationInfo',
+                                          domParent: this.domApp,
+                                          domSelf:
+                                              document.createElement('div'),
+                                      },
+                                      {
+                                          titles: [
+                                              {
+                                                  text: 'Реквизиты организации',
+                                                  classes: [
+                                                      'elTitle',
+                                                      'elSubTitle1',
+                                                  ],
+                                              },
+                                          ],
+                                          texts: [
+                                              {
+                                                  id: 'whatForText',
+                                                  class: null,
+                                                  data: 'ИП Мель К.В<br>ИНН 183500369500<br>ОГРНИП 324180000065828',
+                                              },
+                                          ],
+                                          classes: [],
+                                          components: [],
+                                      },
+                                  ), // new ElementsComponent
                               },
                           ],
-                          classes: [],
-                          components: [],
                       }, // ElementsData 2
                   ],
               }

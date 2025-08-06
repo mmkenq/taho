@@ -83,7 +83,7 @@ export default function ContactComponent(props) {
             })
             props.server.send({
                 url:
-                    'sendInfo',
+                    'sendNotifGNSSAct',
                 data: data,
                 method: 'POST',
 
