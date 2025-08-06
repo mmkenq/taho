@@ -15,6 +15,10 @@ class Application {
 		return $this->db->getCatalog($params['name']);
 	}
 
+    public static function sendInfo($params){
+        return [$params, $_POST];
+	}
+
 	public static function sendEmail($params){
 		$to = 'mikemike4254@gmail.com'; 
 		$sbj = 'TAHOGRAF ЗАЯВКА';

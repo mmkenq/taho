@@ -229,13 +229,13 @@ function createContactComponent(domParent, config, server){
 			id: config.id,
 			domParent: domParent,
 			server: server,
-		},
-		{
+            config: config
 		}
 	);
+
 	contact.hide();
 	delete config.id;
-	config.data = contact;
+    config.data = contact;
 }
 
 

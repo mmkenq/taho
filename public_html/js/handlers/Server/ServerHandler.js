@@ -13,12 +13,13 @@ export default function ServerHandler(props){
 	// req: {url, data, method, resType, resHandler}
 	this.send = function(req){
 		return new Promise((resolve, reject) => {
-			const url = serverURL + '/api/?method=' + req.url;
-			let xhr = new XMLHttpRequest();
-			xhr.responseType = req.resType;
-			xhr.addEventListener('load', resHandler.bind(null, xhr, resolve, reject, req.resHandler));
-			xhr.open(req.method, url, true);
-			xhr.send(req.data);
+			const url = serverURL + '/api/?method=' + req.url
+			let xhr = new XMLHttpRequest()
+			xhr.responseType = req.resType
+			xhr.addEventListener('load', resHandler.bind(null, xhr, resolve, reject, req.resHandler))
+			xhr.open(req.method, url, true)
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+			xhr.send(req.data)
 		});
 	}
 	
