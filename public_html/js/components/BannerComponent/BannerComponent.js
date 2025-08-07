@@ -73,7 +73,6 @@ export default function BannerComponent(props, data){
 				domSelf: domLink,
 			}
 		);
-        console.log(but)
 	});
 
 	let bg = new Image();

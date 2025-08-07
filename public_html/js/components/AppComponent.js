@@ -154,9 +154,9 @@ function createCatalogComponent(domParent, config, server){
 							 data: new CardComponent(
 								 {
 									id: 'el-card-'+j,
+                                    type: 'catalogCard',
+                                    classes: 'appCatalogCard',
 									domParent: null,
-								 },
-								 {
 									imgId: null,
 									imgSrc: resEl.src_preview,
 									titleId: null,

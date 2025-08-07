@@ -8,7 +8,7 @@ import MainComponent from '../MainComponent/MainComponent.js';
 
 export default function CatalogComponent(props, data){
 	/* props: {id, domParent} 
-		data: {} 
+		data: {config} 
 	*/
 	const domSelf = document.createElement('div');
 	domSelf.setAttribute('class', 'appCatalog');

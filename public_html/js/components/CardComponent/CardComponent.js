@@ -5,51 +5,74 @@ import Component from '../Component.js';
 	console.log('init card component: DONE');
 })();
 
-export default function CardComponent(props, data){
-	/* props: {id, domParent} 
-		data: {  imgId, imgSrc, 
-				 titleId, title,
-				 priceId, price,
-				 butId
-			  } 
-	*/
+export default function CardComponent(props){
+	/* props: {id, domParent, data} */
 
 	const domSelf = document.createElement('div');
 	domSelf.setAttribute('class', 'appCard');
+    domSelf.setAttribute('class', props.classes)
 
-	const domWrapper = document.createElement('div');
-	domWrapper.setAttribute('class', 'appCardWrapper');
-	
-	const domImg = document.createElement('img');
-	if(data.imgId) domImg.id = data.imgId;
-	domImg.src = data.imgSrc;
-	domImg.setAttribute('class', 'appCardPreview');
+    switch(props.type){
+        case 'catalogCard':
+            const domWrapper = document.createElement('div');
+            domWrapper.setAttribute('class', 'appCatalogCardWrapper');
 
-	const domTitle = document.createElement('div');
-	if(data.titleId) domTitle.id = data.titleId;
-	domTitle.innerHTML = data.title;
+            const domImg = document.createElement('img');
+            if(props.imgId) domImg.id = props.imgId;
+            domImg.src = props.imgSrc;
+            domImg.setAttribute('class', 'appCatalogCardPreview');
 
-	const domPrice = document.createElement('div');
-	if(data.priceId) domPrice.id = data.priceId;
-	domPrice.innerHTML = data.price;
-	domPrice.innerHTML += ' р.';
+            const domTitle = document.createElement('div');
+            if(props.titleId) domTitle.id = props.titleId;
+            domTitle.innerHTML = props.title;
 
-	const domBut = document.createElement('button');
-	if(data.butId) domBut.id = data.butId;
-	domBut.innerHTML = 'Оставить заявку';
-	domBut.addEventListener('click', function(){
-		data.callbacks.showContact();
-	});
+            const domPrice = document.createElement('div');
+            if(props.priceId) domPrice.id = props.priceId;
+            domPrice.innerHTML = props.price;
+            domPrice.innerHTML += ' р.';
 
-	domWrapper.appendChild(domImg);
-	domWrapper.appendChild(domTitle);
-	domWrapper.appendChild(domPrice);
-	domWrapper.appendChild(domBut);
-	domSelf.appendChild(domWrapper);
+            const domBut = document.createElement('button');
+            domBut.innerHTML = 'Оставить заявку';
+            domBut.addEventListener('click', function(){
+                props.callbacks.showContact();
+            });
 
-	return new Component({
-		id: props.id,
-		domParent: props.domParent,
-		domSelf: domSelf,
-	});
+            domWrapper.appendChild(domImg);
+            domWrapper.appendChild(domTitle);
+            domWrapper.appendChild(domPrice);
+            domSelf.appendChild(domWrapper);
+            const but = new Component({
+                id: props.butId,
+                domParent: domWrapper,
+                domSelf: domBut,
+            });
+            break;
+        case 'sliderCard':
+            props.titles.forEach(function(t, i){
+                const title = new Component({
+                    id: props.id,
+                    domParent: domSelf,
+                    domSelf: document.createElement('div'),
+                });
+                title.domSelf.innerHTML = t.text
+                title.domSelf.setAttribute('class', t.classes)
+            })
+            const card = new Component({
+                id: props.id,
+                domParent: props.domParent,
+                domSelf: domSelf,
+            });
+            //card.title = props.title
+            //card.domSelf.innerHTML = card.title
+            return card
+            break;
+        default:
+            break;
+    }
+
+    return new Component({
+        id: props.id,
+        domParent: props.domParent,
+        domSelf: domSelf,
+    });
 }
