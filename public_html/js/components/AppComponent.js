@@ -46,6 +46,7 @@ function createBannerComponent(domParent, config, server){
 			h1Title: config.h1Title,
 			h2Title: config.h2Title, 
 			buts: config.buts,
+			links: config.links,
 			pic: config.pic, 
 		}
 	);

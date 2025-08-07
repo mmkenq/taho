@@ -4,6 +4,9 @@ class TGsender {
 	function __construct($config_tg){
         $this->token = $config_tg["token"];
         $this->chat_id = $config_tg["chat_id"];
+        $this->dm_us_thread = $config_tg["dm_us_thread"];
+        $this->gnns_act_thread = $config_tg["gnns_act_thread"];
+        $this->payments_thread = $config_tg["payments_thread"];
 
         #try {
         #    $this->db = new PDO(
@@ -35,12 +38,13 @@ class TGsender {
 #        }
 #    }
 
-	private function sendNotif($msg){
+	private function sendNotif($msg, $thread_id){
         $url = "https://api.telegram.org/bot{$this->token}/sendMessage";
 
         // Параметры запроса
         $postFields = [
             'chat_id' => $this->chat_id,
+            'message_thread_id' => $thread_id,
             'text' => $msg,
             'parse_mode' => 'HTML',
         ];
@@ -74,20 +78,52 @@ class TGsender {
         return 'ERR: Uknown';
 	}
 
-    public function sendNotifGNSSAct($params){
-        $msg = 'VIN: <code>' . $_POST['vin'] . "</code>\n" . 
-			'Email: ' . $_POST['email'] . '\n' . 
-			'Согласен с политикой конфиденциальности: ' . $_POST['policy'];
+    public function sendNotifDmUs($params){
+        $msg = 
+            "Уведомление: Просят связаться\n\n" .
+            "Имя:\n<code>" . $_POST['name'] . "</code>\n" . 
+			"Телефон:\n" . $_POST['phone'] . "\n" . 
+			"Email:\n" . $_POST['email'] . "\n" . 
+			"Сообщение:\n" . $_POST['message'] . "\n" . 
+			"Согласен с политикой конфиденциальности:\n" . $_POST['policy'];
 
 		// use wordwrap() if lines are longer than 70 characters
 		$msg = wordwrap($msg,70);
-        return $this->sendNotif($msg);
+        return $this->sendNotif($msg, $this->dm_us_thread);
 	}
-    public function sendNotifDmUs($params){
-        return $this->sendNotif($params);
+    public function sendNotifGNSSAct($params){
+        $msg = 
+            "Уведомление: Заявка на активацию глонасс\n\n" .
+            "ФИО: \n<code>" . $_POST['name'] . "</code>\n" . 
+            "Адрес регистрации: \n<code>" . $_POST['regaddress'] . "</code>\n" . 
+            "Серия паспорта: \n<code>" . $_POST['passport_s'] . "</code>\n" . 
+            "Номер паспорта: \n<code>" . $_POST['passport_n'] . "</code>\n" . 
+            "Выдан: \n<code>" . $_POST['issued'] . "</code>\n" . 
+            "Дата выдачи: \n<code>" . $_POST['date'] . "</code>\n" . 
+			"Телефон:\n" . $_POST['phone'] . "\n" . 
+			"Email:\n" . $_POST['email'] . "\n" . 
+            "ID абонентского терминала: \n<code>" . $_POST['term_id'] . "</code>\n" . 
+            "Марка, модель ТС: \n<code>" . $_POST['model'] . "</code>\n" . 
+            "Госномер ТС: \n<code>" . $_POST['car_id'] . "</code>\n" . 
+			'Согласен с политикой конфиденциальности: ' . $_POST['policy'];
+
+		// use wordwrap() if lines are longer than 70 characters
+		$msg = wordwrap($msg,100);
+        return $this->sendNotif($msg, $this->gnns_act_thread);
 	}
     public function sendNotifPayment($params){
-        return $this->sendNotif($params);
+        $msg = 
+            "Уведомление: перешли по ссылке тинькофф\n\n" .
+            "ФИО плательщика: \n<code>" . $_POST['name'] . "</code>\n" . 
+			"Сумма:\n<b>" . $_POST['orderamount'] . "</b> руб.\n" . 
+			"Описание:\n" . $_POST['description'] . "\n" . 
+			"Email:\n" . $_POST['paymentemail'] . "\n" . 
+			"Контактный телефон:\n" . $_POST['payphone'] . "\n" . 
+			"Согласен с политикой конфиденциальности:\n" . $_POST['policy'];
+
+		// use wordwrap() if lines are longer than 70 characters
+		$msg = wordwrap($msg,100);
+        return $this->sendNotif($msg, $this->payments_thread);
 	}
 }
 ?>

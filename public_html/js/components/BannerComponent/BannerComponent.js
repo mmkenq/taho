@@ -29,11 +29,18 @@ export default function BannerComponent(props, data){
 	domH2Title.innerHTML =  data.h2Title;
 	domTitlesGroup.appendChild(domH2Title);
 
+	const domButsWrapper = document.createElement('div');
+	const butsWrapper = new Component({
+		id: null,
+		domParent: domSelf,
+		domSelf: domButsWrapper
+	});
+
 	data.buts.forEach(function(el,i){
 		const but = new ButtonComponent(
 			{
 				id: el.id,
-				domParent: domSelf,
+				domParent: domButsWrapper,
 				server: props.server,
 			},
 			{
@@ -43,6 +50,30 @@ export default function BannerComponent(props, data){
 				ajax: el.ajax || null
 			}
 		);
+	});
+
+	const domLinksWrapper = document.createElement('div');
+	const linksWrapper = new Component({
+		id: null,
+		domParent: domSelf,
+		domSelf: domLinksWrapper
+	});
+	data.links.forEach(function(link,i){
+        //const domIcon = document.createElement('div');
+        //domIcon.href = link.href
+        //domIcon.textContent = link.title
+
+        const domLink = document.createElement('a');
+        domLink.href = link.href
+        domLink.innerHTML = link.innerHTML
+		const but = new Component(
+			{
+				id: link.id,
+				domParent: domLinksWrapper,
+				domSelf: domLink,
+			}
+		);
+        console.log(but)
 	});
 
 	let bg = new Image();

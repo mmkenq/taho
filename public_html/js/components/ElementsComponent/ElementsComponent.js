@@ -18,7 +18,8 @@ export default function ElementsComponent(props, data){
 	* } 
 	/* data: {} */
 	const domSelf = document.createElement('div');
-	domSelf.setAttribute('class', 'appElement');
+//	domSelf.setAttribute('class', 'appElement');
+//    console.log(data.classes)
 
 	data.titles.forEach(function(title, i){
 		const t = document.createElement('div');
@@ -28,7 +29,7 @@ export default function ElementsComponent(props, data){
 		});
 
 		return new Component({
-			id: '',
+            id: title.id ? title.id : '',
 			domParent: domSelf,
 			domSelf: t
 		});

@@ -8,7 +8,7 @@ export default function ConfigHandler(props) {
     this.domApp = document.createElement('div');
 
     this.server = new ServerHandler({
-        serverURL: 'http://localhost:3000',
+        serverURL: 'http://192.168.0.100:3000',
     });
 
     this.components = {
@@ -52,6 +52,22 @@ export default function ConfigHandler(props) {
                           req: 'glonass',
                       },
                   ],
+                  links: [
+                      {
+                          id: 'TODO_link_tg',
+                          title: 'Мы в Telegram',
+                          href: 'https://t.me/tahografexp',
+                          innerHTML:
+                              '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48" width="24px" height="24px"><circle style="fill:#29B6F6;" cx="24" cy="24" r="20"/><path style="fill:#FFFFFF;" d="M33.95,15l-3.746,19.126c0,0-0.161,0.874-1.245,0.874c-0.576,0-0.873-0.274-0.873-0.274l-8.114-6.733  l-3.97-2.001l-5.095-1.355c0,0-0.907-0.262-0.907-1.012c0-0.625,0.933-0.923,0.933-0.923l21.316-8.468  c-0.001-0.001,0.651-0.235,1.126-0.234C33.667,14,34,14.125,34,14.5C34,14.75,33.95,15,33.95,15z"/><path style="fill:#B0BEC5;" d="M23,30.505l-3.426,3.374c0,0-0.149,0.115-0.348,0.12c-0.069,0.002-0.143-0.009-0.219-0.043  l0.964-5.965L23,30.505z"/><path style="fill:#CFD8DC;" d="M29.897,18.196c-0.169-0.22-0.481-0.26-0.701-0.093L16,26c0,0,2.106,5.892,2.427,6.912  c0.322,1.021,0.58,1.045,0.58,1.045l0.964-5.965l9.832-9.096C30.023,18.729,30.064,18.416,29.897,18.196z"/></svg><span class="link-text">Мы в Telegram</span>',
+                      },
+                      {
+                          id: 'TODO_link_vk',
+                          title: 'Мы во Вконтакте',
+                          href: 'https://vk.com/tahografexp',
+                          innerHTML:
+                              '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48" width="24px" height="24px"><path style="fill:#1976D2;" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5  V37z"/><path style="fill:#FFFFFF;" d="M35.937,18.041c0.046-0.151,0.068-0.291,0.062-0.416C35.984,17.263,35.735,17,35.149,17h-2.618  c-0.661,0-0.966,0.4-1.144,0.801c0,0-1.632,3.359-3.513,5.574c-0.61,0.641-0.92,0.625-1.25,0.625C26.447,24,26,23.786,26,23.199  v-5.185C26,17.32,25.827,17,25.268,17h-4.649C20.212,17,20,17.32,20,17.641c0,0.667,0.898,0.827,1,2.696v3.623  C21,24.84,20.847,25,20.517,25c-0.89,0-2.642-3-3.815-6.932C16.448,17.294,16.194,17,15.533,17h-2.643  C12.127,17,12,17.374,12,17.774c0,0.721,0.6,4.619,3.875,9.101C18.25,30.125,21.379,32,24.149,32c1.678,0,1.85-0.427,1.85-1.094  v-2.972C26,27.133,26.183,27,26.717,27c0.381,0,1.158,0.25,2.658,2c1.73,2.018,2.044,3,3.036,3h2.618  c0.608,0,0.957-0.255,0.971-0.75c0.003-0.126-0.015-0.267-0.056-0.424c-0.194-0.576-1.084-1.984-2.194-3.326  c-0.615-0.743-1.222-1.479-1.501-1.879C32.062,25.36,31.991,25.176,32,25c0.009-0.185,0.105-0.361,0.249-0.607  C32.223,24.393,35.607,19.642,35.937,18.041z"/></svg><span class="link-text">Мы во Вконтакте</span>',
+                      },
+                  ],
                   // 1920x1080
                   pic: '/assets/truck-pic.jpg',
               }
@@ -65,7 +81,7 @@ export default function ConfigHandler(props) {
                           titles: [
                               {
                                   text: 'Услуги',
-                                  classes: ['elTitle'],
+                                  classes: ['elTitle', 'centrElement'],
                               },
                           ],
                           // TODO: ListItemsComponent
@@ -99,7 +115,7 @@ export default function ConfigHandler(props) {
                                                   data: '<div><b>Основные функции</b></div>- Автоматический учёт загруженности автопарка<br>- Повышение качества использования автопарка<br>- Контроль пробега<br>- Контроль расхода топлива<br>- Контроль качества вождения<br>- Контроль соблюдения ПДД<br>- Контроль и защита грузов<br>- Автоматизация бизнес-процессов транспортных компаний<br>- Тепловые карты событий<br>- Удаленное управление транспортом<br>- Противоугонная система<br>- Фото и видео наблюдение в режиме реального времени<br>- Модульная аналитика<br>- Автоматизация планирования доставки<br>- План-фактный анализ<br>',
                                               },
                                           ],
-                                          classes: [],
+                                          classes: ['centrElement'],
                                           components: [
                                               {
                                                   id: 'TODO',
@@ -176,7 +192,7 @@ export default function ConfigHandler(props) {
 												',
                                               },
                                           ],
-                                          classes: [],
+                                          classes: ['centrElement'],
                                           components: [
                                               {
                                                   id: 'TODO',
@@ -242,31 +258,52 @@ export default function ConfigHandler(props) {
                           titles: [
                               {
                                   text: 'Контакты',
-                                  classes: ['elTitle'],
+                                  classes: ['elTitle', 'centrElement'],
                               },
                           ],
-                          texts: [
-                              {
-                                  id: 'contacts1Element',
-                                  class: 'contactElementText',
-                                  data: 'Россия, Удмуртская республика, г. Ижевск, ул. Ленина, д. 146, офис 104\
-							<div style="position:relative;overflow:hidden;height: 250px;"><a href="https://yandex.com/maps/org/takhograf_ekspert/218381161146/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Тахограф Эксперт</a><a href="https://yandex.com/maps/44/izhevsk/category/auto_accessories/184105286/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Auto accessories in Izhevsk</a><iframe src="https://yandex.com/map-widget/v1/?ll=53.323761%2C56.813366&mode=search&oid=218381161146&ol=biz&utm_source=share&z=11.47" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>',
-                              },
-                              /*{
-							id: 'contacts2Element',
-							class: 'contactElementText',
-							data:'Россия, Респ. Татарстан, Набережные Челны, Мензелинский тракт, 38/1\
-							<div style="position:relative;overflow:hidden;"><a href="https://yandex.com/maps?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Yandex Maps</a><a href="https://yandex.com/maps/236/naberezhnie-chelny/house/menzelinskiy_trakt_38_1/YUsYcgdnTEQBQFtvfXtxcXpkbQ==/?ll=52.611688%2C55.686617&utm_medium=mapframe&utm_source=maps&z=10.57" style="color:#eee;font-size:12px;position:absolute;top:14px;">Yandex Maps</a><iframe src="https://yandex.com/map-widget/v1/?ll=52.611688%2C55.686617&mode=whatshere&whatshere%5Bpoint%5D=52.407516%2C55.700679&whatshere%5Bzoom%5D=17&z=10.57" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>'
-						},*/
-                              {
-                                  id: 'contacts2Element',
-                                  class: 'contactElementText',
-                                  data: 'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6\
-							<div style="position:relative;overflow:hidden;height: 250px"><a href="https://yandex.com/maps/20243/chaikovsky/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Chaikovsky</a><a href="https://yandex.com/maps/20243/chaikovsky/house/sovetskaya_ulitsa_1_12/YU0YdwVjSUQGQFtsfXt2d3phZQ==/?ll=54.150532%2C56.770842&utm_medium=mapframe&utm_source=maps&z=13.73" style="color:#eee;font-size:12px;position:absolute;top:14px;">Yandex Maps</a><iframe src="https://yandex.com/map-widget/v1/?ll=54.150532%2C56.770842&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0MTM5NzM5Mzg2EmLQoNC-0YHRgdC40Y8sINCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksINCn0LDQudC60L7QstGB0LrQuNC5LCDQodC-0LLQtdGC0YHQutCw0Y8g0YPQu9C40YbQsCwgMS8xMiIKDfd9WEIVQxtjQg%2C%2C&z=13.73" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>',
-                              },
-                          ],
+                          texts: [],
                           classes: ['contactsElement'],
-                          components: [],
+                          components: [
+                              {
+                                  id: 'TODO_mapsComponent',
+                                  data: new ElementsComponent(
+                                      {
+                                          id: 'mapsElement',
+                                          domParent: this.domApp,
+                                          domSelf:
+                                              document.createElement('div'),
+                                      },
+                                      {
+                                          titles: [
+                                              {
+                                                  text: 'Россия, Удмуртская республика, г. Ижевск, ул. Ленина, д. 146, офис 104',
+                                                  classes: ['elTitle','elSubTitle1'],
+                                                  id:'contacts1Title',
+                                              },
+                                              {
+                                                  text: 'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6',
+                                                  classes: ['elTitle','elSubTitle1'],
+                                                  id:'contacts2Title',
+                                              },
+                                          ],
+                                          texts: [
+                                              {
+                                                  id: 'contacts1Element',
+                                                  class: '',
+                                                  data: '<div style="position:relative;overflow:hidden;height: 250px;"><a href="https://yandex.com/maps/org/takhograf_ekspert/218381161146/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Тахограф Эксперт</a><a href="https://yandex.com/maps/44/izhevsk/category/auto_accessories/184105286/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Auto accessories in Izhevsk</a><iframe src="https://yandex.com/map-widget/v1/?ll=53.323761%2C56.813366&mode=search&oid=218381161146&ol=biz&utm_source=share&z=11.47" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>',
+                                              },
+                                              {
+                                                  id: 'contacts2Element',
+                                                  class: '',
+                                                  data: '<div style="position:relative;overflow:hidden;height: 250px"><a href="https://yandex.com/maps/20243/chaikovsky/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Chaikovsky</a><a href="https://yandex.com/maps/20243/chaikovsky/house/sovetskaya_ulitsa_1_12/YU0YdwVjSUQGQFtsfXt2d3phZQ==/?ll=54.150532%2C56.770842&utm_medium=mapframe&utm_source=maps&z=13.73" style="color:#eee;font-size:12px;position:absolute;top:14px;">Yandex Maps</a><iframe src="https://yandex.com/map-widget/v1/?ll=54.150532%2C56.770842&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0MTM5NzM5Mzg2EmLQoNC-0YHRgdC40Y8sINCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksINCn0LDQudC60L7QstGB0LrQuNC5LCDQodC-0LLQtdGC0YHQutCw0Y8g0YPQu9C40YbQsCwgMS8xMiIKDfd9WEIVQxtjQg%2C%2C&z=13.73" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>',
+                                              },
+                                          ],
+                                          classes: ['centrElement'],
+                                          components: [],
+                                      },
+                                  ), // new ElementsComponent
+                              },
+                          ],
                       },
                   ], // elementsData
               }
@@ -464,16 +501,66 @@ export default function ConfigHandler(props) {
                                   attrs: [{ for: 'policyCheck' }],
                               },
                           ],
+                          method: 'sendNotifDmUs',
                       },
                       {
                           id: 'tab-activationReq',
                           title: 'Оставить заявку на активацию ГЛОНАСС',
                           inputs: [
-                              { type: 'text', name: 'vin', placeholder: 'VIN' },
+                              {
+                                  type: 'text',
+                                  name: 'name',
+                                  placeholder: 'ФИО',
+                              },
+                              {
+                                  type: 'text',
+                                  name: 'regaddress',
+                                  placeholder: 'Адрес регистрации',
+                              },
+                              {
+                                  type: 'text',
+                                  name: 'passport_s',
+                                  placeholder: 'Серия паспорта',
+                              },
+                              {
+                                  type: 'text',
+                                  name: 'passport_n',
+                                  placeholder: 'Номер паспорта',
+                              },
+                              {
+                                  type: 'text',
+                                  name: 'issued',
+                                  placeholder: 'Выдан',
+                              },
+                              {
+                                  type: 'text',
+                                  name: 'date',
+                                  placeholder: 'Дата выдачи',
+                              },
+                              {
+                                  type: 'text',
+                                  name: 'phone',
+                                  placeholder: 'Телефон',
+                              },
                               {
                                   type: 'text',
                                   name: 'email',
                                   placeholder: 'Email',
+                              },
+                              {
+                                  type: 'text',
+                                  name: 'term_id',
+                                  placeholder: 'ID абонентского терминала',
+                              },
+                              {
+                                  type: 'text',
+                                  name: 'model',
+                                  placeholder: 'Марка, модель ТС',
+                              },
+                              {
+                                  type: 'text',
+                                  name: 'car_id',
+                                  placeholder: 'Госномер ТС',
                               },
                               {
                                   type: 'checkbox',
@@ -490,6 +577,7 @@ export default function ConfigHandler(props) {
                                   attrs: [{ for: 'policyCheck' }],
                               },
                           ],
+                          method: 'sendNotifGNSSAct',
                       },
                       {
                           id: 'tab-paymentReq',
@@ -511,7 +599,7 @@ export default function ConfigHandler(props) {
                                   placeholder: 'Описание заказа',
                               },
                               {
-                                  type: 'text',
+                                  type: 'email',
                                   name: 'paymentemail',
                                   placeholder: 'E-mail',
                               },
@@ -535,6 +623,7 @@ export default function ConfigHandler(props) {
                                   attrs: [{ for: 'policyCheck' }],
                               },
                           ],
+                          method: 'sendNotifPayment',
                       },
                   ],
               }

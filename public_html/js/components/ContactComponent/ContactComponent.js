@@ -71,6 +71,7 @@ export default function ContactComponent(props) {
                 switch(i.type){
                     case 'text':
                     case 'number':
+                    case 'tel':
                     case 'email':
                         data += '&' + i.name + '=' + i.domSelf.value
                         break;
@@ -82,8 +83,7 @@ export default function ContactComponent(props) {
                 }
             })
             props.server.send({
-                url:
-                    'sendNotifGNSSAct',
+                url: t.method,
                 data: data,
                 method: 'POST',
 
