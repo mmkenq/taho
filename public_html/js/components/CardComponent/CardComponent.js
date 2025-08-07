@@ -48,10 +48,24 @@ export default function CardComponent(props){
             });
             break;
         case 'sliderCard':
+            const img = new Component({
+                id: props.id,
+                domParent: domSelf,
+                domSelf: document.createElement('img'),
+            });
+            img.domSelf.setAttribute('class', 'appSliderCardPreview')
+            img.domSelf.setAttribute('alt', '*изображение*')
+            img.domSelf.src = props.icon
+
+            const titlesWrapper = new Component({
+                id: props.id + 'titlesWrapper',
+                domParent: domSelf,
+                domSelf: document.createElement('div'),
+            });
             props.titles.forEach(function(t, i){
                 const title = new Component({
-                    id: props.id,
-                    domParent: domSelf,
+                    id: props.id + '-title-' + i,
+                    domParent: titlesWrapper.domSelf,
                     domSelf: document.createElement('div'),
                 });
                 title.domSelf.innerHTML = t.text

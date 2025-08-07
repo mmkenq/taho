@@ -2,6 +2,7 @@ import ServerHandler from '../Server/ServerHandler.js';
 import ElementsComponent from '../../components/ElementsComponent/ElementsComponent.js';
 import CardComponent from '../../components/CardComponent/CardComponent.js';
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent.js';
+import SliderComponent from '../../components/SliderComponent/SliderComponent.js';
 
 export default function ConfigHandler(props) {
     /* props: {server:{serverURL}, RENDER, DARK_THEME} */
@@ -119,36 +120,31 @@ export default function ConfigHandler(props) {
                                           components: [
                                               {
                                                   id: 'TODO',
-                                                  data: new CardComponent(
-                                                      {
-                                                          id: 'glonassElementCard',
-                                                          domParent:
-                                                              this.domApp,
-                                                      },
-                                                      {
-                                                          imgId: 'glonassElementCardImg',
-                                                          imgSrc: 'assets/glonass.png',
-                                                          titleId:
-                                                              'glonassElementCardTitle',
-                                                          title: 'Система мониторинга СКАУТ',
-                                                          priceId:
-                                                              'glonassElementCardPrice',
-                                                          price: 'Цена по запросу',
-                                                          butId: 'glonassElementCardBut',
-                                                          callbacks: {
-                                                              hideContact:
-                                                                  () => {
-                                                                      this.components.contact.tabs[0].hide();
-                                                                      this.components.contact.data.hide();
-                                                                  },
-                                                              showContact:
-                                                                  () => {
-                                                                      this.components.contact.data.show();
-                                                                      this.components.contact.tabs[0].show();
-                                                                  },
+                                                  data: new CardComponent({
+                                                      id: 'glonassElementCard',
+                                                      type: 'catalogCard',
+                                                      classes: 'appCatalogCard',
+                                                      domParent: this.domApp,
+                                                      imgId: 'glonassElementCardImg',
+                                                      imgSrc: 'assets/glonass.png',
+                                                      titleId:
+                                                          'glonassElementCardTitle',
+                                                      title: 'Система мониторинга СКАУТ',
+                                                      priceId:
+                                                          'glonassElementCardPrice',
+                                                      price: 'Цена по запросу',
+                                                      butId: 'glonassElementCardBut',
+                                                      callbacks: {
+                                                          hideContact: () => {
+                                                              this.components.contact.tabs[0].hide();
+                                                              this.components.contact.data.hide();
+                                                          },
+                                                          showContact: () => {
+                                                              this.components.contact.data.show();
+                                                              this.components.contact.tabs[0].show();
                                                           },
                                                       },
-                                                  ),
+                                                  }),
                                               },
                                           ],
                                       },
@@ -196,36 +192,31 @@ export default function ConfigHandler(props) {
                                           components: [
                                               {
                                                   id: 'TODO',
-                                                  data: new CardComponent(
-                                                      {
-                                                          id: 'videoElementCard',
-                                                          domParent:
-                                                              this.domApp,
-                                                      },
-                                                      {
-                                                          imgId: 'videoElementCardImg',
-                                                          imgSrc: 'assets/glonass.png',
-                                                          titleId:
-                                                              'videoElementCardTitle',
-                                                          title: 'Система видеонаблюдения',
-                                                          priceId:
-                                                              'videoElementCardPrice',
-                                                          price: 'Цена по запросу',
-                                                          butId: 'videoElementCardBut',
-                                                          callbacks: {
-                                                              hideContact:
-                                                                  () => {
-                                                                      this.components.contact.tabs[0].hide();
-                                                                      this.components.contact.data.hide();
-                                                                  },
-                                                              showContact:
-                                                                  () => {
-                                                                      this.components.contact.data.show();
-                                                                      this.components.contact.tabs[0].show();
-                                                                  },
+                                                  data: new CardComponent({
+                                                      id: 'videoElementCard',
+                                                      type: 'catalogCard',
+                                                      classes: 'appCatalogCard',
+                                                      domParent: this.domApp,
+                                                      imgId: 'videoElementCardImg',
+                                                      imgSrc: 'assets/glonass.png',
+                                                      titleId:
+                                                          'videoElementCardTitle',
+                                                      title: 'Система видеонаблюдения',
+                                                      priceId:
+                                                          'videoElementCardPrice',
+                                                      price: 'Цена по запросу',
+                                                      butId: 'videoElementCardBut',
+                                                      callbacks: {
+                                                          hideContact: () => {
+                                                              this.components.contact.tabs[0].hide();
+                                                              this.components.contact.data.hide();
+                                                          },
+                                                          showContact: () => {
+                                                              this.components.contact.data.show();
+                                                              this.components.contact.tabs[0].show();
                                                           },
                                                       },
-                                                  ),
+                                                  }),
                                               },
                                           ],
                                       },
@@ -251,7 +242,81 @@ export default function ConfigHandler(props) {
                               },
                           ],
                           classes: [],
-                          components: [],
+                          components: [
+                              {
+                                  id: 'TODO_slider',
+                                  data: new SliderComponent({
+                                      id: 'TODO_sliderComponent',
+                                      domParent: this.domApp,
+                                      cards: [
+                                          new CardComponent({
+                                              id: 'sliderCard1',
+                                              type: 'sliderCard',
+                                              classes: 'appSliderCard',
+                                              icon: '/assets/exprerience.png',
+                                              titles: [
+                                                  {
+                                                      text: 'Более 5 лет',
+                                                      classes: ['sliderTitle'],
+                                                  },
+                                                  {
+                                                      text: 'работаем на рынке',
+                                                      classes: ['sliderTitle sliderSubTitle'],
+                                                  },
+                                              ],
+                                          }),
+                                          new CardComponent({
+                                              id: 'sliderCard2',
+                                              type: 'sliderCard',
+                                              classes: 'appSliderCard',
+                                              icon: '/assets/warranty.png',
+                                              titles: [
+                                                  {
+                                                      text: 'Обслуживание',
+                                                      classes: ['sliderTitle'],
+                                                  },
+                                                  {
+                                                      text: 'гарантийное и постгарантийное',
+                                                      classes: ['sliderTitle sliderSubTitle'],
+                                                  },
+                                              ],
+                                          }),
+                                          new CardComponent({
+                                              id: 'sliderCard3',
+                                              type: 'sliderCard',
+                                              classes: 'appSliderCard',
+                                              icon: '/assets/clients.png',
+                                              titles: [
+                                                  {
+                                                      text: 'Более 400',
+                                                      classes: ['sliderTitle'],
+                                                  },
+                                                  {
+                                                      text: 'довольных клиентов',
+                                                      classes: ['sliderTitle sliderSubTitle'],
+                                                  },
+                                              ],
+                                          }),
+                                          new CardComponent({
+                                              id: 'sliderCard4',
+                                              type: 'sliderCard',
+                                              classes: 'appSliderCard',
+                                              icon: '/assets/visit.png',
+                                              titles: [
+                                                  {
+                                                      text: '24/7',
+                                                      classes: ['sliderTitle'],
+                                                  },
+                                                  {
+                                                      text: 'выезд специалиста',
+                                                      classes: ['sliderTitle sliderSubTitle'],
+                                                  },
+                                              ],
+                                          }),
+                                      ],
+                                  }),
+                              },
+                          ],
                       },
                       {
                           id: 'contacts',
@@ -277,13 +342,19 @@ export default function ConfigHandler(props) {
                                           titles: [
                                               {
                                                   text: 'Россия, Удмуртская республика, г. Ижевск, ул. Ленина, д. 146, офис 104',
-                                                  classes: ['elTitle','elSubTitle1'],
-                                                  id:'contacts1Title',
+                                                  classes: [
+                                                      'elTitle',
+                                                      'elSubTitle1',
+                                                  ],
+                                                  id: 'contacts1Title',
                                               },
                                               {
                                                   text: 'Россия, Пермский край, г. Чайковский, ул. Советская, д. 1/12, корпус 6',
-                                                  classes: ['elTitle','elSubTitle1'],
-                                                  id:'contacts2Title',
+                                                  classes: [
+                                                      'elTitle',
+                                                      'elSubTitle1',
+                                                  ],
+                                                  id: 'contacts2Title',
                                               },
                                           ],
                                           texts: [
@@ -321,7 +392,7 @@ export default function ConfigHandler(props) {
                               },
                           ],
                           texts: [],
-                          classes: [],
+                          classes: ['centrElement'],
                           components: [
                               {
                                   id: 'TODO_updCatalogComponent',
@@ -411,7 +482,7 @@ export default function ConfigHandler(props) {
                                   data: 'req getCatalogCameras()',
                               },
                           ],
-                          classes: [],
+                          classes: ['centrElement'],
                           components: [],
                       }, // ElementsData 2
                   ],
@@ -641,7 +712,7 @@ export default function ConfigHandler(props) {
                               },
                           ],
                           texts: [],
-                          classes: [],
+                          classes: ['centrElement'],
                           components: [
                               {
                                   id: 'TODO_sendGNSSActivationReqComponent',
@@ -743,7 +814,7 @@ export default function ConfigHandler(props) {
                               },
                           ],
                           texts: [],
-                          classes: [],
+                          classes: ['centrElement'],
                           components: [
                               {
                                   id: 'TODO_sendGNSSActivationReqComponent',

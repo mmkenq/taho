@@ -100,24 +100,108 @@ body {
 	}
 }
 
-/* Catalog Main: Tablets */
-@media only screen and (min-width: 640px) {
-	.appCatalogMain {
-		grid-template-columns: 1fr 1fr;
-	}
-}
 
 /* Catalog Main: Desktop */
 @media only screen and (min-width: 981px) {
 	.appCatalogMain {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
+    .appSliderCard {
+        flex-direction: row;
+    }
 }
 
-.appCardPreview {
+.appCatalogCardWrapper {
+	/*width: 80%;
+	margin-left: auto;
+	margin-right: auto;*/
+	border-width: 2px;
+	border-color: black;
+	border-style: solid;
+}
+
+.appCatalogCardPreview {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.appSlider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.appSliderCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: wheat;
+    border-radius: 12px;
+    width: 100%;
+    overflow: scroll;
+    margin: 10px;
+    text-align: center;
+}
+
+.appSliderCardPreview {
+    width: 64px;
+    height: 64px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.sliderTitle {
+    margin: 10px;
+	font-family: 'megabold';
+	font-size: 30px;
+	color: #151515;
+}
+
+.sliderSubTitle {
+	font-size: 20px;	
+	color: #404040;
+}
+
+/* Slider: Tablets */
+@media only screen and (min-width: 640px) {
+	.appCatalogMain {
+		grid-template-columns: 1fr 1fr;
+	}
+	.appSlider {
+		flex-direction: row;
+        align-items: unset;
+	}
+    .appSliderCard {
+        width: 25%;
+    }
+    .sliderTitle {
+        font-size: 11px;
+    }
+    .sliderSubTitle {
+        font-size: 9px;	
+    }
+/*    .appSliderCardPreview {
+        margin-top: 0px;
+    }
+    */
+}
+
+/* Slider: Desktop */
+@media only screen and (min-width: 981px) {
+/*    .appSliderCard {
+        flex-direction: row;
+    }
+*/
+    .sliderTitle {
+        font-size: 16px;
+    }
+    .sliderSubTitle {
+        font-size: 13px;	
+    }
 }
 
 #glonassElement, #videoElement {
@@ -149,10 +233,6 @@ body {
 	}
 }
 
-/*#glonassElementTitles {
-	grid-area: 1/1/2/4;
-}
-*/
 #glonassElementCardImg, #videoElementCardImg {
 	width: 80%;
 }
@@ -167,14 +247,6 @@ body {
 	margin-top: 20px;
 }
 
-.appCardWrapper {
-	/*width: 80%;
-	margin-left: auto;
-	margin-right: auto;*/
-	border-width: 2px;
-	border-color: black;
-	border-style: solid;
-}
 
 #mapsElement {
 	display: grid;
@@ -196,7 +268,7 @@ body {
     grid-area: 4/1;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
     #mapsElement {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 0.1fr 1fr;
