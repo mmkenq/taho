@@ -13,6 +13,42 @@ body {
 	min-height: 80px;
 }
 
+.appFooter {
+	background-color: black;
+}
+
+.appButton {
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #5083b9;
+    border-width: 0;
+    color: white;
+    border-radius: 50px;
+    font-size: 14px;
+    padding: 10px;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.noSelect {
+  -webkit-user-select: none; /* for Safari */
+  -moz-user-select: none;    /* for Firefox */
+  -ms-user-select: none;     /* for Internet Explorer/Edge */
+  user-select: none;         /* standard syntax */
+/*  -webkit-tap-highlight-color: transparent;*/
+}
+
+.appButton:hover {
+    background-color: #4474a6;
+}
+
+.appButton:active {
+    background-color: #5589bf;
+}
+
+.appCheckUsButton {
+    margin-left: 10%;
+} 
+
 #headerLogo {
 	margin-left: 5%;
 	margin-right: auto;
@@ -133,6 +169,7 @@ body {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 2%;
 }
 
 .appSliderCard {
@@ -307,9 +344,17 @@ body {
 	color: #151515;
 }
 
+.elTitleWhite {
+	color: white;
+}
+
 .elSubTitle1 {
 	font-size: 20px;	
 	color: #404040;
+}
+
+.elSubTitle1White {
+	color: white;
 }
 
 .appContact {
@@ -340,3 +385,11 @@ body {
 .hide {
 	display: none;
 }
+
+#el-about {
+    background-color: aliceblue;
+    background-image: url(https://tahografizh.ru/wp-content/uploads/2022/07/l3-lg_modland-1.jpg);
+    padding-top: 5%;
+    padding-bottom: 3%;
+}
+

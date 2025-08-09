@@ -5,14 +5,13 @@ import Component from '../Component.js';
 	console.log('init button component: DONE');
 })();
 
-export default function ButtonComponent(props, data){
+export default function ButtonComponent(props){
 	/* props: {id, domParent, server} */
-	/* data: {TODO} */
 
 	let domSelf;
 	let serverRes = null;
 
-	switch(data.type){
+	switch(props.type){
 		case 'uploadFile':
 			domSelf = document.createElement('div');
 
@@ -23,6 +22,8 @@ export default function ButtonComponent(props, data){
 
 			const send = document.createElement('button');
 			send.innerHTML = 'sendFile';
+            console.log(props)
+			if(props.classes) send.setAttribute('class', props.classes);
 			send.addEventListener('click', function(){
 				const formData = new FormData();
 				formData.append('fileNo0', pick.files[0]);
@@ -57,12 +58,12 @@ export default function ButtonComponent(props, data){
 		case 'getPage':
 			domSelf = document.createElement('button');
 			domSelf.setAttribute('class', 'appButton');
-			domSelf.innerHTML = data.text || 'TODO_BUT_TEXT';
-			domSelf.addEventListener('click', function(){
-				if(data.ajax)(
+			domSelf.innerHTML = props.text || 'TODO_BUT_TEXT';
+            if(props.ajax){
+                domSelf.addEventListener('click', function(){
 					props.server.send(
 						{
-							url: data.req,
+							url: props.req,
 							data: null,
 							method: 'GET',
 
@@ -74,31 +75,35 @@ export default function ButtonComponent(props, data){
 							}
 						}
 					)
-				 )
-				if(location.pathname != '/' + data.req){
-					location.href = location.origin + '/' + data.req;
+                })
+            }
+			domSelf.addEventListener('click', function(){
+				if(location.pathname != '/' + props.req){
+					location.href = location.origin + '/' + props.req;
 				}
 			});
 		break;
-		case 'callback':
+		case 'callback2':
 			domSelf = document.createElement('button');
-			domSelf.setAttribute('class', 'appButton');
-			domSelf.innerHTML = data.text || 'TODO_BUT_TEXT';
-			domSelf.addEventListener('click', function(){
-				if(data.ajax)(
-					props.server.send(
-						{
-							url: data.req,
-							data: null,
-							method: 'GET',
+			domSelf.innerHTML = props.text || 'TODO_BUT_TEXT';
+			if(props.classes) domSelf.setAttribute('class', props.classes);
+            if(props.ajax){
+                domSelf.addEventListener('click', function(){
+                        props.server.send(
+                            {
+                                url: props.req,
+                                data: null,
+                                method: 'GET',
 
-							resType: 'json',
-							resHandler: function(res){}
-						}
-					)
-				 )
-				data.callbacks.showContact();
-			});
+                                resType: 'json',
+                                resHandler: function(res){}
+                            }
+                        )
+                });
+            }
+            props.funcs.forEach(function(func, i){
+                domSelf.addEventListener('click', func)
+            })
 		break;
 		default: 
 			domSelf = document.createElement('button');

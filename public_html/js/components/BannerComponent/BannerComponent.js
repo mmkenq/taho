@@ -42,13 +42,11 @@ export default function BannerComponent(props, data){
 				id: el.id,
 				domParent: domButsWrapper,
 				server: props.server,
-			},
-			{
-				type: el.type || 'UNTYPED',
+				type: 'getPage',
 				text: el.title,
 				req: el.req,
 				ajax: el.ajax || null
-			}
+			},
 		);
 	});
 
@@ -58,17 +56,13 @@ export default function BannerComponent(props, data){
 		domParent: domSelf,
 		domSelf: domLinksWrapper
 	});
-	data.links.forEach(function(link,i){
-        //const domIcon = document.createElement('div');
-        //domIcon.href = link.href
-        //domIcon.textContent = link.title
-
+	data.links.forEach(function(l,li){
         const domLink = document.createElement('a');
-        domLink.href = link.href
-        domLink.innerHTML = link.innerHTML
-		const but = new Component(
+        domLink.href = l.href
+        domLink.innerHTML = l.innerHTML
+		const link = new Component(
 			{
-				id: link.id,
+				id: l.id,
 				domParent: domLinksWrapper,
 				domSelf: domLink,
 			}

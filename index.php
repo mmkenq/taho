@@ -39,24 +39,20 @@ function answer($data) {
 
 
 $path = pathinfo($_SERVER["SCRIPT_FILENAME"]);
-if ($path["extension"] == "js") {
-    header("Content-Type: text/javascript");
+$mime_types = [
+  "gif" => "image/gif",
+  "jpg" => "image/jpeg",
+  "jpeg" => "image/jpeg",
+  "png" => "image/png",
+  "js" => "text/javascript",
+  "css" => "text/css",
+  "ttf" => "font/ttf",
+];
+
+if (isset($mime_types[$path["extension"]])) {
+    header("Content-Type: " . $mime_types[$path["extension"]]);
     readfile($_SERVER["SCRIPT_FILENAME"]);
-}
-else if ($path["extension"] == "css") {
-    header("Content-Type: text/css");
-    readfile($_SERVER["SCRIPT_FILENAME"]);
-}
-else if ($path["extension"] == "gif" || 
-		$path["extension"] == "jpg" || 
-		$path["extension"] == "png")
-{
-    header("Content-Type: image/gif");
-    readfile($_SERVER["SCRIPT_FILENAME"]);
-}
-else if ($path["extension"] == "ttf") {
-    header("Content-Type: font/ttf");
-    readfile($_SERVER["SCRIPT_FILENAME"]);
+    exit;
 }
 else {
 	$page = $_SERVER["REQUEST_URI"];
@@ -64,72 +60,78 @@ else {
 		header("Content-Type: application/json");
 		echo(json_encode(answer(router($_GET))));
 	} 
-	else if (strlen($page) == 1){
-		echo '<!DOCTYPE html>';
-		echo '<script>
-			const config = {
-				componentsEnabled: {
-					headerEnabled: true,
-					bannerEnabled: true,
-					mainEnabled: true,
-					catalogEnabled: false,
-					adminEnabled: false,
-					contactEnabled: true,
-				}
-			}
-		</script>';
-		include_once './public_html/index.html';
-	}
-	else if (preg_match('/catalog/', $page)){
-		echo '<!DOCTYPE html>';
-		// TODO: call getCatalog()
-		echo '<script>
-			const config = {
-				componentsEnabled: {
-					headerEnabled: true,
-					bannerEnabled: true,
-					mainEnabled: false,
-					catalogEnabled: true,
-					adminEnabled: false,
-					contactEnabled: true,
-				}
-			}
-		</script>';
-		include_once './public_html/index.html';
-	}
-	else if (preg_match('/admin/', $page)){
-		echo '<!DOCTYPE html>';
-		echo '<script>
-			const config = {
-				componentsEnabled: {
-					headerEnabled: false,
-					bannerEnabled: false,
-					mainEnabled: false,
-					catalogEnabled: false,
-					adminEnabled: true,
-					contactEnabled: false,
-				}
-			}
-		</script>';
-		include_once './public_html/index.html';
-	}
-	else if (preg_match('/glonass/', $page)){
-		echo '<!DOCTYPE html>';
-		echo '<script>
-			const config = {
-				componentsEnabled: {
-					headerEnabled: true,
-					bannerEnabled: true,
-					mainEnabled: false,
-					catalogEnabled: false,
-					adminEnabled: false,
-					contactEnabled: true,
-					glonassEnabled: true,
-				}
-			}
-		</script>';
-		include_once './public_html/index.html';
-	}
+    else {
+        header('Content-Type: text/html; charset=UTF-8');
+        if (strlen($page) == 1){
+            echo '<!DOCTYPE html>';
+            echo '<script>
+                const config = {
+                    componentsEnabled: {
+                        headerEnabled: true,
+                        bannerEnabled: true,
+                        mainEnabled: true,
+                        catalogEnabled: false,
+                        adminEnabled: false,
+                        contactEnabled: true,
+                        footerEnabled: true,
+                    }
+                }
+            </script>';
+            include_once './public_html/index.html';
+        }
+        if (preg_match('/catalog/', $page)){
+            echo '<!DOCTYPE html>';
+            echo '<script>
+                const config = {
+                    componentsEnabled: {
+                        headerEnabled: true,
+                        bannerEnabled: true,
+                        mainEnabled: false,
+                        catalogEnabled: true,
+                        adminEnabled: false,
+                        contactEnabled: true,
+                        footerEnabled: true,
+                    }
+                }
+            </script>';
+            include_once './public_html/index.html';
+        }
+        if (preg_match('/admin/', $page)){
+            echo '<!DOCTYPE html>';
+            echo '<script>
+                const config = {
+                    componentsEnabled: {
+                        headerEnabled: false,
+                        bannerEnabled: false,
+                        mainEnabled: false,
+                        catalogEnabled: false,
+                        adminEnabled: true,
+                        contactEnabled: false,
+                        footerEnabled: true,
+                    }
+                }
+            </script>';
+            include_once './public_html/index.html';
+        }
+        if (preg_match('/glonass/', $page)){
+            echo '<!DOCTYPE html>';
+            echo '<script>
+                const config = {
+                    componentsEnabled: {
+                        headerEnabled: true,
+                        bannerEnabled: true,
+                        mainEnabled: false,
+                        catalogEnabled: false,
+                        adminEnabled: false,
+                        contactEnabled: true,
+                        glonassEnabled: true,
+                        footerEnabled: true,
+                    }
+                }
+            </script>';
+            include_once './public_html/index.html';
+        }
+    }
     //return FALSE;
 }
 

@@ -1,4 +1,5 @@
 import Component from '../Component.js';
+import ButtonComponent from '../ButtonComponent/ButtonComponent.js';
 
 (function initContactComponent() {
     // ...
@@ -17,10 +18,9 @@ export default function ContactComponent(props) {
         domSelf: domSelf,
     });
 
-//    contact.tabs = []
+    //    contact.tabs = []
 
-	props.config.tabsData.forEach(function(t,ti){
-
+    props.config.tabsData.forEach(function (t, ti) {
         const domTab = document.createElement('div');
         domTab.setAttribute('class', 'appContactWrapper');
         const tab = new Component({
@@ -28,29 +28,30 @@ export default function ContactComponent(props) {
             domParent: domSelf,
             domSelf: domTab,
         });
-        tab.hide()
+        tab.hide();
 
         const domIntro = document.createElement('div');
         domIntro.innerHTML = t.title;
-        const intro = new Component({ id: null,
+        const intro = new Component({
+            id: null,
             domParent: domTab,
             domSelf: domIntro,
         });
-        
-        t.inputs.forEach(function(i,ii){
+
+        t.inputs.forEach(function (i, ii) {
             const domInp = document.createElement('input');
             for (let attr in i) {
-                domInp.setAttribute(attr, i[attr])
+                domInp.setAttribute(attr, i[attr]);
             }
             const inp = new Component({
                 id: null,
                 domParent: domTab,
                 domSelf: domInp,
             });
-            i.domSelf = domInp
+            i.domSelf = domInp;
         });
 
-        t.labels.forEach(function(l,li){
+        t.labels.forEach(function (l, li) {
             const domLabel = document.createElement('label');
             domLabel.setAttribute('for', 'policyCheck');
             domLabel.innerHTML = l.innerHTML;
@@ -61,52 +62,6 @@ export default function ContactComponent(props) {
             });
         });
 
-        const domSendBut = document.createElement('button');
-        domSendBut.innerHTML = 'Отправить';
-        domSendBut.addEventListener('click', function () {
-            sendBut.hide();
-            loadStatus.show();
-            let data = ''
-            t.inputs.forEach(function(i,ii){
-                switch(i.type){
-                    case 'text':
-                    case 'number':
-                    case 'tel':
-                    case 'email':
-                        data += '&' + i.name + '=' + i.domSelf.value
-                        break;
-                    case 'checkbox':
-                        data += '&' + i.name + '=' + i.domSelf.checked
-                        break;
-                    default:
-                        break;
-                }
-            })
-            props.server.send({
-                url: t.method,
-                data: data,
-                method: 'POST',
-
-                resType: 'json',
-                resHandler: function (res) {
-                    // TODO: CHECK FOR RESPONSE
-                    console.log(res)
-
-                    loadStatus.hide()
-                    sendBut.show()
-                    alert('Спасибо за заявку! Наши специалисты свяжутся с вами.')
-                    //contact.hide();
-                },
-            });
-        });
-
-        const domCloseBut = document.createElement('button');
-        domCloseBut.innerHTML = 'Закрыть';
-        domCloseBut.addEventListener('click', function () {
-            tab.hide()
-            contact.hide();
-        });
-
         const domButWrapper = document.createElement('div');
         const butWrapper = new Component({
             id: null,
@@ -114,16 +69,68 @@ export default function ContactComponent(props) {
             domSelf: domButWrapper,
         });
 
-        const close = new Component({
+        const close = new ButtonComponent({
             id: null,
             domParent: domButWrapper,
-            domSelf: domCloseBut,
+            server: props.server,
+            type: 'callback2',
+            text: 'Закрыть',
+            classes: 'appButton',
+            funcs: [
+                function () {
+                    tab.hide();
+                    contact.hide();
+                },
+            ],
         });
 
-        const sendBut = new Component({
+        const send = new ButtonComponent({
             id: null,
             domParent: domButWrapper,
-            domSelf: domSendBut,
+            server: props.server,
+            type: 'callback2',
+            text: 'Отправить',
+            classes: 'appButton',
+            funcs: [
+                function () {
+                    send.hide();
+                    loadStatus.show();
+                    let data = '';
+                    t.inputs.forEach(function (i, ii) {
+                        switch (i.type) {
+                            case 'text':
+                            case 'number':
+                            case 'tel':
+                            case 'email':
+                                data += '&' + i.name + '=' + i.domSelf.value;
+                                break;
+                            case 'checkbox':
+                                data += '&' + i.name + '=' + i.domSelf.checked;
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    props.server.send({
+                        url: t.method,
+                        data: data,
+                        method: 'POST',
+
+                        resType: 'json',
+                        resHandler: function (res) {
+                            // TODO: CHECK FOR RESPONSE
+                            console.log(res);
+
+                            loadStatus.hide();
+                            send.show();
+                            alert(
+                                'Спасибо за заявку! Наши специалисты свяжутся с вами.',
+                            );
+                            //contact.hide();
+                        },
+                    });
+                },
+            ],
         });
 
         const domLoadStatus = document.createElement('div');
@@ -133,12 +140,12 @@ export default function ContactComponent(props) {
             domParent: domButWrapper,
             domSelf: domLoadStatus,
         });
-        loadStatus.hide()
-        
-        props.config.tabs.push(tab)
-	});
+        loadStatus.hide();
 
-    delete props.config.tabsData
+        props.config.tabs.push(tab);
+    });
+
+    delete props.config.tabsData;
 
     return contact;
 }

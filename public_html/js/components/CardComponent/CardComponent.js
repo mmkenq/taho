@@ -1,4 +1,5 @@
 import Component from '../Component.js';
+import ButtonComponent from '../ButtonComponent/ButtonComponent.js';
 
 (function initCardComponent(){
 	// ...
@@ -31,21 +32,26 @@ export default function CardComponent(props){
             domPrice.innerHTML = props.price;
             domPrice.innerHTML += ' р.';
 
-            const domBut = document.createElement('button');
-            domBut.innerHTML = 'Оставить заявку';
-            domBut.addEventListener('click', function(){
-                props.callbacks.showContact();
-            });
-
             domWrapper.appendChild(domImg);
             domWrapper.appendChild(domTitle);
             domWrapper.appendChild(domPrice);
             domSelf.appendChild(domWrapper);
-            const but = new Component({
-                id: props.butId,
-                domParent: domWrapper,
-                domSelf: domBut,
-            });
+
+            const but = ButtonComponent(
+              {
+                  id: props.butId,
+                  domParent: domWrapper,
+                  server: null,
+                  type: 'callback2',
+                  text: 'Оставить заявку',
+                  classes: 'appButton',
+                  ajax: false,
+                  req: '',
+                  funcs: [
+                      props.callbacks.showContact,
+                  ],
+              },
+            )
             break;
         case 'sliderCard':
             const img = new Component({

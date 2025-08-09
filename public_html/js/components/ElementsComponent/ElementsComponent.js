@@ -8,13 +8,7 @@ import Component from '../Component.js';
 export default function ElementsComponent(props, data){
 	/* props: {
 		* {id,domParent,domSelf},
-		* {
-			* [titles],
-			* titlesGroupId,
-			* [{id,data}],
-			* [classes],
-			* [{id,data}]
-		* }
+		* {titles,texts,classes,components}
 	* } 
 	/* data: {} */
 	const domSelf = document.createElement('div');

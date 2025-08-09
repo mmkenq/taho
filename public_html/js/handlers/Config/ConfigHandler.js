@@ -9,10 +9,40 @@ export default function ConfigHandler(props) {
     this.domApp = document.createElement('div');
 
     this.server = new ServerHandler({
-        serverURL: 'http://192.168.0.100:3000',
+        serverURL: 'http://192.168.8.147:3000',
     });
 
     this.components = {
+        footer: props.componentsEnabled.footerEnabled
+            ? {
+                  id: 'TODO_footer',
+                  data: [
+                      {
+                          id: 'floor-0',
+                          phone: '7965xxxYYzz',
+                          logo: '/assets/logo2.png',
+                          text: '© Все права защищены. Сделано вручную. *emodji* <br>*Политика конфиденциальности.*',
+                          butText: 'Заказать звонок',
+                          callbacks: {
+                              hideContact: () => {
+                                  this.components.contact.tabs[0].hide();
+                                  this.components.contact.data.hide();
+                              },
+                              showContact: () => {
+                                  this.components.contact.data.show();
+                                  this.components.contact.tabs[0].show();
+                              },
+                          },
+                      },
+                      {
+                          id: 'floor-1',
+                      },
+                      {
+                          id: 'floor-2',
+                      },
+                  ],
+              }
+            : {},
         header: props.componentsEnabled.headerEnabled
             ? {
                   buts: [
@@ -41,14 +71,12 @@ export default function ConfigHandler(props) {
                       {
                           id: 'TODO_but_catalog_glonass_id',
                           title: 'Каталог приборов',
-                          type: 'getPage',
-                          ajax: true,
-                          req: 'getCatalog&name=taho_catalog_glonass',
+                          ajax: false,
+                          req: 'catalog',
                       },
                       {
                           id: 'TODO_but_glonass_subscription',
                           title: 'Абонентское обслуживание ГЛОНАСС',
-                          type: 'getPage',
                           ajax: false,
                           req: 'glonass',
                       },
@@ -229,24 +257,47 @@ export default function ConfigHandler(props) {
                           titles: [
                               {
                                   text: 'О нас',
-                                  classes: ['elTitle'],
+                                  classes: [
+                                      'elTitle',
+                                      'centrElement',
+                                      'elTitleWhite',
+                                  ],
                               },
                           ],
                           texts: [
                               {
                                   id: '',
-                                  class: null,
-                                  data: 'Мы являемся официальным представителем компании FTNet.\
-									Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г.',
-                                  //Нажмите на кнопку, чтобы выполнить проверку на сайте Минтранса РФ',
+                                  class: 'centrElement elSubTitle1White',
+                                  data: '\
+Мы являемся официальным представителем компании FTNet.<br>\
+Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г.<br>\
+Нажмите на кнопку, чтобы выполнить проверку на сайте Минтранса РФ\
+',
                               },
                           ],
                           classes: [],
                           components: [
                               {
-                                  id: 'TODO_slider',
+                                  id: 'checkButton',
+                                  data: new ButtonComponent({
+                                      id: '',
+                                      domParent: this.domApp,
+                                      server: this.server,
+                                      type: 'callback2',
+                                      text: 'Проверить',
+                                      classes: 'appCheckUsButton',
+                                      funcs: [
+                                          function () {
+                                              location.href =
+                                                  'https://rosavtotransport.ru/ru/activities/tachograph-control-ru/workshops/?action=searchresult&number=&org=%D0%9E%D0%9E%D0%9E+%22%D0%A2%D0%B0%D1%85%D0%BE%D0%B3%D1%80%D0%B0%D1%84%22';
+                                          },
+                                      ],
+                                  }),
+                              },
+                              {
+                                  id: 'slider',
                                   data: new SliderComponent({
-                                      id: 'TODO_sliderComponent',
+                                      id: 'sliderComponent',
                                       domParent: this.domApp,
                                       cards: [
                                           new CardComponent({
@@ -261,7 +312,9 @@ export default function ConfigHandler(props) {
                                                   },
                                                   {
                                                       text: 'работаем на рынке',
-                                                      classes: ['sliderTitle sliderSubTitle'],
+                                                      classes: [
+                                                          'sliderTitle sliderSubTitle',
+                                                      ],
                                                   },
                                               ],
                                           }),
@@ -277,7 +330,9 @@ export default function ConfigHandler(props) {
                                                   },
                                                   {
                                                       text: 'гарантийное и постгарантийное',
-                                                      classes: ['sliderTitle sliderSubTitle'],
+                                                      classes: [
+                                                          'sliderTitle sliderSubTitle',
+                                                      ],
                                                   },
                                               ],
                                           }),
@@ -293,7 +348,9 @@ export default function ConfigHandler(props) {
                                                   },
                                                   {
                                                       text: 'довольных клиентов',
-                                                      classes: ['sliderTitle sliderSubTitle'],
+                                                      classes: [
+                                                          'sliderTitle sliderSubTitle',
+                                                      ],
                                                   },
                                               ],
                                           }),
@@ -309,7 +366,9 @@ export default function ConfigHandler(props) {
                                                   },
                                                   {
                                                       text: 'выезд специалиста',
-                                                      classes: ['sliderTitle sliderSubTitle'],
+                                                      classes: [
+                                                          'sliderTitle sliderSubTitle',
+                                                      ],
                                                   },
                                               ],
                                           }),
@@ -418,18 +477,15 @@ export default function ConfigHandler(props) {
                                           components: [
                                               {
                                                   id: 'TODO',
-                                                  data: new ButtonComponent(
-                                                      {
-                                                          id: '',
-                                                          domParent:
-                                                              this.domApp,
-                                                          server: this.server,
-                                                      },
-                                                      {
-                                                          type: 'uploadFile',
-                                                          text: 'Выбрать файл',
-                                                      },
-                                                  ),
+                                                  data: new ButtonComponent({
+                                                      id: '',
+                                                      domParent: this.domApp,
+                                                      server: this.server,
+                                                      type: 'uploadFile',
+                                                      classes:
+                                                          'appButton noSelect',
+                                                      text: 'Выбрать файл',
+                                                  }),
                                               },
                                           ],
                                       },
@@ -502,17 +558,6 @@ export default function ConfigHandler(props) {
                           this.components.contact.tabs[0].show();
                       },
                   },
-
-                  /* data for Creating CatalogComponent */
-                  /* filled with getCatalog() reqs */
-                  // TODO
-                  catalogsData: [
-                      /*
-				title: ...,
-				active: ...,
-				elementsData: ...,
-			*/
-                  ],
 
                   /* Component */
                   /* filled while creating CatalogComponent() */
@@ -738,33 +783,24 @@ export default function ConfigHandler(props) {
                                           components: [
                                               {
                                                   id: 'TODO',
-                                                  data: new ButtonComponent(
-                                                      {
-                                                          id: '',
-                                                          domParent:
-                                                              this.domApp,
-                                                          server: this.server,
-                                                      },
-                                                      {
-                                                          id: 'TODO_but_sendGNSSActivationReq',
-                                                          text: 'Оставить',
-                                                          type: 'callback',
-                                                          ajax: false,
-                                                          req: 'glonass',
-                                                          callbacks: {
-                                                              hideContact:
-                                                                  () => {
-                                                                      this.components.contact.tabs[1].hide();
-                                                                      this.components.contact.data.hide();
-                                                                  },
-                                                              showContact:
-                                                                  () => {
-                                                                      this.components.contact.data.show();
-                                                                      this.components.contact.tabs[1].show();
-                                                                  },
+                                                  data: new ButtonComponent({
+                                                      id: '',
+                                                      domParent: this.domApp,
+                                                      server: this.server,
+                                                      id: 'TODO_but_sendGNSSActivationReq',
+                                                      text: 'Оставить',
+                                                      type: 'callback2',
+                                                      classes:
+                                                          'appButton noSelect',
+                                                      ajax: false,
+                                                      req: 'glonass',
+                                                      funcs: [
+                                                          () => {
+                                                              this.components.contact.data.show();
+                                                              this.components.contact.tabs[1].show();
                                                           },
-                                                      },
-                                                  ),
+                                                      ],
+                                                  }),
                                               },
                                           ],
                                       },
@@ -840,33 +876,24 @@ export default function ConfigHandler(props) {
                                           components: [
                                               {
                                                   id: 'TODO',
-                                                  data: new ButtonComponent(
-                                                      {
-                                                          id: '',
-                                                          domParent:
-                                                              this.domApp,
-                                                          server: this.server,
-                                                      },
-                                                      {
-                                                          id: 'TODO_but_payGNSSActivation',
-                                                          text: 'Оплатить',
-                                                          type: 'callback',
-                                                          ajax: false,
-                                                          req: 'glonass',
-                                                          callbacks: {
-                                                              hideContact:
-                                                                  () => {
-                                                                      this.components.contact.tabs[2].hide();
-                                                                      this.components.contact.data.hide();
-                                                                  },
-                                                              showContact:
-                                                                  () => {
-                                                                      this.components.contact.data.show();
-                                                                      this.components.contact.tabs[2].show();
-                                                                  },
+                                                  data: new ButtonComponent({
+                                                      id: '',
+                                                      domParent: this.domApp,
+                                                      server: this.server,
+                                                      id: 'TODO_but_payGNSSActivation',
+                                                      text: 'Оплатить',
+                                                      type: 'callback2',
+                                                      classes:
+                                                          'appButton noSelect',
+                                                      ajax: false,
+                                                      req: 'glonass',
+                                                      funcs: [
+                                                          () => {
+                                                              this.components.contact.data.show();
+                                                              this.components.contact.tabs[2].show();
                                                           },
-                                                      },
-                                                  ),
+                                                      ],
+                                                  }),
                                               },
                                           ],
                                       },
@@ -948,6 +975,7 @@ export default function ConfigHandler(props) {
     this.components.catalog.enabled = props.componentsEnabled.catalogEnabled;
     this.components.contact.enabled = props.componentsEnabled.contactEnabled;
     this.components.glonass.enabled = props.componentsEnabled.glonassEnabled;
+    this.components.footer.enabled = props.componentsEnabled.footerEnabled;
 
     // TODO:
     this.RENDER = true;
