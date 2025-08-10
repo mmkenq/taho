@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import ButtonComponent from '../ButtonComponent/ButtonComponent.js';
+import LinksComponent from '../LinksComponent/LinksComponent.js';
 
 (function initBannerComponent(){
 	// ...
@@ -56,18 +57,26 @@ export default function BannerComponent(props, data){
 		domParent: domSelf,
 		domSelf: domLinksWrapper
 	});
-	data.links.forEach(function(l,li){
-        const domLink = document.createElement('a');
-        domLink.href = l.href
-        domLink.innerHTML = l.innerHTML
-		const link = new Component(
-			{
-				id: l.id,
-				domParent: domLinksWrapper,
-				domSelf: domLink,
-			}
-		);
-	});
+
+    const links = new LinksComponent({
+        id: 'banner-0-links',
+        domParent: domLinksWrapper,
+        data: data.links,
+        classes: 'footerFloor',
+    })
+//	data.links.forEach(function(l,li){
+
+        //const domLink = document.createElement('a');
+        //domLink.href = l.href
+        //domLink.innerHTML = l.innerHTML
+		//const link = new Component(
+		//	{
+		//		id: l.id,
+		//		domParent: domLinksWrapper,
+		//		domSelf: domLink,
+		//	}
+		//);
+//	});
 
 	let bg = new Image();
 	bg.src = 'assets/truck-pic.jpg';

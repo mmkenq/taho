@@ -22,7 +22,6 @@ export default function MainComponent(props, data){
 			domParent: domSelf,
 			domSelf: domElementsGroup
 		},el);
-
 	});
 
 	return new Component({

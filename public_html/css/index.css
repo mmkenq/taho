@@ -7,6 +7,35 @@ body {
 	margin: 0;
 }
 
+a.link {
+    display: flex;
+    align-items: center;
+    color: #8cb6ff;
+    font-size: 14px;
+    text-decoration: none;
+    gap: 3px;
+}
+
+a.bannerLink {
+    color: yellow;
+}
+a.bannerLink:visited {
+    color: yellow;
+}
+a.bannerLink:hover {
+    color: #dbebfd;
+}
+a.footerLink {
+    color: #8cb6ff;
+}
+a.footerLink:visited {
+    color: #8cb6ff;
+}
+a.footerLink:hover {
+    color: #dbebfd;
+}
+
+
 .appHeader {
 	display: flex;
 	align-items: center;
@@ -14,7 +43,7 @@ body {
 }
 
 .appFooter {
-	background-color: black;
+    background-color: #181a1b;
 }
 
 .appButton {
@@ -393,3 +422,39 @@ body {
     padding-bottom: 3%;
 }
 
+/* Footer Floors: Mobile */
+.footerFloor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+/*    color: white;*/
+}
+.footerText {
+    color: white;
+}
+#floor-0-number {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Footer floor: Tablets, Desktop */
+@media only screen and (min-width: 640px) {
+    .footerFloor {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    #floor-0-number {
+        margin-left: auto;
+        margin-right: 14px;
+    }
+}
+
+/* Footer Floors: Desktop */
+@media only screen and (min-width: 981px) {
+}
+
+#floor-3 {
+    flex-direction: column;
+}

@@ -41,6 +41,7 @@ function createFooterComponent(domParent, config, server) {
         id: 'footer-0',
         domParent: domParent,
         data: config.data,
+        callbacks: config.callbacks,
     });
     //footer.hide();
     //footer.show();
