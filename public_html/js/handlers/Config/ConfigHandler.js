@@ -77,16 +77,18 @@ export default function ConfigHandler(props) {
                   butsWrapperClasses: 'centrElement bannerButs',
                   buts: [
                       {
-                          id: 'TODO_but_catalog_glonass_id',
+                          id: 'banner_but_catalog',
                           title: 'Каталог приборов',
                           ajax: false,
                           req: 'catalog',
+                          classes: 'appButton bannerButton'
                       },
                       {
-                          id: 'TODO_but_glonass_subscription',
+                          id: 'banner_but_glonass_subscription',
                           title: 'Абонентское обслуживание ГЛОНАСС',
                           ajax: false,
                           req: 'glonass',
+                          classes: 'appButton bannerButton'
                       },
                   ],
                   links: { links: this.links, linksClasses: 'link bannerLink' },

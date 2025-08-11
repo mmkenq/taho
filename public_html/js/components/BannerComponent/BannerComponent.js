@@ -47,6 +47,7 @@ export default function BannerComponent(props) {
             text: el.title,
             req: el.req,
             ajax: el.ajax || null,
+            classes: el.classes || 'BUTTONNOCLASSES',
         });
     });
 
@@ -64,12 +65,6 @@ export default function BannerComponent(props) {
         data: props.config.links,
         classes: 'footerFloor',
     });
-
-    //let bg = new Image();
-    //bg.src = 'assets/truck-pic.jpg';
-    //bg.onload = function () {
-    //    domSelf.style.backgroundImage = 'url(' + props.config.pic + ')';
-    //};
 
     return new Component({
         id: props.id,

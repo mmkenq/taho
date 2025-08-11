@@ -57,7 +57,7 @@ export default function ButtonComponent(props){
 		break;
 		case 'getPage':
 			domSelf = document.createElement('button');
-			domSelf.setAttribute('class', 'appButton');
+			domSelf.setAttribute('class', props.classes);
 			domSelf.innerHTML = props.text || 'TODO_BUT_TEXT';
             if(props.ajax){
                 domSelf.addEventListener('click', function(){
