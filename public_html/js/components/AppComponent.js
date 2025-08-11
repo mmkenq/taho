@@ -41,14 +41,16 @@ function createBannerComponent(domParent, config, server) {
             id: 'banner-0',
             domParent: domParent,
             server: server,
+            config: config,
         },
-        {
-            h1Title: config.h1Title,
-            h2Title: config.h2Title,
-            buts: config.buts,
-            links: config.links,
-            pic: config.pic,
-        },
+        //{
+        //    h1Title: config.h1Title,
+        //    h2Title: config.h2Title,
+        //    butsWrapperClasses: config.butsWrapperClasses,
+        //    buts: config.buts,
+        //    links: config.links,
+        //    pic: config.pic,
+        //},
     );
     //console.log('loaded banner', banner);
     //banner.hide();
