@@ -34,20 +34,6 @@ function createHeaderComponent(domParent, config, server) {
     return header;
 }
 
-function createFooterComponent(domParent, config, server) {
-    if (!config.enabled) return false;
-
-    const footer = new FooterComponent({
-        id: 'footer-0',
-        domParent: domParent,
-        data: config.data,
-        callbacks: config.callbacks,
-    });
-    //footer.hide();
-    //footer.show();
-    return footer;
-}
-
 function createBannerComponent(domParent, config, server) {
     if (!config.enabled) return false;
     const banner = new BannerComponent(
@@ -282,6 +268,74 @@ function createContactComponent(domParent, config, server) {
     config.data = contact;
 }
 
+function createPolicyComponent(domParent, config, server) {
+    if (!config.enabled) return false;
+
+    const policy = new MainComponent(
+        {
+            id: 'main-0',
+            domParent: domParent,
+        },
+        {
+            elementsData: [
+                {
+                    id: 'policy',
+                    titles: config.titles,
+                    classes: ['sectionElement', 'centrElement'],
+                    texts: config.texts,
+                    components: config.data.map((el, i) => {
+                        return {
+                            id: 'TODO',
+                            data: new ElementsComponent(
+                                {
+                                    id: 'policy-subEl-' + i,
+                                    domParent: null,
+                                    domSelf: document.createElement('div'),
+                                },
+                                {
+                                    titles: [
+                                        {
+                                            id: 'policy-subEl-title-' + i,
+                                            text: el.title,
+                                            classes: ['elTitle', 'elSubTitle1'],
+                                        },
+                                    ],
+                                    texts: [
+                                        {
+                                            id: 'policy-subEl-text-' + i,
+                                            class: null,
+                                            data: el.text,
+                                        },
+                                    ],
+                                    classes: ['subSectionElement'],
+                                    components: [],
+                                },
+                            ),
+                        };
+                    }),
+                },
+            ],
+        },
+    );
+    //policy.hide();
+    //policy.show();
+    return;
+}
+
+function createFooterComponent(domParent, config, server) {
+    if (!config.enabled) return false;
+
+    const footer = new FooterComponent({
+        id: 'footer-0',
+        domParent: domParent,
+        data: config.data,
+        callbacks: config.callbacks,
+    });
+    //footer.hide();
+    //footer.show();
+    return footer;
+}
+
 export default function AppComponent(props) {
     /* props: {id, config, domParent, {components}} */
 
@@ -318,6 +372,11 @@ export default function AppComponent(props) {
     createGlonassComponent(
         props.config.domApp,
         props.config.components.glonass,
+        props.config.server,
+    );
+    createPolicyComponent(
+        props.config.domApp,
+        props.config.components.policy,
         props.config.server,
     );
     createFooterComponent(

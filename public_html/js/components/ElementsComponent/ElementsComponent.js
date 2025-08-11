@@ -12,8 +12,7 @@ export default function ElementsComponent(props, data){
 	* } 
 	/* data: {} */
 	const domSelf = document.createElement('div');
-//	domSelf.setAttribute('class', 'appElement');
-//    console.log(data.classes)
+	//domSelf.setAttribute('class', data.classes);
 
 	data.titles.forEach(function(title, i){
 		const t = document.createElement('div');

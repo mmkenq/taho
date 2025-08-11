@@ -357,6 +357,16 @@ a.footerLink:hover {
 }
 */
 
+.sectionElement {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.subSectionElement {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .centrElement {
 	width: 80%;
 	margin-left: auto;

@@ -74,6 +74,7 @@ else {
                         adminEnabled: false,
                         contactEnabled: true,
                         footerEnabled: true,
+                        policyEnabled: false,
                     }
                 }
             </script>';
@@ -91,6 +92,7 @@ else {
                         adminEnabled: false,
                         contactEnabled: true,
                         footerEnabled: true,
+                        policyEnabled: false,
                     }
                 }
             </script>';
@@ -108,6 +110,7 @@ else {
                         adminEnabled: true,
                         contactEnabled: false,
                         footerEnabled: true,
+                        policyEnabled: false,
                     }
                 }
             </script>';
@@ -125,6 +128,26 @@ else {
                         adminEnabled: false,
                         contactEnabled: true,
                         glonassEnabled: true,
+                        policyEnabled: false,
+                        footerEnabled: true,
+                    }
+                }
+            </script>';
+            include_once './public_html/index.html';
+        }
+        if (preg_match('/policy/', $page)){
+            echo '<!DOCTYPE html>';
+            echo '<script>
+                const config = {
+                    componentsEnabled: {
+                        headerEnabled: true,
+                        bannerEnabled: true,
+                        mainEnabled: false,
+                        catalogEnabled: false,
+                        adminEnabled: false,
+                        contactEnabled: true,
+                        glonassEnabled: false,
+                        policyEnabled: true,
                         footerEnabled: true,
                     }
                 }
