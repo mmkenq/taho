@@ -64,7 +64,7 @@ export default function ConfigHandler(props) {
                       {
                           id: null,
                           type: 'h1',
-                          text: 'Глонасс/Видеонаблюдение на все виды транспортных средств',
+                          text: 'Глонасс/Видеонаблюдение<br>на все виды транспортных средств',
                           classes: 'elTitle elTitleWhite',
                       },
                       {
@@ -81,14 +81,14 @@ export default function ConfigHandler(props) {
                           title: 'Каталог приборов',
                           ajax: false,
                           req: 'catalog',
-                          classes: 'appButton bannerButton'
+                          classes: 'appButton bannerButton',
                       },
                       {
                           id: 'banner_but_glonass_subscription',
                           title: 'Абонентское обслуживание ГЛОНАСС',
                           ajax: false,
                           req: 'glonass',
-                          classes: 'appButton bannerButton'
+                          classes: 'appButton bannerButton',
                       },
                   ],
                   links: { links: this.links, linksClasses: 'link bannerLink' },
@@ -298,13 +298,13 @@ export default function ConfigHandler(props) {
                               {
                                   id: 'slider',
                                   data: new SliderComponent({
-                                      id: 'sliderComponent',
+                                      id: 'aboutUs',
                                       domParent: this.domApp,
+                                      type: 'aboutus',
+                                      // classes: 'centrElement',
                                       cards: [
-                                          new CardComponent({
-                                              id: 'sliderCard1',
+                                          {
                                               type: 'sliderCard',
-                                              classes: 'appSliderCard',
                                               icon: '/assets/exprerience.png',
                                               titles: [
                                                   {
@@ -318,11 +318,9 @@ export default function ConfigHandler(props) {
                                                       ],
                                                   },
                                               ],
-                                          }),
-                                          new CardComponent({
-                                              id: 'sliderCard2',
+                                          },
+                                          {
                                               type: 'sliderCard',
-                                              classes: 'appSliderCard',
                                               icon: '/assets/warranty.png',
                                               titles: [
                                                   {
@@ -336,11 +334,9 @@ export default function ConfigHandler(props) {
                                                       ],
                                                   },
                                               ],
-                                          }),
-                                          new CardComponent({
-                                              id: 'sliderCard3',
+                                          },
+                                          {
                                               type: 'sliderCard',
-                                              classes: 'appSliderCard',
                                               icon: '/assets/clients.png',
                                               titles: [
                                                   {
@@ -354,11 +350,9 @@ export default function ConfigHandler(props) {
                                                       ],
                                                   },
                                               ],
-                                          }),
-                                          new CardComponent({
-                                              id: 'sliderCard4',
+                                          },
+                                          {
                                               type: 'sliderCard',
-                                              classes: 'appSliderCard',
                                               icon: '/assets/visit.png',
                                               titles: [
                                                   {
@@ -372,7 +366,61 @@ export default function ConfigHandler(props) {
                                                       ],
                                                   },
                                               ],
-                                          }),
+                                          },
+                                      ],
+                                  }),
+                              },
+                          ],
+                      },
+                      {
+                          id: 'clients',
+                          titles: [
+                              {
+                                  text: 'Наши клиенты',
+                                  classes: ['elTitle', 'centrElement'],
+                              },
+                          ],
+                          texts: [
+                              {
+                                  id: '',
+                                  class: 'centrElement',
+                                  data: 'Мы дорожим своей репутацией и используем индивидуальный подход к каждому клиенту',
+                              },
+                          ],
+                          classes: ['sectionElement'],
+                          components: [
+                              {
+                                  id: 'slider',
+                                  data: new SliderComponent({
+                                      id: 'trustUs',
+                                      domParent: this.domApp,
+                                      classes: 'centrElement',
+                                      type: 'trustus',
+                                      cards: [
+                                          {
+                                              type: 'sliderCard',
+                                              icon: '/assets/trustus/gazprom.webp',
+                                          },
+                                          {
+                                              type: 'sliderCard',
+                                              icon: '/assets/trustus/econiva.webp',
+                                          },
+                                          {
+                                              type: 'sliderCard',
+                                              icon: '/assets/trustus/rwd.webp',
+                                          },
+                                          {
+                                              type: 'sliderCard',
+                                              icon: '/assets/trustus/ykvr.webp',
+                                          },
+                                          {
+                                              type: 'sliderCard',
+                                              icon: '/assets/trustus/iteco.jpg',
+                                          },
+                                          {
+                                              type: 'sliderCard',
+                                              icon: '/assets/trustus/mirat.jpg',
+                                          },
                                       ],
                                   }),
                               },

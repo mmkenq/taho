@@ -43,6 +43,7 @@ $mime_types = [
   "gif" => "image/gif",
   "jpg" => "image/jpeg",
   "jpeg" => "image/jpeg",
+  "webp" => "image/webp",
   "png" => "image/png",
   "js" => "text/javascript",
   "css" => "text/css",

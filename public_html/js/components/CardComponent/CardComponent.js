@@ -10,8 +10,8 @@ export default function CardComponent(props){
 	/* props: {id, domParent, data} */
 
 	const domSelf = document.createElement('div');
-	domSelf.setAttribute('class', 'appCard');
-    domSelf.setAttribute('class', props.classes)
+//	domSelf.setAttribute('class', 'appCard');
+    if(props.classes) domSelf.setAttribute('class', props.classes)
 
     switch(props.type){
         case 'catalogCard':
@@ -54,36 +54,37 @@ export default function CardComponent(props){
             )
             break;
         case 'sliderCard':
+            domSelf.setAttribute('class', 'app-' + props.sliderType + '-' + props.type)
             const img = new Component({
-                id: props.id,
+                id: props.id + '-img',
                 domParent: domSelf,
                 domSelf: document.createElement('img'),
             });
-            img.domSelf.setAttribute('class', 'appSliderCardPreview')
+            img.domSelf.setAttribute('class', props.sliderType + '-sliderCard-preview')
             img.domSelf.setAttribute('alt', '*изображение*')
             img.domSelf.src = props.icon
 
-            const titlesWrapper = new Component({
-                id: props.id + 'titlesWrapper',
-                domParent: domSelf,
-                domSelf: document.createElement('div'),
-            });
-            props.titles.forEach(function(t, i){
-                const title = new Component({
-                    id: props.id + '-title-' + i,
-                    domParent: titlesWrapper.domSelf,
+            if(props.titles[0]){
+                const titlesWrapper = new Component({
+                    id: props.id + '-titlesWrapper',
+                    domParent: domSelf,
                     domSelf: document.createElement('div'),
                 });
-                title.domSelf.innerHTML = t.text
-                title.domSelf.setAttribute('class', t.classes)
-            })
+                props.titles.forEach(function(t, i){
+                    const title = new Component({
+                        id: props.id + '-title-' + i,
+                        domParent: titlesWrapper.domSelf,
+                        domSelf: document.createElement('div'),
+                    });
+                    title.domSelf.innerHTML = t.text
+                    title.domSelf.setAttribute('class', t.classes)
+                })
+            }
             const card = new Component({
                 id: props.id,
                 domParent: props.domParent,
                 domSelf: domSelf,
             });
-            //card.title = props.title
-            //card.domSelf.innerHTML = card.title
             return card
             break;
         default:
