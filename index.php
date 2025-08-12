@@ -45,6 +45,7 @@ $mime_types = [
   "jpeg" => "image/jpeg",
   "webp" => "image/webp",
   "png" => "image/png",
+  "svg" => "image/svg+xml",
   "js" => "text/javascript",
   "css" => "text/css",
   "ttf" => "font/ttf",

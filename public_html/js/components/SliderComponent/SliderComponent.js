@@ -9,8 +9,8 @@ import CardComponent from '../CardComponent/CardComponent.js';
 export default function SliderComponent(props) {
     /* props: {id, domParent, data} */
     const domSelf = document.createElement('div');
-    domSelf.setAttribute('class', 'appSlider-'+props.id);
-    if(props.classes) domSelf.classList.add(props.classes);
+    if(props.classes) domSelf.setAttribute('class', props.classes);
+    domSelf.classList.add('appSlider-'+props.id);
 
     const cards = props.cards.map(function(c, i){
         return new CardComponent({

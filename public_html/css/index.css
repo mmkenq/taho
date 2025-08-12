@@ -280,6 +280,11 @@ a.footerLink:hover {
     height: auto;
 }
 
+.contactCard-preview {
+    width: 100%;
+    height: auto;
+}
+
 .sliderTitle {
     margin: 10px;
 	font-family: 'megabold';
@@ -429,11 +434,27 @@ a.footerLink:hover {
     margin-bottom: 10px;
 }
 
+
+
 .centrElement {
-	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.defaultWidthElement {
+	width: 80%;
+}
+
+.contactCard {
+    width: 33%;
+}
+
+.contactFields {
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 .appElement:not(:last-child){
 	margin-bottom: 30px;
@@ -477,15 +498,39 @@ a.footerLink:hover {
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
-	min-height: 78%;
 	gap: 16px;
   	border-radius: 10px;
   	padding: 16px;
+    width: 100%;
+	min-height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+/* appContactWrapper: Tablets */
+@media only screen and (min-width: 640px) {
+    .appContactWrapper {
+        min-height: 90vh;
+        width: 80vh;
+    }
+}
+
+/* appContactWrapper: Desktop*/
+@media only screen and (min-width: 981px) {
+    .appContactWrapper {
+        width: 80vh;
+    }
 }
 
 
 .hide {
 	display: none;
+}
+
+.overflow-hide {
+    height: 100vh;           /* Prevents body height reflow */
+    overflow-y: hidden;      /* Disable vertical scrolling on body */
+    /*padding-right: 15px;*/     /* Optional: avoid layout shift due to scrollbar disappearance */
 }
 
 #el-about {

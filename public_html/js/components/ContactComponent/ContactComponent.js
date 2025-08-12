@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import ButtonComponent from '../ButtonComponent/ButtonComponent.js';
+import CardComponent from '../CardComponent/CardComponent.js';
 
 (function initContactComponent() {
     // ...
@@ -18,8 +19,6 @@ export default function ContactComponent(props) {
         domSelf: domSelf,
     });
 
-    //    contact.tabs = []
-
     props.config.tabsData.forEach(function (t, ti) {
         const domTab = document.createElement('div');
         domTab.setAttribute('class', 'appContactWrapper');
@@ -30,25 +29,33 @@ export default function ContactComponent(props) {
         });
         tab.hide();
 
-        const domIntro = document.createElement('div');
-        domIntro.innerHTML = t.title;
-        const intro = new Component({
-            id: null,
-            domParent: domTab,
-            domSelf: domIntro,
-        });
-
-        t.inputs.forEach(function (i, ii) {
-            const domInp = document.createElement('input');
-            for (let attr in i) {
-                domInp.setAttribute(attr, i[attr]);
-            }
-            const inp = new Component({
+        t.cards.forEach(function (c, i) {
+            const card = new CardComponent({
                 id: null,
                 domParent: domTab,
-                domSelf: domInp,
+                classes: 'contactCard centrElement',
+                type: c.type,
+                icon: c.icon,
+                title: c.title,
             });
-            i.domSelf = domInp;
+        });
+
+        const inpWrapper = new Component({
+            id: null,
+            domParent: domTab,
+            domSelf: document.createElement('div'),
+        })
+        inpWrapper.domSelf.setAttribute('class', 'centrElement defaultWidthElement contactFields')
+        t.inputs.forEach(function (i, ii) {
+            const inp = new Component({
+                id: null,
+                domParent: inpWrapper.domSelf,
+                domSelf: document.createElement('input'),
+            })
+            for (let attr in i) {
+                inp.domSelf.setAttribute(attr, i[attr]);
+            }
+            i.domSelf = inp.domSelf;
         });
 
         t.labels.forEach(function (l, li) {
@@ -57,7 +64,7 @@ export default function ContactComponent(props) {
             domLabel.innerHTML = l.innerHTML;
             const label = new Component({
                 id: null,
-                domParent: domTab,
+                domParent: inpWrapper.domSelf,
                 domSelf: domLabel,
             });
         });
@@ -69,6 +76,7 @@ export default function ContactComponent(props) {
             domSelf: domButWrapper,
         });
 
+        console.log(props)
         const close = new ButtonComponent({
             id: null,
             domParent: domButWrapper,
@@ -77,10 +85,7 @@ export default function ContactComponent(props) {
             text: 'Закрыть',
             classes: 'appButton',
             funcs: [
-                function () {
-                    tab.hide();
-                    contact.hide();
-                },
+                () => props.config.callbacks.hideContact(ti)
             ],
         });
 

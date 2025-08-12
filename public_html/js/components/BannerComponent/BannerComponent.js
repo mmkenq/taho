@@ -13,7 +13,7 @@ export default function BannerComponent(props) {
     domSelf.setAttribute('class', 'appBanner');
 
     const domTitlesGroup = document.createElement('div');
-    domTitlesGroup.setAttribute('class', 'centrElement bannerTitles');
+    domTitlesGroup.setAttribute('class', 'centrElement defaultWidthElement bannerTitles');
     const titlesGroup = new Component({
         id: '',
         domParent: domSelf,
@@ -52,7 +52,7 @@ export default function BannerComponent(props) {
     });
 
     const domLinksWrapper = document.createElement('div');
-    domLinksWrapper.setAttribute('class', 'centrElement');
+    domLinksWrapper.setAttribute('class', 'centrElement defaultWidthElement');
     const linksWrapper = new Component({
         id: null,
         domParent: domSelf,

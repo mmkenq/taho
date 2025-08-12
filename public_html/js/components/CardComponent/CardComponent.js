@@ -10,7 +10,6 @@ export default function CardComponent(props){
 	/* props: {id, domParent, data} */
 
 	const domSelf = document.createElement('div');
-//	domSelf.setAttribute('class', 'appCard');
     if(props.classes) domSelf.setAttribute('class', props.classes)
 
     switch(props.type){
@@ -86,6 +85,28 @@ export default function CardComponent(props){
                 domSelf: domSelf,
             });
             return card
+            break;
+        case 'contactCard':
+            const contactCardImg = new Component({
+                id: null,
+                domParent: domSelf,
+                domSelf: document.createElement('img'),
+            })
+            contactCardImg.domSelf.setAttribute('src', props.icon)
+            contactCardImg.domSelf.classList.add(props.type + '-' + 'preview')
+
+            const contactCardTitle = new Component({
+                id: null,
+                domParent: domSelf,
+                domSelf: document.createElement('p'),
+            })
+            contactCardTitle.domSelf.innerHTML = props.title
+
+            return new Component({
+                id: null,
+                domParent: props.domParent,
+                domSelf: domSelf
+            })
             break;
         default:
             break;

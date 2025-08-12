@@ -274,7 +274,7 @@ function createPolicyComponent(domParent, config, server) {
                 {
                     id: 'policy',
                     titles: config.titles,
-                    classes: ['sectionElement', 'centrElement'],
+                    classes: ['sectionElement', 'centrElement', 'defaultWidthElement'],
                     texts: config.texts,
                     components: config.data.map((el, i) => {
                         return {

@@ -74,7 +74,8 @@ export default function ConfigHandler(props) {
                           classes: 'elTitle elTitleWhite elSubTitle1',
                       },
                   ],
-                  butsWrapperClasses: 'centrElement bannerButs',
+                  butsWrapperClasses:
+                      'centrElement defaultWidthElement bannerButs',
                   buts: [
                       {
                           id: 'banner_but_catalog',
@@ -105,7 +106,11 @@ export default function ConfigHandler(props) {
                           titles: [
                               {
                                   text: 'Услуги',
-                                  classes: ['elTitle', 'centrElement'],
+                                  classes: [
+                                      'elTitle',
+                                      'centrElement',
+                                      'defaultWidthElement',
+                                  ],
                               },
                           ],
                           // TODO: ListItemsComponent
@@ -142,6 +147,7 @@ export default function ConfigHandler(props) {
                                           classes: [
                                               'subSectionElement',
                                               'centrElement',
+                                              'defaultWidthElement',
                                           ],
                                           components: [
                                               {
@@ -161,14 +167,8 @@ export default function ConfigHandler(props) {
                                                       price: 'Цена по запросу',
                                                       butId: 'glonassElementCardBut',
                                                       callbacks: {
-                                                          hideContact: () => {
-                                                              this.components.contact.tabs[0].hide();
-                                                              this.components.contact.data.hide();
-                                                          },
-                                                          showContact: () => {
-                                                              this.components.contact.data.show();
-                                                              this.components.contact.tabs[0].show();
-                                                          },
+                                                          hideContact: () => this.components.contact.callbacks.hideContact(0),
+                                                          showContact: () => this.components.contact.callbacks.showContact(0),
                                                       },
                                                   }),
                                               },
@@ -217,6 +217,7 @@ export default function ConfigHandler(props) {
                                           classes: [
                                               'subSectionElement',
                                               'centrElement',
+                                              'defaultWidthElement',
                                           ],
                                           components: [
                                               {
@@ -236,14 +237,8 @@ export default function ConfigHandler(props) {
                                                       price: 'Цена по запросу',
                                                       butId: 'videoElementCardBut',
                                                       callbacks: {
-                                                          hideContact: () => {
-                                                              this.components.contact.tabs[0].hide();
-                                                              this.components.contact.data.hide();
-                                                          },
-                                                          showContact: () => {
-                                                              this.components.contact.data.show();
-                                                              this.components.contact.tabs[0].show();
-                                                          },
+                                                          hideContact: () => this.components.contact.callbacks.hideContact(0),
+                                                          showContact: () => this.components.contact.callbacks.showContact(0),
                                                       },
                                                   }),
                                               },
@@ -261,6 +256,7 @@ export default function ConfigHandler(props) {
                                   classes: [
                                       'elTitle',
                                       'centrElement',
+                                      'defaultWidthElement',
                                       'elTitleWhite',
                                   ],
                               },
@@ -268,7 +264,7 @@ export default function ConfigHandler(props) {
                           texts: [
                               {
                                   id: '',
-                                  class: 'centrElement elSubTitle1White',
+                                  class: 'centrElement defaultWidthElement elSubTitle1White',
                                   data: '\
 Мы являемся официальным представителем компании FTNet.<br>\
 Лицензия №0006189 Рег. № 16 Н от 26 июля 2018г.<br>\
@@ -377,13 +373,17 @@ export default function ConfigHandler(props) {
                           titles: [
                               {
                                   text: 'Наши клиенты',
-                                  classes: ['elTitle', 'centrElement'],
+                                  classes: [
+                                      'elTitle',
+                                      'centrElement',
+                                      'defaultWidthElement',
+                                  ],
                               },
                           ],
                           texts: [
                               {
                                   id: '',
-                                  class: 'centrElement',
+                                  class: 'centrElement defaultWidthElement',
                                   data: 'Мы дорожим своей репутацией и используем индивидуальный подход к каждому клиенту',
                               },
                           ],
@@ -394,7 +394,8 @@ export default function ConfigHandler(props) {
                                   data: new SliderComponent({
                                       id: 'trustUs',
                                       domParent: this.domApp,
-                                      classes: 'centrElement',
+                                      classes:
+                                          'centrElement defaultWidthElement',
                                       type: 'trustus',
                                       cards: [
                                           {
@@ -431,7 +432,11 @@ export default function ConfigHandler(props) {
                           titles: [
                               {
                                   text: 'Контакты',
-                                  classes: ['elTitle', 'centrElement'],
+                                  classes: [
+                                      'elTitle',
+                                      'centrElement',
+                                      'defaultWidthElement',
+                                  ],
                               },
                           ],
                           texts: [],
@@ -477,7 +482,10 @@ export default function ConfigHandler(props) {
                                                   data: '<div style="position:relative;overflow:hidden;height: 250px"><a href="https://yandex.com/maps/20243/chaikovsky/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Chaikovsky</a><a href="https://yandex.com/maps/20243/chaikovsky/house/sovetskaya_ulitsa_1_12/YU0YdwVjSUQGQFtsfXt2d3phZQ==/?ll=54.150532%2C56.770842&utm_medium=mapframe&utm_source=maps&z=13.73" style="color:#eee;font-size:12px;position:absolute;top:14px;">Yandex Maps</a><iframe src="https://yandex.com/map-widget/v1/?ll=54.150532%2C56.770842&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0MTM5NzM5Mzg2EmLQoNC-0YHRgdC40Y8sINCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksINCn0LDQudC60L7QstGB0LrQuNC5LCDQodC-0LLQtdGC0YHQutCw0Y8g0YPQu9C40YbQsCwgMS8xMiIKDfd9WEIVQxtjQg%2C%2C&z=13.73" width="100%" height="100%" allowfullscreen="true" style="position:relative;border:none;"></iframe></div>',
                                               },
                                           ],
-                                          classes: ['centrElement'],
+                                          classes: [
+                                              'centrElement',
+                                              'defaultWidthElement',
+                                          ],
                                           components: [],
                                       },
                                   ), // new ElementsComponent
@@ -500,7 +508,11 @@ export default function ConfigHandler(props) {
                               },
                           ],
                           texts: [],
-                          classes: ['sectionElement', 'centrElement'],
+                          classes: [
+                              'sectionElement',
+                              'centrElement',
+                              'defaultWidthElement',
+                          ],
                           components: [
                               {
                                   id: 'TODO_updCatalogComponent',
@@ -587,7 +599,11 @@ export default function ConfigHandler(props) {
                                   data: 'req getCatalogCameras()',
                               },
                           ],
-                          classes: ['sectionElement', 'centrElement'],
+                          classes: [
+                              'sectionElement',
+                              'centrElement',
+                              'defaultWidthElement',
+                          ],
                           components: [],
                       }, // ElementsData 2
                   ],
@@ -598,14 +614,8 @@ export default function ConfigHandler(props) {
         catalog: props.componentsEnabled.catalogEnabled
             ? {
                   callbacks: {
-                      hideContact: () => {
-                          this.components.contact.tabs[0].hide();
-                          this.components.contact.data.hide();
-                      },
-                      showContact: () => {
-                          this.components.contact.data.show();
-                          this.components.contact.tabs[0].show();
-                      },
+                      hideContact: () => this.components.contact.callbacks.hideContact(0),
+                      showContact: () => this.components.contact.callbacks.showContact(0),
                   },
 
                   /* Component */
@@ -618,6 +628,18 @@ export default function ConfigHandler(props) {
         contact: props.componentsEnabled.contactEnabled
             ? {
                   id: 'contact-0',
+                  callbacks: {
+                      hideContact: (i) => {
+                          document.body.classList.remove('overflow-hide')
+                          this.components.contact.tabs[i].hide()
+                          this.components.contact.data.hide()
+                      },
+                      showContact: (i) => {
+                          this.components.contact.data.show()
+                          this.components.contact.tabs[i].show()
+                          document.body.classList.add('overflow-hide')
+                      },
+                  },
 
                   /* Components */
                   /* filled while creating ContactComponent() */
@@ -628,7 +650,13 @@ export default function ConfigHandler(props) {
                   tabsData: [
                       {
                           id: 'tab-dmUs',
-                          title: 'Оставьте заявку, чтобы мы с вами связались :D',
+                          cards: [
+                              {
+                                  type: 'contactCard',
+                                  icon: '/assets/contact/dmus.svg',
+                                  title: 'Оставьте заявку, чтобы мы с вами связались :D',
+                              },
+                          ],
                           inputs: [
                               {
                                   type: 'text',
@@ -670,7 +698,13 @@ export default function ConfigHandler(props) {
                       },
                       {
                           id: 'tab-activationReq',
-                          title: 'Оставить заявку на активацию ГЛОНАСС',
+                          cards: [
+                              {
+                                  type: 'contactCard',
+                                  icon: '/assets/contact/sim.svg',
+                                  title: 'Оставить заявку на активацию ГЛОНАСС',
+                              },
+                          ],
                           inputs: [
                               {
                                   type: 'text',
@@ -746,7 +780,13 @@ export default function ConfigHandler(props) {
                       },
                       {
                           id: 'tab-paymentReq',
-                          title: 'Оплата абонентской платы',
+                          cards: [
+                              {
+                                  type: 'contactCard',
+                                  icon: '/assets/contact/payment.svg',
+                                  title: 'Оплата абонентской платы',
+                              },
+                          ],
                           inputs: [
                               {
                                   type: 'text',
@@ -806,7 +846,11 @@ export default function ConfigHandler(props) {
                               },
                           ],
                           texts: [],
-                          classes: ['sectionElement', 'centrElement'],
+                          classes: [
+                              'sectionElement',
+                              'centrElement',
+                              'defaultWidthElement',
+                          ],
                           components: [
                               {
                                   id: 'TODO_sendGNSSActivationReqComponent',
@@ -844,10 +888,7 @@ export default function ConfigHandler(props) {
                                                       ajax: false,
                                                       req: 'glonass',
                                                       funcs: [
-                                                          () => {
-                                                              this.components.contact.data.show();
-                                                              this.components.contact.tabs[1].show();
-                                                          },
+                                                          () => this.components.contact.callbacks.showContact(1),
                                                       ],
                                                   }),
                                               },
@@ -899,7 +940,11 @@ export default function ConfigHandler(props) {
                               },
                           ],
                           texts: [],
-                          classes: ['sectionElement', 'centrElement'],
+                          classes: [
+                              'sectionElement',
+                              'centrElement',
+                              'defaultWidthElement',
+                          ],
                           components: [
                               {
                                   id: 'TODO_sendGNSSActivationReqComponent',
@@ -937,10 +982,7 @@ export default function ConfigHandler(props) {
                                                       ajax: false,
                                                       req: 'glonass',
                                                       funcs: [
-                                                          () => {
-                                                              this.components.contact.data.show();
-                                                              this.components.contact.tabs[2].show();
-                                                          },
+                                                          () => this.components.contact.callbacks.showContact(2),
                                                       ],
                                                   }),
                                               },
@@ -1038,7 +1080,11 @@ export default function ConfigHandler(props) {
                                       class: 'footerText',
                                   },
                               ],
-                              classes: ['centrElement', 'footerFloor'],
+                              classes: [
+                                  'centrElement',
+                                  'defaultWidthElement',
+                                  'footerFloor',
+                              ],
                               components: [
                                   {
                                       id: null,
@@ -1050,10 +1096,7 @@ export default function ConfigHandler(props) {
                                           text: 'Заказать звонок',
                                           classes: 'appButton',
                                           funcs: [
-                                              () => {
-                                                  this.components.contact.data.show();
-                                                  this.components.contact.tabs[0].show();
-                                              },
+                                              () => this.components.contact.callbacks.showContact(0),
                                           ],
                                       }),
                                   },
@@ -1069,7 +1112,7 @@ export default function ConfigHandler(props) {
                           {
                               titles: [],
                               texts: [],
-                              classes: ['centrElement'],
+                              classes: ['centrElement', 'defaultWidthElement'],
                               components: [
                                   {
                                       id: null,
@@ -1110,20 +1153,18 @@ export default function ConfigHandler(props) {
                                       data: '<a class="link footerLink" href="/policy">Политика конфиденциальности.</a>',
                                   },
                               ],
-                              classes: ['centrElement', 'footerFloor'],
+                              classes: [
+                                  'centrElement',
+                                  'footerFloor',
+                                  'defaultWidthElement',
+                              ],
                               components: [],
                           },
                       ),
                   ],
                   callbacks: {
-                      hideContact: () => {
-                          this.components.contact.tabs[0].hide();
-                          this.components.contact.data.hide();
-                      },
-                      showContact: () => {
-                          this.components.contact.data.show();
-                          this.components.contact.tabs[0].show();
-                      },
+                      hideContact: () => this.components.contact.callbacks.hideContact(0),
+                      showContact: () => this.components.contact.callbacks.showContact(0),
                   },
               }
             : {},
