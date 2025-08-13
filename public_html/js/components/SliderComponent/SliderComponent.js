@@ -22,7 +22,6 @@ export default function SliderComponent(props) {
           titles: c.titles ? c.titles : [],
         })
     });
-    console.log(cards)
 
     const domCardsWrapper = document.createElement('div');
     const butsWrapper = new Component({

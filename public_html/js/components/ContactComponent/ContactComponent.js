@@ -76,7 +76,6 @@ export default function ContactComponent(props) {
             domSelf: domButWrapper,
         });
 
-        console.log(props)
         const close = new ButtonComponent({
             id: null,
             domParent: domButWrapper,

@@ -21,14 +21,9 @@ function createHeaderComponent(domParent, config, server) {
         {
             id: 'header-0',
             domParent: domParent,
-        },
-        {
-            buts: config.buts,
-            logoSrc: config.logoSrc,
-            buttonTitle: config.buttonTitle,
+            config: config,
         },
     );
-    //console.log('loaded header', header);
     //header.hide();
     //header.show();
     return header;

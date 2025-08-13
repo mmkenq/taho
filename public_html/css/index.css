@@ -7,12 +7,6 @@ body {
 	margin: 0;
 }
 
-.appHeader {
-	display: flex;
-	align-items: center;
-	min-height: 80px;
-}
-
 a.link {
     display: flex;
     align-items: center;
@@ -99,47 +93,15 @@ a.footerLink:hover {
     margin-left: 10%;
 } 
 
-#headerLogo {
-	margin-left: 5%;
-	margin-right: auto;
-}
-
-#headerButsWrapper {
-	display: none;
-}
-
-@media only screen and (min-width: 981px) {
-	#headerButsWrapper {
-		display: block;	
-		margin-left: auto;
-		margin-right: 5%;
-		align-self: stretch;
-	}
-
-	.headerBut {
-		border: none;
-		background: none;
-		font-size: large;
-		height: 80px;
-		padding-left: 20px;
-		padding-right: 20px;
-		transition: 0.1s;
-	}
-
-	.headerBut:hover {
-		background: #6a6a6a;
-	}
-	.headerBut:active {
-		background: #7a7a7a;
-	}
-
-	.headerBut:not(:last-child){
-	}
+.appHeader {
+    display: block;
+	min-height: 80px;
+    width: 90%;
 }
 
 .appBanner {
-	display: grid;
-	width: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: #1c1f20;
 }
 
@@ -522,17 +484,6 @@ a.footerLink:hover {
     }
 }
 
-
-.hide {
-	display: none;
-}
-
-.overflow-hide {
-    height: 100vh;           /* Prevents body height reflow */
-    overflow-y: hidden;      /* Disable vertical scrolling on body */
-    /*padding-right: 15px;*/     /* Optional: avoid layout shift due to scrollbar disappearance */
-}
-
 #el-about {
     background-color: #1c1f20;
     background-image:
@@ -587,3 +538,90 @@ a.footerLink:hover {
 #floor-3 {
     flex-direction: column;
 }
+
+
+#headerLogo {
+    height: 40px;
+}
+
+#headerSwitcher {
+    display: flex;
+    align-items: center;
+    font-size: 2.5em;
+    margin-left: auto;
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+}
+
+.headerButsWrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    opacity: 100%;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    position: absolute;
+    background-color: #f3f3f3;
+    width: 100%;
+    left: 0;
+}
+
+.headerButsWrapperCollapsed {
+    max-height: 0px;
+    opacity: 0%;
+}
+
+.headerBut {
+    border: none;
+    background: none;
+    font-size: large;
+    height: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: 0.1s;
+}
+
+.logoAndSwitcherWrapper {
+    display: flex;
+    align-items: center;
+    min-height: 80px;
+}
+
+.headerBut:hover {
+    background: #6a6a6a;
+}
+.headerBut:active {
+    background: #7a7a7a;
+}
+
+@media only screen and (min-width: 981px) {
+    #headerLogo {
+        height: auto;
+    }
+    #headerSwitcher { 
+        display: none;
+    }
+    .appHeader {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+	.headerButsWrapper {
+        flex-direction: row;
+		margin-left: auto;
+        position: static;
+        background-color: white;
+        width: auto;
+	}
+}
+
+.hide {
+	display: none;
+}
+
+.overflow-hide {
+    height: 100vh;           /* Prevents body height reflow */
+    overflow-y: hidden;      /* Disable vertical scrolling on body */
+    /*padding-right: 15px;*/     /* Optional: avoid layout shift due to scrollbar disappearance */
+}
+

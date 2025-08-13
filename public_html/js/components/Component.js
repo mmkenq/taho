@@ -7,13 +7,17 @@ export default function Component(props){
 	this.show = function(){
 		props.domSelf.classList.remove('hide');
 	}
+	this.toggle = function(){
+		props.domSelf.classList.toggle('hide');
+	}
 	this.updateDOM = function(){
 //		this.domSelf.remove();
 		this.domParent.appendChild(this.domSelf);
 	}
 
-	if(props.id) props.domSelf.id = props.id;
-	if(props.domParent) props.domParent.appendChild(props.domSelf);
+	if(props.id) props.domSelf.id = props.id
+	if(props.domParent) props.domParent.appendChild(props.domSelf)
+	if(props.classes) props.domSelf.setAttribute('class', props.classes)
 
 	return Object.create(this,
 	{
