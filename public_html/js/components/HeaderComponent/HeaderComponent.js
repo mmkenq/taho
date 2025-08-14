@@ -16,20 +16,21 @@ export default function HeaderComponent(props) {
     const domSelf = document.createElement('div');
     domSelf.setAttribute('class', props.config.classes);
 
-    const logoAndSwitcherWrapper = new Component({
+    const headerMainWrapper = new Component({
         id: null,
         domParent: domSelf,
         domSelf: document.createElement('div'),
-        classes: 'logoAndSwitcherWrapper',
+        classes: 'headerMainWrapper nobreak',
     });
 
     const logo = new Component({
         id: null,
-        domParent: logoAndSwitcherWrapper.domSelf,
+        domParent: headerMainWrapper.domSelf,
         domSelf: document.createElement('img'),
     });
     logo.domSelf.id = 'headerLogo';
     logo.domSelf.src = props.config.logoSrc;
+
 
     const domButsWrapper = document.createElement('div');
     //domButsWrapper.id = 'headerButsWrapper';
@@ -37,23 +38,14 @@ export default function HeaderComponent(props) {
     function toggleButsWrapper(){
         butsWrapper.domSelf.classList.toggle('headerButsWrapperCollapsed');
     }
-    const switcher = new ButtonComponent({
-        id: 'headerSwitcher',
-        domParent: logoAndSwitcherWrapper.domSelf,
-        server: null,
-        type: 'callback2',
-        text: props.config.menuSVG,
-        classes: 'appButton appHeaderSwitcher',
-        funcs: [toggleButsWrapper],
-    })
 
     const butsWrapper = new Component({
         id: null,
-        domParent: domSelf,
+        domParent: headerMainWrapper.domSelf,
         domSelf: domButsWrapper,
-        classes: 'headerButsWrapper',
+        classes: 'headerButsWrapper centrElement',
     })
-    if (window.innerWidth < 981) toggleButsWrapper()
+    if (window.innerWidth < 1180) toggleButsWrapper()
 
 
     props.config.buts.forEach(function (el, i) {
@@ -74,9 +66,44 @@ export default function HeaderComponent(props) {
             if (el.anchor) prefix = '#';
             location.href = location.origin + prefix + el.anchor;
             //history.replaceState(null,null,url);
-            if (window.innerWidth < 981) toggleButsWrapper()
+            if (window.innerWidth < 1180) toggleButsWrapper()
         });
     });
+
+    const callsWrapper = new Component({
+        id: null,
+        domParent: headerMainWrapper.domSelf,
+        domSelf: document.createElement('div'),
+        classes: 'headerCallsWrapper',
+    });
+    const number = new Component({
+        id: null,
+        domParent: callsWrapper.domSelf,
+        domSelf: document.createElement('a'),
+        classes: 'appButton headerPhone',
+    });
+    number.domSelf.setAttribute('href', 'tel:+' + props.config.phoneNumber)
+    number.domSelf.innerHTML = props.config.phoneSVG + props.config.phoneNumber
+
+    const dmUs = new ButtonComponent({
+        id: null,
+        domParent: callsWrapper.domSelf,
+        server: null,
+        type: 'callback2',
+        text: 'Оставить заявку',
+        classes: 'appButton headerDmUs',
+        funcs: [props.config.callbacks.showContact],
+    })
+    const switcher = new ButtonComponent({
+        id: null,
+        domParent: callsWrapper.domSelf,
+        server: null,
+        type: 'callback2',
+        text: props.config.menuSVG,
+        classes: 'appButton headerSwitcher',
+        funcs: [toggleButsWrapper],
+    })
+
 
     return new Component({
         id: props.id,

@@ -7,12 +7,15 @@ body {
 	margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 a.link {
     display: flex;
     align-items: center;
     color: #8cb6ff;
     font-size: 14px;
-    text-decoration: none;
     gap: 3px;
 }
 
@@ -96,7 +99,7 @@ a.footerLink:hover {
 .appHeader {
     display: block;
 	min-height: 80px;
-    width: 90%;
+    width: 94%;
 }
 
 .appBanner {
@@ -541,17 +544,28 @@ a.footerLink:hover {
 
 
 #headerLogo {
-    height: 40px;
+    height: 30px;
 }
 
-#headerSwitcher {
+.headerSwitcher {
     display: flex;
     align-items: center;
     font-size: 2.5em;
-    margin-left: auto;
     height: 40px;
     width: 40px;
     padding: 8px;
+}
+
+.headerPhone {
+    display: flex;
+    align-items: center;
+    max-height: 40px;
+    gap: 5px;
+    padding-right: 12px;
+}
+
+.headerDmUs {
+    display: none;
 }
 
 .headerButsWrapper {
@@ -564,6 +578,7 @@ a.footerLink:hover {
     background-color: #f3f3f3;
     width: 100%;
     left: 0;
+    top: 80px;
 }
 
 .headerButsWrapperCollapsed {
@@ -581,10 +596,17 @@ a.footerLink:hover {
     transition: 0.1s;
 }
 
-.logoAndSwitcherWrapper {
+.headerMainWrapper {
     display: flex;
     align-items: center;
     min-height: 80px;
+}
+
+.headerCallsWrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
 }
 
 .headerBut:hover {
@@ -594,25 +616,38 @@ a.footerLink:hover {
     background: #7a7a7a;
 }
 
-@media only screen and (min-width: 981px) {
+@media only screen and (min-width: 640px) {
+    #headerLogo {
+        height: 40px;
+    }
+}
+
+@media only screen and (min-width: 1180px) {
     #headerLogo {
         height: auto;
     }
-    #headerSwitcher { 
+    .headerSwitcher { 
         display: none;
     }
-    .appHeader {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
+    .headerDmUs {
+        display: unset;
+    }
+    .headerPhone {
+        margin-left: unset;
+    }
+    .headerCallsWrapper {
+        margin-left: unset;
     }
 	.headerButsWrapper {
         flex-direction: row;
-		margin-left: auto;
         position: static;
         background-color: white;
         width: auto;
 	}
+}
+
+.nobreak {
+  white-space: nowrap;
 }
 
 .hide {

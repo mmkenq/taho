@@ -53,7 +53,17 @@ export default function ConfigHandler(props) {
                   ],
                   logoSrc: '/assets/logo.png',
                   classes: 'appHeader centrElement',
-                  menuSVG: '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg>',
+                  phoneNumber: this.number,
+                  menuSVG:
+                      '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg>',
+                  phoneSVG:
+                      '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/></svg>',
+                  callbacks: {
+                      hideContact: () =>
+                          this.components.contact.callbacks.hideContact(0),
+                      showContact: () =>
+                          this.components.contact.callbacks.showContact(0),
+                  },
 
                   // TODO
                   darkTheme: true,
@@ -169,8 +179,14 @@ export default function ConfigHandler(props) {
                                                       price: 'Цена по запросу',
                                                       butId: 'glonassElementCardBut',
                                                       callbacks: {
-                                                          hideContact: () => this.components.contact.callbacks.hideContact(0),
-                                                          showContact: () => this.components.contact.callbacks.showContact(0),
+                                                          hideContact: () =>
+                                                              this.components.contact.callbacks.hideContact(
+                                                                  0,
+                                                              ),
+                                                          showContact: () =>
+                                                              this.components.contact.callbacks.showContact(
+                                                                  0,
+                                                              ),
                                                       },
                                                   }),
                                               },
@@ -239,8 +255,14 @@ export default function ConfigHandler(props) {
                                                       price: 'Цена по запросу',
                                                       butId: 'videoElementCardBut',
                                                       callbacks: {
-                                                          hideContact: () => this.components.contact.callbacks.hideContact(0),
-                                                          showContact: () => this.components.contact.callbacks.showContact(0),
+                                                          hideContact: () =>
+                                                              this.components.contact.callbacks.hideContact(
+                                                                  0,
+                                                              ),
+                                                          showContact: () =>
+                                                              this.components.contact.callbacks.showContact(
+                                                                  0,
+                                                              ),
                                                       },
                                                   }),
                                               },
@@ -616,8 +638,10 @@ export default function ConfigHandler(props) {
         catalog: props.componentsEnabled.catalogEnabled
             ? {
                   callbacks: {
-                      hideContact: () => this.components.contact.callbacks.hideContact(0),
-                      showContact: () => this.components.contact.callbacks.showContact(0),
+                      hideContact: () =>
+                          this.components.contact.callbacks.hideContact(0),
+                      showContact: () =>
+                          this.components.contact.callbacks.showContact(0),
                   },
 
                   /* Component */
@@ -632,14 +656,14 @@ export default function ConfigHandler(props) {
                   id: 'contact-0',
                   callbacks: {
                       hideContact: (i) => {
-                          document.body.classList.remove('overflow-hide')
-                          this.components.contact.tabs[i].hide()
-                          this.components.contact.data.hide()
+                          document.body.classList.remove('overflow-hide');
+                          this.components.contact.tabs[i].hide();
+                          this.components.contact.data.hide();
                       },
                       showContact: (i) => {
-                          this.components.contact.data.show()
-                          this.components.contact.tabs[i].show()
-                          document.body.classList.add('overflow-hide')
+                          this.components.contact.data.show();
+                          this.components.contact.tabs[i].show();
+                          document.body.classList.add('overflow-hide');
                       },
                   },
 
@@ -890,7 +914,10 @@ export default function ConfigHandler(props) {
                                                       ajax: false,
                                                       req: 'glonass',
                                                       funcs: [
-                                                          () => this.components.contact.callbacks.showContact(1),
+                                                          () =>
+                                                              this.components.contact.callbacks.showContact(
+                                                                  1,
+                                                              ),
                                                       ],
                                                   }),
                                               },
@@ -984,7 +1011,10 @@ export default function ConfigHandler(props) {
                                                       ajax: false,
                                                       req: 'glonass',
                                                       funcs: [
-                                                          () => this.components.contact.callbacks.showContact(2),
+                                                          () =>
+                                                              this.components.contact.callbacks.showContact(
+                                                                  2,
+                                                              ),
                                                       ],
                                                   }),
                                               },
@@ -1098,7 +1128,10 @@ export default function ConfigHandler(props) {
                                           text: 'Заказать звонок',
                                           classes: 'appButton',
                                           funcs: [
-                                              () => this.components.contact.callbacks.showContact(0),
+                                              () =>
+                                                  this.components.contact.callbacks.showContact(
+                                                      0,
+                                                  ),
                                           ],
                                       }),
                                   },
@@ -1165,8 +1198,10 @@ export default function ConfigHandler(props) {
                       ),
                   ],
                   callbacks: {
-                      hideContact: () => this.components.contact.callbacks.hideContact(0),
-                      showContact: () => this.components.contact.callbacks.showContact(0),
+                      hideContact: () =>
+                          this.components.contact.callbacks.hideContact(0),
+                      showContact: () =>
+                          this.components.contact.callbacks.showContact(0),
                   },
               }
             : {},
