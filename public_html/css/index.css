@@ -505,6 +505,10 @@ a.footerLink:hover {
         url("/assets/truck-pic-0.jpg");
 }
 
+.bannerLinks {
+    margin-left: auto;
+}
+
 /* Footer Floors: Mobile */
 .footerFloor {
     display: flex;
@@ -512,7 +516,8 @@ a.footerLink:hover {
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
-/*    color: white;*/
+    flex-wrap: wrap;
+    gap: 10px;
 }
 .footerText {
     color: white;
@@ -524,6 +529,9 @@ a.footerLink:hover {
 
 /* Footer floor: Tablets, Desktop */
 @media only screen and (min-width: 640px) {
+    .bannerLinks {
+        margin-left: 10%;
+    }
     .footerFloor {
         flex-direction: row;
         justify-content: space-evenly;

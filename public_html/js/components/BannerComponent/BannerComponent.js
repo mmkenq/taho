@@ -52,7 +52,7 @@ export default function BannerComponent(props) {
     });
 
     const domLinksWrapper = document.createElement('div');
-    domLinksWrapper.setAttribute('class', 'centrElement defaultWidthElement');
+    domLinksWrapper.setAttribute('class', 'centrElement bannerLinks');
     const linksWrapper = new Component({
         id: null,
         domParent: domSelf,
@@ -63,7 +63,7 @@ export default function BannerComponent(props) {
         id: 'banner-0-links',
         domParent: domLinksWrapper,
         data: props.config.links,
-        classes: 'footerFloor',
+        classes: 'footerFloor nobreak',
     });
 
     return new Component({
